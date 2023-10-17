@@ -1,9 +1,13 @@
 import KeyEventCard from "@/components/home/KeyEventCard";
+import SponsorCard from "@/components/home/SponsorCard";
+import LevelCard from "@/components/home/LevelCard";
+import sponsors from "@/lib/sponsors";
+import levels from "@/lib/levels";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className=''>
+    <main>
       <section className=' h-[80vh] flex px-14'>
         <section className='font-unica-one flex flex-col justify-center'>
           <h1 className='text-white text-9xl'>SHARON HIGH</h1>
@@ -11,7 +15,6 @@ export default function Home() {
         </section>
         <section></section>
       </section>
-
       <section className='bg-white flex items-center justify-center gap-10 w-full p-28 px-80'>
         {/* replace with image from hackathon */}
         <section className='w-1/2'>
@@ -74,6 +77,43 @@ export default function Home() {
             />
           </div>
         </section>
+      </section>
+      <section className='bg-azure px-80 py-28 flex flex-col justify-center items-center gap-10'>
+        <h1 className='font-unica-one text-black text-5xl'>Levels</h1>
+        <p className='w-3/5 text-center font-space-mono text-xl text-white'>
+          Our Hackathon caters to a diverse mix of skill levels, ensuring
+          everyone gets a fair shot at glory!
+        </p>
+        <section className='flex gap-10 flex-wrap'>
+          {levels.map((level, index) => (
+            <LevelCard
+              name={level.name}
+              description={level.description}
+              image={level.image}
+              key={index}
+            />
+          ))}
+        </section>
+      </section>
+      <section className='bg-azure px-80 py-28 flex flex-col justify-center items-center gap-10'>
+        <h1 className='font-unica-one text-black text-5xl'>Proud Sponsors</h1>
+        <section className='flex gap-10 flex-wrap'>
+          {sponsors.map((sponsor, index) => (
+            <SponsorCard
+              name={sponsor.name}
+              image={sponsor.image}
+              link={sponsor.link}
+              key={index}
+            />
+          ))}
+        </section>
+      </section>
+      <section className='bg-azure px-80 py-28 flex flex-col justify-center items-start gap-10'>
+        <h1 className='font-unica-one text-black text-5xl'>Get in Touch</h1>
+        <p className='w-3/5 font-space-mono text-white text-3xl'>
+          Don’t let your burning questions smolder! Reach out via our
+          user-friendly contact form and quench your thirst for knowledge.
+        </p>
       </section>
     </main>
   );

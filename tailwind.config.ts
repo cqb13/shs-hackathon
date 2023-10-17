@@ -15,7 +15,10 @@ const config: Config = {
       },
       fontFamily: {
         "unica-one": ["Unica One", "sans-serif"],
-        "space-mono": ["Space Mono", "monospace"],
+        "space-mono": ["Space Mono", "monospace"]
+      },
+      boxShadow: {
+        bar: "0px 1px 3px rgba(0, 0, 0, 0.3)"
       },
       colors: {
         onyx: {

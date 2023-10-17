@@ -39,11 +39,11 @@ export default function NavBar() {
   return (
     <nav
       className={`${
-        useScroll(75) ? "shadow-bar backdrop-blur-sm sticky top-0 " : ""
+        useScroll(0.0001) ? "shadow-bar backdrop-blur-sm sticky top-0" : ""
       }
-        : ""} flex items-center justify-between gap-2 max-xs:flex-col z-50 transition-all px-2 rounded-b-lg`}
+        : ""} flex items-center justify-between gap-2 max-xs:flex-col z-50 transition-all w-11/12 m-auto rounded-b-lg px-14 py-1`}
     >
-      <p className="p-1 text-primary">SHS Hackathon</p>
+      <p className="p-1 text-fairy_tale font-space-mono">SHS Hackathon</p>
       <div className="flex items-center gap-2">
         {routes.map((route) => (
           <button
@@ -51,8 +51,8 @@ export default function NavBar() {
             key={route.name}
             onClick={() => router.push(route.path)}
             className={`${
-              pathname === route.path ? "text-highlight" : ""
-            } rounded p-1 text-primary`}
+              pathname === route.path ? " text-fairy_tale-400" : ""
+            } rounded p-1 text-fairy_tale`}
           >
             {route.name}
           </button>

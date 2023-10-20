@@ -20,7 +20,7 @@ export default function ContactForm() {
     "success"
   );
 
-  const sendEmail = () => {
+  const sendEmail = async () => {
     if (!firstName || !lastName || !email || !message) {
       setNotification(true);
       setNotificationTitle("Error");
@@ -29,10 +29,43 @@ export default function ContactForm() {
       return;
     }
 
-    setNotification(true);
-    setNotificationTitle("Success");
-    setNotificationMessage("Will send, at some point.");
-    setNotificationType("success");
+    try {
+      const serviceID = process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID;
+      const templateID = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID;
+      const userID = process.env.NEXT_PUBLIC_EMAIL_USER_ID;
+
+      if (!serviceID || !templateID || !userID) {
+        setNotification(true);
+        setNotificationTitle("Error");
+        setNotificationMessage("Failed to load email credentials.");
+        setNotificationType("error");
+        return;
+      }
+
+      await emailjs.send(
+        serviceID,
+        templateID,
+        {
+          subject: "SHS Hackathon Contact Form",
+          from_name: `${firstName} ${lastName}`,
+          from_email: `${email}`,
+          message: `${message}`
+        },
+        userID
+      );
+
+      setNotification(true);
+      setNotificationTitle("Success");
+      setNotificationMessage("Email sent successfully.");
+      setNotificationType("success");
+    } catch (e) {
+      console.error(e);
+      setNotification(true);
+      setNotificationTitle("Error");
+      setNotificationMessage("Something went wrong.");
+      setNotificationType("error");
+      return;
+    }
 
     setFirstName("");
     setLastName("");

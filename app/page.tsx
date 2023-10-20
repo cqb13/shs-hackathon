@@ -1,4 +1,5 @@
 import KeyEventCard from "@/components/home/KeyEventCard";
+import ContactForm from "@/components/home/ContactForm";
 import SponsorCard from "@/components/home/SponsorCard";
 import LevelCard from "@/components/home/LevelCard";
 import sponsors from "@/lib/sponsors";
@@ -10,8 +11,12 @@ export default function Home() {
     <main>
       <section className=' h-[80vh] flex px-14 max-sm:px-10 max-xxs:px-5'>
         <section className='font-unica-one flex flex-col justify-center max-xxs:justify-start max-xxs:pt-20'>
-          <h1 className='text-white text-9xl max-sm:text-8xl max-xs:text-7xl'>SHARON HIGH</h1>
-          <h1 className='text-fairy_tale text-9xl max-sm:text-8xl max-xs:text-7xl'>HACKATHON</h1>
+          <h1 className='text-white text-9xl max-sm:text-8xl max-xs:text-7xl'>
+            SHARON HIGH
+          </h1>
+          <h1 className='text-fairy_tale text-9xl max-sm:text-8xl max-xs:text-7xl'>
+            HACKATHON
+          </h1>
         </section>
         <section></section>
       </section>
@@ -109,11 +114,11 @@ export default function Home() {
         </section>
       </section>
       <section className='bg-azure px-64 py-28 flex flex-col justify-center items-start gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5'>
-        <h1 className='font-unica-one text-black text-5xl'>Get in Touch</h1>
-        <p className='w-4/5 font-space-mono text-white text-3xl max-md:w-full'>
-          Don’t let your burning questions smolder! Reach out via our
-          user-friendly contact form and quench your thirst for knowledge.
-        </p>
+        <div>
+          <h1 className='font-unica-one text-black text-5xl'>Get in Touch</h1>
+          <sub className='font-space-mono text-onyx text-lg'>shshackathon@gmail.com</sub>
+        </div>
+        <ContactForm />
       </section>
     </main>
   );

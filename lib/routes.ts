@@ -19,8 +19,8 @@ type Route = {
       signedOut: true,
     },
     {
-      name: "Contact",
-      path: "/contact",
+      name: "Resources",
+      path: "/resources",
       signedIn: true,
       signedOut: true,
     },

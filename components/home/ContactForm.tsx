@@ -30,9 +30,9 @@ export default function ContactForm() {
     }
 
     try {
-      const serviceID = process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID;
-      const templateID = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID;
-      const userID = process.env.NEXT_PUBLIC_EMAIL_USER_ID;
+      const serviceID = process.env.NEXT_PUBLIC_VERCEL_ENV_EMAIL_SERVICE_ID;
+      const templateID = process.env.NEXT_PUBLIC_VERCEL_ENV_EMAIL_TEMPLATE_ID;
+      const userID = process.env.NEXT_PUBLIC_VERCEL_ENV_EMAIL_USER_ID;
 
       if (!serviceID || !templateID || !userID) {
         setNotification(true);

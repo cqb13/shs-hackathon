@@ -17,6 +17,10 @@ const config: Config = {
         "unica-one": ["Unica One", "sans-serif"],
         "space-mono": ["Space Mono", "monospace"]
       },
+      screens: {
+        xxs: "400px",
+        xs: "500px",
+      },
       boxShadow: {
         bar: "0px 1px 3px rgba(0, 0, 0, 0.3)"
       },

@@ -20,12 +20,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-onyx`}>
         <NavBar />
         {children}
-        <footer className='bg-azure border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10'>
-          <section>
-            <div></div>
-            <div></div>
-            <div></div>
-          </section>
+        <footer className='bg-azure border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10'>
           <section className='flex w-full justify-between items-center'>
             <p className='font-space-mono text-white'>
               © 2023 Sharon High School Hackathon

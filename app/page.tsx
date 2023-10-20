@@ -34,7 +34,7 @@ export default function Home() {
         <section className='flex flex-col w-1/2 max-md:w-full'>
           <h1 className='font-unica-one text-5xl text-neutral-700'>DISCOVER</h1>
           {/* replace this later */}
-          <p className='font-space-mono text-xl'>
+          <p className='font-space-mono text-xl text-neutral-700'>
             Unleash your creativity and unlock your full potential at our
             premier STEM Hackathon Event, where the worlds of technology and
             innovation collide! A hackathon is a day-long event where students

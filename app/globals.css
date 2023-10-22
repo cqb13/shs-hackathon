@@ -5,10 +5,10 @@
 @tailwind utilities;
 
 html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 15rem;
+  scroll-behavior: smooth;
+  scroll-padding-top: 15rem;
 }
 
 .black-and-white {
-    filter: grayscale(100%);
+  filter: grayscale(100%);
 }

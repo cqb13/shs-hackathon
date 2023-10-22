@@ -16,7 +16,9 @@ export default function LevelCard({ name, description, image }: Level) {
         height={100}
         className='rounded-3xl'
       />
-      <h1 className='font-unica-one text-3xl text-black font-semibold'>{name}</h1>
+      <h1 className='font-unica-one text-3xl text-black font-semibold'>
+        {name}
+      </h1>
       <p className='font-space-mono text-xl text-onyx-200 text-center'>
         {descriptionExpanded ? description : description.slice(0, 25) + "..."}
       </p>

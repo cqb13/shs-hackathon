@@ -19,7 +19,7 @@ const config: Config = {
       },
       screens: {
         xxs: "400px",
-        xs: "500px",
+        xs: "500px"
       },
       boxShadow: {
         bar: "0px 1px 3px rgba(0, 0, 0, 0.3)"

@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NavBar from "@components/layout/NavBar";
+import FooterNav from "@/components/layout/FooterNav";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hackathon.shsdevs.com"),
   title: "SHS Hackathon",
-  description: "The official website for the SHS Hackathon, a STEM event hosted by the Sharon High School Website Development Club & Girls Who Code.",
+  description:
+    "The official website for the SHS Hackathon, a STEM event hosted by the Sharon High School Website Development Club & Girls Who Code.",
   keywords: [
     "shs",
     "hackathon",
@@ -19,7 +22,7 @@ export const metadata: Metadata = {
     "shs hackathon 2023",
     "sharon high school hackathon 2023",
     "Maksim Straus",
-    "cqb13",
+    "cqb13"
   ],
   category: "STEM",
   generator: "Next.js",
@@ -32,7 +35,7 @@ export const metadata: Metadata = {
   formatDetection: {
     email: false,
     address: false,
-    telephone: false,
+    telephone: false
   },
   themeColor: "#403f4b",
   manifest: "https://hackathon.shsdevs.com/manifest.json",
@@ -47,19 +50,19 @@ export const metadata: Metadata = {
         url: "https://hackathon.shsdevs.com/logo/icon.png",
         width: 600,
         height: 600,
-        alt: "Logo",
-      },
+        alt: "Logo"
+      }
     ],
     locale: "en_US",
-    type: "website",
+    type: "website"
   },
   icons: {
-    icon: "/icon.png",
+    icon: "/icon.png"
   },
   viewport: {
     width: "device-width",
     initialScale: 1,
-    maximumScale: 1,
+    maximumScale: 1
   },
   robots: {
     index: true,
@@ -71,9 +74,9 @@ export const metadata: Metadata = {
       noimageindex: false,
       "max-video-preview": "auto",
       "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+      "max-snippet": -1
+    }
+  }
 };
 
 export default function RootLayout({
@@ -85,13 +88,27 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${inter.className} bg-onyx`}>
         <NavBar />
+        <header className='h-[80vh] flex px-14 max-sm:px-10 max-xxs:px-5'>
+          <section className='font-unica-one flex flex-col justify-center max-xxs:justify-start max-xxs:pt-20'>
+            <h1 className='text-white text-9xl max-sm:text-8xl max-xs:text-7xl'>
+              SHARON HIGH
+            </h1>
+            <h1 className='text-fairy_tale text-9xl max-sm:text-8xl max-xs:text-7xl'>
+              HACKATHON
+            </h1>
+          </section>
+        </header>
         {children}
-        <footer className='bg-azure border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10'>
+        <footer className='border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10'>
+          <FooterNav />
           <section className='flex w-full justify-between items-center'>
             <p className='font-space-mono text-white'>
               © 2023 Sharon High School Hackathon
             </p>
-            <a href='https://github.com/Website-Club/shs-hackathon' target="_blank">
+            <a
+              href='https://github.com/Website-Club/shs-hackathon'
+              target='_blank'
+            >
               <svg
                 fill='white'
                 width='30px'

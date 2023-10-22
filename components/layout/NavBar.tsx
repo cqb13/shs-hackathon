@@ -39,7 +39,7 @@ export default function NavBar() {
   return (
     <nav
       className={`${
-        useScroll(0.0001) ? "shadow-bar backdrop-blur-sm sticky top-0" : ""
+        useScroll(0.0001) ? "shadow-bar bg-onyx bg-opacity-40 backdrop-blur-xl sticky top-0" : ""
       }
         : ""} flex items-center justify-between gap-2 max-xs:flex-col z-50 transition-all w-11/12 m-auto rounded-b-lg px-14 py-1`}
     >
@@ -57,6 +57,13 @@ export default function NavBar() {
             {route.name}
           </button>
         ))}
+                  <button
+            type="button"
+            onClick={() => router.push("/#contact")}
+            className="rounded p-1 text-fairy_tale"
+          >
+            Contact
+          </button>
       </div>
     </nav>
   );

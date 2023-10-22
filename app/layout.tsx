@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     siteName: "SHS Hackathon",
     images: [
       {
-        url: "https://cqb13.dev/assets/logo-d9a1e0b0.png",
+        url: "https://hackathon.shsdevs.com/logo/icon.png",
         width: 600,
         height: 600,
         alt: "Logo",

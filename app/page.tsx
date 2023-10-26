@@ -24,7 +24,7 @@ export default function Home() {
           />
         </section>
         <section className='flex flex-col w-1/2 max-md:w-full'>
-          <h1 className='font-unica-one text-5xl text-black font-bold'>
+          <h1 className='font-unica-one text-5xl text-onyx-200 font-bold'>
             DISCOVER
           </h1>
           {/* replace this later */}
@@ -42,9 +42,9 @@ export default function Home() {
 
       {/* Schedule goes here */}
 
-      <div className='bg-azure-800' id='key-features'>
+      <div className='bg-azure' id='key-features'>
         <section className='px-72 py-28 max-xl:px-64 max-lg:px-20 max-md:px-10 max-xxs:px-5'>
-          <h1 className='font-unica-one text-black text-5xl font-bold'>
+          <h1 className='font-unica-one text-onyx-200 text-5xl font-bold'>
             Key Event Features
           </h1>
           <section className='flex mt-14 gap-14 max-sm:gap-5 max-xs:flex-col max-xs:gap-2'>
@@ -79,10 +79,10 @@ export default function Home() {
           </section>
         </section>
         <section className='px-28 py-28 flex flex-col justify-center items-center gap-10 max-md:px-10 max-xxs:px-5'>
-          <h1 className='font-unica-one text-black text-5xl font-bold'>
+          <h1 className='font-unica-one text-onyx-200 text-5xl font-bold'>
             Levels
           </h1>
-          <p className='w-3/5 text-center font-space-mono text-xl text-onyx-200 max-lg:w-4/5 max-md:w-full'>
+          <p className='w-3/5 text-center font-space-mono text-xl text-white max-lg:w-4/5 max-md:w-full'>
             Our Hackathon caters to a diverse mix of skill levels, ensuring
             everyone gets a fair shot at glory!
           </p>
@@ -101,7 +101,7 @@ export default function Home() {
           className='px-64 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5'
           id='sponsors'
         >
-          <h1 className='font-unica-one text-black text-5xl font-bold'>
+          <h1 className='font-unica-one text-onyx-200 text-5xl font-bold'>
             Proud Sponsors
           </h1>
           <section className='flex gap-10 flex-wrap items-center justify-center'>
@@ -120,7 +120,7 @@ export default function Home() {
           id='contact'
         >
           <div>
-            <h1 className='font-unica-one text-black text-5xl font-bold'>
+            <h1 className='font-unica-one text-onyx-200 text-5xl font-bold'>
               Get in Touch
             </h1>
             <sub className='font-space-mono text-onyx text-lg'>

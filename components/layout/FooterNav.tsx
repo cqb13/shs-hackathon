@@ -47,25 +47,25 @@ export default function FooterNav() {
           About
         </li>
         <li
-          onClick={() => router.push("/about")}
+          onClick={() => router.push("/about#about-us")}
           className='cursor-pointer hover:text-fairy_tale transition-all duration-200'
         >
           About Us
         </li>
         <li
-          onClick={() => router.push("/about")}
+          onClick={() => router.push("/about#previous-years")}
           className='cursor-pointer hover:text-fairy_tale transition-all duration-200'
         >
           Previous Years
         </li>
         <li
-          onClick={() => router.push("/about")}
+          onClick={() => router.push("/about#more-info")}
           className='cursor-pointer hover:text-fairy_tale transition-all duration-200'
         >
           More Info
         </li>
         <li
-          onClick={() => router.push("/about")}
+          onClick={() => router.push("/about#faq")}
           className='cursor-pointer hover:text-fairy_tale transition-all duration-200'
         >
           FAQ

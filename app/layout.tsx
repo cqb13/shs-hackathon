@@ -102,9 +102,9 @@ export default function RootLayout({
         <footer className='border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10 bg-onyx'>
           <FooterNav />
           <section className='flex w-full justify-between items-center'>
-            <p className='font-space-mono text-white'>
-              © 2023 Sharon High School Hackathon
-            </p>
+            <a className='font-space-mono text-white' href="https://github.com/Website-Club/shs-hackathon/blob/main/LICENSE" target="_blank">
+              © SHS Web Dev
+            </a>
             <a
               href='https://github.com/Website-Club/shs-hackathon'
               target='_blank'

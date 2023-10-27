@@ -8,9 +8,9 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className=' bg-azure'>
+    <main className='bg-dotted-spacing-10 bg-dotted-gray-400'>
       <section
-        className='bg-white flex items-center justify-center gap-10 w-full p-28 px-28 max-lg:px-10 max-md:flex-col max-xxs:px-5'
+        className='flex items-center justify-center gap-10 w-full p-28 max-lg:px-10 max-md:flex-col max-xxs:px-5 bg-white bg-opacity-60'
         id='discover'
       >
         <section className='w-1/2 max-md:w-full'>
@@ -22,7 +22,7 @@ export default function Home() {
             height={500}
           />
         </section>
-        <section className='flex flex-col w-1/2 max-md:w-full'>
+        <section className='flex flex-col w-1/2 max-md:w-full bg-white bg-opacity-70'>
           <h1 className='font-unica-one text-5xl text-onyx-200 font-bold'>
             DISCOVER
           </h1>
@@ -37,17 +37,19 @@ export default function Home() {
           </article>
         </section>
       </section>
-
-      {/* Schedule goes here */}
-
+      {/*TODO: make this look better */}
+      <section className="flex items-center justify-center gap-10 p-28 bg-azure bg-opacity-5 backdrop-blur-sm">
+        <h1 className="font-unica-one text-5xl text-onyx-200 font-bold">July 1, 2023</h1>
+        <h1 className="font-unica-one text-5xl text-onyx-200 font-bold">Sign Up Now</h1>
+      </section>
       <section
-        className='px-72 py-28 max-xl:px-64 max-lg:px-20 max-md:px-10 max-xxs:px-5'
+        className='px-72 py-28 max-xl:px-64 max-lg:px-20 max-md:px-10 max-xxs:px-5 bg-white bg-opacity-40'
         id='key-features'
       >
-        <h1 className='font-unica-one text-onyx-200 text-5xl font-bold'>
+        <h1 className='font-unica-one p-4 text-onyx-200 text-5xl font-bold bg-white bg-opacity-70'>
           Key Event Features
         </h1>
-        <section className='flex mt-14 gap-14 max-sm:gap-5 max-xs:flex-col max-xs:gap-2'>
+        <section className='flex p-4 mt-14 gap-14 max-sm:gap-5 max-xs:flex-col max-xs:gap-2 bg-white bg-opacity-20'>
           <div className='flex flex-col gap-10 max-xs:gap-2'>
             <KeyEventCard
               title='Problem-Solving'
@@ -78,33 +80,14 @@ export default function Home() {
           </div>
         </section>
       </section>
-      <section className='px-28 py-28 flex flex-col justify-center items-center gap-10 max-md:px-10 max-xxs:px-5'>
-        <h1 className='font-unica-one text-onyx-200 text-5xl font-bold'>
-          Levels
-        </h1>
-        <p className='w-3/5 text-center font-space-mono text-xl text-white max-lg:w-4/5 max-md:w-full'>
-          Our Hackathon caters to a diverse mix of skill levels, ensuring
-          everyone gets a fair shot at glory!
-        </p>
-        <section className='flex gap-10 flex-wrap items-center justify-center'>
-          {levels.map((level, index) => (
-            <LevelCard
-              name={level.name}
-              description={level.description}
-              image={level.image}
-              key={index}
-            />
-          ))}
-        </section>
-      </section>
       <section
-        className='px-64 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5'
+        className='px-64 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5 bg-white bg-opacity-70'
         id='sponsors'
       >
-        <h1 className='font-unica-one text-onyx-200 text-5xl font-bold'>
+        <h1 className='font-unica-one text-onyx-200 text-5xl font-bold bg-white bg-opacity-70'>
           Proud Sponsors
         </h1>
-        <section className='flex gap-10 flex-wrap items-center justify-center'>
+        <section className='flex gap-10 flex-wrap items-center justify-center bg-white bg-opacity-20'>
           {sponsors.map((sponsor, index) => (
             <SponsorCard
               name={sponsor.name}
@@ -116,7 +99,7 @@ export default function Home() {
         </section>
       </section>
       <section
-        className='px-64 py-28 flex flex-col justify-center items-start gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5'
+        className='px-64 py-28 flex flex-col justify-center items-start gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5 bg-white bg-opacity-70'
         id='contact'
       >
         <div>

@@ -86,9 +86,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} bg-onyx`}>
+      <body className={`${inter.className} bg-white`}>
         <NavBar />
-        <header className='h-[80vh] flex px-14 max-sm:px-10 max-xxs:px-5'>
+        <header className='h-[80vh] flex px-14 max-sm:px-10 max-xxs:px-5 bg-onyx'>
           <section className='font-unica-one flex flex-col justify-center max-xxs:justify-start max-xxs:pt-20'>
             <h1 className='text-white text-9xl max-sm:text-8xl max-xs:text-7xl'>
               SHARON HIGH
@@ -99,7 +99,7 @@ export default function RootLayout({
           </section>
         </header>
         {children}
-        <footer className='border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10'>
+        <footer className='border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10 bg-onyx'>
           <FooterNav />
           <section className='flex w-full justify-between items-center'>
             <p className='font-space-mono text-white'>

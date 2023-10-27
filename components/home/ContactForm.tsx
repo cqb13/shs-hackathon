@@ -80,26 +80,26 @@ export default function ContactForm() {
           value={firstName}
           placeholder='First Name'
           onChange={(e: any) => setFirstName(e.target.value)}
-          customClass='w-full'
+          customClass='w-full bg-opacity-5'
         />
         <TextInput
           value={lastName}
           placeholder='Last Name'
           onChange={(e: any) => setLastName(e.target.value)}
-          customClass='w-full'
+          customClass='w-full bg-opacity-5'
         />
       </div>
       <TextInput
         value={email}
         placeholder='Email'
         onChange={(e: any) => setEmail(e.target.value)}
-        customClass='w-full'
+        customClass='w-full bg-opacity-5'
       />
       <TextArea
         value={message}
         placeholder='Message'
         onChange={(e: any) => setMessage(e.target.value)}
-        customClass='w-full'
+        customClass='w-full bg-opacity-5'
       />
       <Button onClick={sendEmail} text='Submit' customClass='w-full' />
       {notification && (

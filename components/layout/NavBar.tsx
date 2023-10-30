@@ -12,7 +12,7 @@ export default function NavBar() {
     <nav
       className={`${
         useScroll(40)
-          ? "shadow-bar bg-onyx bg-opacity-40 backdrop-blur-xl sticky top-0 w-11/12 m-auto rounded-b-lg"
+          ? "shadow-bar bg-onyx bg-opacity-70 backdrop-blur-xl sticky top-0 w-11/12 m-auto rounded-b-lg"
           : "bg-onyx w-full rounded-none"
       }  flex items-center justify-between gap-2 max-xs:flex-col z-50 transition-all px-14 py-1`}
     >

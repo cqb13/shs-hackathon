@@ -59,10 +59,10 @@ export default function FooterNav() {
           Previous Years
         </li>
         <li
-          onClick={() => router.push("/about#more-info")}
+          onClick={() => router.push("/about#schedule")}
           className='cursor-pointer hover:text-fairy_tale transition-all duration-200'
         >
-          More Info
+          Schedule
         </li>
         <li
           onClick={() => router.push("/about#faq")}

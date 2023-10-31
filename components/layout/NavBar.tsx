@@ -1,12 +1,22 @@
 "use client";
 
 import { useRouter, usePathname } from "next/navigation";
+import { useLayoutContext } from "@/lib/context/LayoutContext";
 import useScroll from "@lib/hooks/useScroll";
+import { useEffect } from "react";
 import routes from "@lib/routes";
 
 export default function NavBar() {
   const router = useRouter();
   const pathname = usePathname();
+
+  const { updateTitle } = useLayoutContext() as { updateTitle: (title: string) => void };
+
+  useEffect(() => {
+    const route = routes.find((route) => route.path === pathname);
+    if (route) updateTitle(route.name);
+    else updateTitle("Page Not Found");
+  }, [pathname]);
 
   return (
     <nav

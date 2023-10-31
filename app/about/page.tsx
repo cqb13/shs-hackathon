@@ -38,7 +38,7 @@ export default function About() {
       </section>
       <section>
         <h1 className='font-unica-one text-5xl text-onyx-200 font-bold'>
-          More Info
+          Schedule
         </h1>
         <section className='text-neutral-700'>
           <p>

@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { Sponsor } from "@/lib/sponsors";
+import Image from "next/image";
 
 export default function SponsorCard({ name, image, link }: Sponsor) {
   return (

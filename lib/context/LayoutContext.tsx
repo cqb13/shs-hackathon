@@ -1,4 +1,5 @@
 "use client";
+
 import { createContext, useContext, useState, ReactNode } from "react";
 
 export const LayoutContext = createContext({});

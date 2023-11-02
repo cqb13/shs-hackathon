@@ -2,12 +2,11 @@
     
 # Sharon High School Hackathon Website
 
+<img src="https://hackathon.shsdevs.com/icon.png" alt="Logo" width="300px">
+
 </div>
 
-<div style="display: flex; align-items: center; gap: 2rem;">
-<img src="https://hackathon.shsdevs.com/icon.png" alt="Logo" width="300px">
 The official website for the SHS Hackathon, a STEM event hosted by the Sharon High School Website Development Club & Girls Who Code.
-</div>
 
 <hr>
 
@@ -20,7 +19,15 @@ The official website for the SHS Hackathon, a STEM event hosted by the Sharon Hi
 
 ## About <a name = "about"></a>
 
-## 🏁 Getting Started <a name = "getting-started"></a>
+### Technologies Used
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vercel](https://vercel.com/)
+- [EmailJS](https://www.emailjs.com/)
+
+## Getting Started <a name = "getting-started"></a>
 
 ### Installing
 

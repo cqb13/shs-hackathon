@@ -2,11 +2,11 @@
     
 # Sharon High School Hackathon Website
 
+The official website for the SHS Hackathon, a STEM event hosted by the Sharon High School Website Development Club & Girls Who Code.
+
 <img src="https://hackathon.shsdevs.com/icon.png" alt="Logo" width="300px">
 
 </div>
-
-The official website for the SHS Hackathon, a STEM event hosted by the Sharon High School Website Development Club & Girls Who Code.
 
 <hr>
 

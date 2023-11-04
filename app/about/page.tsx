@@ -28,7 +28,7 @@ export default function About() {
         </section>
       </section>
       <section
-        className='w-full p-28 px-28 max-lg:px-10 max-md:flex-col max-xxs:px-5'
+        className='w-full p-28 px-20 max-lg:px-10 max-md:flex-col max-xxs:px-5'
         id='previous-years'
       >
         <h1 className='font-unica-one text-5xl text-onyx-200 font-bold'>

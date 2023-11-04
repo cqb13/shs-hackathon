@@ -39,7 +39,9 @@ export default function Home() {
         <hr className=' h-0.5 w-9/12 bg-onyx border-0 rounded' />
         <div className='flex items-center justify-center gap-10'>
           <h1 className='font-unica-one text-5xl font-bold'>July 1, 2023</h1>
-          <h1 className='font-unica-one text-5xl font-bold'>Sign Up Now</h1>
+          <h1 className='font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150'>
+            Sign Up Now
+          </h1>
         </div>
         <hr className='h-0.5 w-9/12 bg-onyx border-0 rounded' />
       </section>
@@ -47,13 +49,9 @@ export default function Home() {
         className='px-72 py-28 max-xl:px-64 max-lg:px-20 max-md:px-10 max-xxs:px-5'
         id='key-features'
       >
-        <h1 className='font-unica-one p-4 text-onyx-200 text-5xl font-bold'>
-          Key Event Features
-        </h1>
-        <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded' />
-        <section className='flex p-4 mt-14 gap-14 max-sm:gap-5 max-xs:flex-col max-xs:gap-2'>
+        <section className='flex p-4 mt-14 gap-5 max-xs:flex-col max-xs:gap-2'>
           {/*TODO: add some color and fill in info*/}
-          <div className='flex flex-col gap-10 max-xs:gap-2'>
+          <div className='flex flex-col gap-5 max-xs:gap-2'>
             <KeyEventCard
               title='Problem-Solving'
               text='Put your brain to the test and conquer real-world scenarios'
@@ -67,7 +65,7 @@ export default function Home() {
               text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae'
             />
           </div>
-          <div className='flex flex-col gap-10 max-xs:gap-2'>
+          <div className='flex flex-col gap-5 max-xs:gap-2'>
             <KeyEventCard
               title='Teamwork'
               text='Collaborate with passionate tech enthusiasts and form lasting bonds'

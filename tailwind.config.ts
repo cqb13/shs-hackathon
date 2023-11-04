@@ -65,6 +65,23 @@ const dottedBg = plugin(function ({
   );
 });
 
+const textShadow = plugin(function ({
+  matchUtilities,
+  theme
+}: {
+  matchUtilities: any;
+  theme: any;
+}) {
+  matchUtilities(
+    {
+      "text-shadow": (value: string) => ({
+        textShadow: value
+      })
+    },
+    { values: theme("textShadow") }
+  );
+});
+
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -88,6 +105,11 @@ const config: Config = {
       },
       boxShadow: {
         bar: "0px 1px 3px rgba(0, 0, 0, 0.3)"
+      },
+      textShadow: {
+        sm: '0 1px 2px var(--tw-shadow-color)',
+        DEFAULT: '0 2px 4px var(--tw-shadow-color)',
+        lg: '0 8px 16px var(--tw-shadow-color)',
       },
       colors: {
         onyx: {
@@ -158,7 +180,8 @@ const config: Config = {
       addVariant("child", "& > *");
       addVariant("last-child", "&>*:last-child");
     },
-    dottedBg
+    dottedBg,
+    textShadow
   ]
 };
 export default config;

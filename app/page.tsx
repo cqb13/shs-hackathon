@@ -21,9 +21,9 @@ export default function Home() {
           />
         </section>
         <section className='flex flex-col w-1/2 max-md:w-full'>
-          <h1 className='font-unica-one text-5xl text-onyx-200 font-bold'>
+          <h2 className='font-unica-one text-5xl text-onyx-200 font-bold'>
             DISCOVER
-          </h1>
+          </h2>
           <article className='font-space-mono text-xl text-neutral-700'>
             Unleash your creativity and unlock your full potential at our
             premier STEM Hackathon Event, where the worlds of technology and
@@ -38,10 +38,10 @@ export default function Home() {
       <section className='flex flex-col items-center gap-20 p-x28 py-10 backdrop-blur-sm text-onyx-200'>
         <hr className=' h-0.5 w-9/12 bg-onyx border-0 rounded' />
         <div className='flex items-center justify-center gap-10'>
-          <h1 className='font-unica-one text-5xl font-bold'>July 1, 2023</h1>
-          <h1 className='font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150'>
+          <h2 className='font-unica-one text-5xl font-bold'>July 1, 2023</h2>
+          <h2 className='font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150'>
             Sign Up Now
-          </h1>
+          </h2>
         </div>
         <hr className='h-0.5 w-9/12 bg-onyx border-0 rounded' />
       </section>
@@ -86,9 +86,9 @@ export default function Home() {
         id='sponsors'
       >
         <div className='w-full flex flex-col items-center'>
-          <h1 className='font-unica-one text-onyx-200 text-5xl font-bold p-4'>
+          <h2 className='font-unica-one text-onyx-200 text-5xl font-bold p-4'>
             Proud Sponsors
-          </h1>
+          </h2>
           <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded' />
         </div>
         <section className='flex gap-10 flex-wrap items-center justify-center'>
@@ -107,9 +107,9 @@ export default function Home() {
         id='contact'
       >
         <div className='w-full'>
-          <h1 className='font-unica-one text-onyx-200 text-5xl font-bold p-4'>
+          <h2 className='font-unica-one text-onyx-200 text-5xl font-bold p-4'>
             Get in Touch
-          </h1>
+          </h2>
           <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded' />
           <sub className='font-space-mono text-onyx text-lg'>
             shshackathon@gmail.com

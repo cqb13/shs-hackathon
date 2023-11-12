@@ -1,5 +1,9 @@
 import Image from "next/image";
 import ImageGallery from "@/components/about/ImageGallery";
+import Schedule from "@/components/about/Schedule";
+import schedule from "@/lib/schedule";
+import FaqCard from "@/components/about/FaqCard";
+import faqs from "@/lib/faq";
 
 export default function About() {
   return (
@@ -28,29 +32,48 @@ export default function About() {
         </section>
       </section>
       <section
-        className='w-full p-28 px-20 max-lg:px-10 max-md:flex-col max-xxs:px-5'
+        className='w-full pt-28 px-20 max-lg:px-10 max-md:flex-col max-xxs:px-5'
         id='previous-years'
       >
-        <h1 className='font-unica-one text-5xl text-onyx-200 font-bold'>
-          Previous Years
-        </h1>
+        <div className='w-full'>
+          <h2 className='font-unica-one text-onyx-200 text-5xl font-bold p-4'>
+            Previous Years
+          </h2>
+          <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded' />
+        </div>
         <ImageGallery />
       </section>
-      <section>
-        <h1 className='font-unica-one text-5xl text-onyx-200 font-bold'>
-          Schedule
-        </h1>
-        <section className='text-neutral-700'>
-          <p>
-            Detailed schedule for the day (should be linked from date on home
-            page)
-          </p>
+      <section
+        className='px-64 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5'
+        id='schedule'
+      >
+        <div className='w-full flex flex-col items-center'>
+          <h2 className='font-unica-one text-onyx-200 text-5xl font-bold p-4'>
+            Schedule
+          </h2>
+          <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded' />
+        </div>
+        <section className='flex gap-10 flex-wrap items-center justify-center w-1/2'>
+          <Schedule schedule={schedule} />
         </section>
       </section>
-      <section>
-        <h1 className='font-unica-one text-5xl text-onyx-200 font-bold'>FAQ</h1>
-        <section className='text-neutral-700'>
-          <p>some questions here</p>
+      <section
+        className='px-64 py-28 flex flex-col w-full gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5'
+        id='faq'
+      >
+        <div className='w-full'>
+          <h2 className='font-unica-one text-onyx-200 text-5xl font-bold p-4'>
+            FAQ
+          </h2>
+          <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded' />
+          <sub className='font-space-mono text-onyx text-lg'>
+            Answers to some questions you might have.
+          </sub>
+        </div>
+        <section className='flex gap-5 flex-wrap items-center justify-center'>
+          {faqs.map((faq, index) => (
+            <FaqCard {...faq} key={index} />
+          ))}
         </section>
       </section>
     </main>

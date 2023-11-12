@@ -19,6 +19,7 @@ export default function ImageGallery() {
     document.body.style.overflow = "unset";
   };
 
+  //TODO: fix image loading in modal
   return (
     <>
       {modal ? (

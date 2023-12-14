@@ -5,24 +5,27 @@ export type Faq = {
 
 const faqs: Faq[] = [
   {
-    question: "What is the capital of France?",
-    answer: "Paris"
+    question: "What do I need to join the Hackathon?",
+    answer:
+      "To join the Hackathon, you'll need a computer. No specific coding experience is required, and participants from all skill levels are welcome!"
   },
   {
-    question: "What is the capital of Spain?",
-    answer: "Madrid"
+    question: "When and where is the Hackathon?",
+    answer:
+      "The Hackathon is scheduled for February 3rd, from 9:30 am to 3:30 pm. The event will take place at Sharon High School."
   },
   {
-    question: "What is the capital of Germany?",
-    answer: "Berlin"
+    question: "How can I register for the Hackathon?",
+    answer: "Registration details will be available soon."
   },
   {
-    question: "What is the capital of Italy?",
-    answer: "Rome"
+    question: "What are the prizes?",
+    answer: "We have exciting prizes, including 15 small Arduino kits!"
   },
   {
-    question: "What is the capital of Portugal?",
-    answer: "Lisbon"
+    question: "How can I contribute as a sponsor?",
+    answer:
+      "Sponsors play a crucial role by contributing food and prizes. If you or your organization are interested in becoming a sponsor, please contact us through the form on our website."
   }
 ];
 

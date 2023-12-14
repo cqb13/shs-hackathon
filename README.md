@@ -27,6 +27,8 @@ The official website for the SHS Hackathon, a STEM event hosted by the Sharon Hi
 - [Vercel](https://vercel.com/)
 - [EmailJS](https://www.emailjs.com/)
 
+_Code from the following repo was used for the test [Latin Quiz](https://github.com/cqb13/latin-quiz)_
+
 ## Getting Started <a name = "getting-started"></a>
 
 ### Installing

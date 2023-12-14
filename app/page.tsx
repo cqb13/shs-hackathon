@@ -52,7 +52,6 @@ export default function Home() {
         id='key-features'
       >
         <section className='flex p-4 mt-14 gap-5 max-xs:flex-col max-xs:gap-2'>
-          {/*TODO: add some color and fill in info*/}
           <div className='flex flex-col gap-5 max-xs:gap-2'>
             <KeyEventCard
               title='Problem-Solving'
@@ -61,10 +60,6 @@ export default function Home() {
             <KeyEventCard
               title='Skill Development'
               text='Showcase your talent and learn new tricks to sharpen your expertise'
-            />
-            <KeyEventCard
-              title='Problem-Solving'
-              text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae'
             />
           </div>
           <div className='flex flex-col gap-5 max-xs:gap-2'>
@@ -75,10 +70,6 @@ export default function Home() {
             <KeyEventCard
               title='Prizes'
               text='Battle it out for lucrative prizes and prestigious awards'
-            />
-            <KeyEventCard
-              title='Problem-Solving'
-              text='I think it would work better with 3 in each, but idk what to put'
             />
           </div>
         </section>

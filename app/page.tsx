@@ -38,7 +38,9 @@ export default function Home() {
       <section className='flex flex-col items-center gap-20 p-x28 py-10 backdrop-blur-sm text-onyx-200'>
         <hr className=' h-0.5 w-9/12 bg-onyx border-0 rounded' />
         <div className='flex items-center justify-center gap-10'>
-          <h2 className='font-unica-one text-5xl font-bold'>July 1, 2023</h2>
+          <h2 className='font-unica-one text-5xl font-bold'>
+            February 3rd, 2024
+          </h2>
           <h2 className='font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150'>
             Sign Up Now
           </h2>

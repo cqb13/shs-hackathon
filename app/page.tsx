@@ -35,10 +35,10 @@ export default function Home() {
           </article>
         </section>
       </section>
-      <section className='flex flex-col items-center gap-20 p-x28 py-10 backdrop-blur-sm text-onyx-200'>
+      <section className='flex flex-col items-center gap-20 py-10 backdrop-blur-sm text-onyx-200 max-lsm:py-0'>
         <hr className=' h-0.5 w-9/12 bg-onyx border-0 rounded' />
-        <div className='flex items-center justify-center gap-10'>
-          <h2 className='font-unica-one text-5xl font-bold'>
+        <div className='flex items-center justify-center gap-10 max-lsm:flex-col max-lsm:gap-2'>
+          <h2 className='font-unica-one text-5xl font-bold max-xxs:text-center'>
             February 3rd, 2024
           </h2>
           <h2 className='font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150'>
@@ -51,8 +51,8 @@ export default function Home() {
         className='px-72 py-28 max-xl:px-64 max-lg:px-20 max-md:px-10 max-xxs:px-5'
         id='key-features'
       >
-        <section className='flex p-4 mt-14 gap-5 max-xs:flex-col max-xs:gap-2'>
-          <div className='flex flex-col gap-5 max-xs:gap-2'>
+        <section className='flex p-4 mt-14 gap-5 max-sm:flex-col max-sm:gap-2'>
+          <div className='flex flex-col gap-5 max-sm:gap-2'>
             <KeyEventCard
               title='Problem-Solving'
               text='Put your brain to the test and conquer real-world scenarios'
@@ -62,7 +62,7 @@ export default function Home() {
               text='Showcase your talent and learn new tricks to sharpen your expertise'
             />
           </div>
-          <div className='flex flex-col gap-5 max-xs:gap-2'>
+          <div className='flex flex-col gap-5 max-sm:gap-2'>
             <KeyEventCard
               title='Teamwork'
               text='Collaborate with passionate tech enthusiasts and form lasting bonds'
@@ -79,10 +79,10 @@ export default function Home() {
         id='sponsors'
       >
         <div className='w-full flex flex-col items-center'>
-          <h2 className='font-unica-one text-onyx-200 text-5xl font-bold p-4'>
+          <h2 className='font-unica-one text-onyx-200 text-center text-5xl font-bold p-4'>
             Proud Sponsors
           </h2>
-          <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded' />
+          <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded max-md:w-7/12 max-sm:w-9/12 max-xxs:w-11/12' />
         </div>
         <section className='flex gap-10 flex-wrap items-center justify-center'>
           {sponsors.map((sponsor, index) => (
@@ -103,7 +103,7 @@ export default function Home() {
           <h2 className='font-unica-one text-onyx-200 text-5xl font-bold p-4'>
             Get in Touch
           </h2>
-          <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded' />
+          <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded max-md:w-7/12 max-sm:w-9/12 max-xxs:w-11/12' />
           <sub className='font-space-mono text-onyx text-lg'>
             shshackathon@gmail.com
           </sub>

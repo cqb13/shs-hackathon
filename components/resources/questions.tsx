@@ -139,7 +139,7 @@ export default function QuestionDisplay({
     <section className='flex flex-col gap-2'>
       {question.type === QuestionType.FillInTheBlank ? (
         <>
-          <div className='flex gap-2'>
+          <div className='flex gap-2 flex-wrap'>
             <h2 className='font-space-mono text-2xl text-black'>
               {index + 1}.
             </h2>
@@ -182,7 +182,7 @@ export default function QuestionDisplay({
         </h2>
       )}
 
-      <section className='grid grid-cols-2 grid-rows-2 gap-2'>
+      <section className='grid grid-cols-2 grid-rows-2 gap-2 max-sm:grid-cols-1'>
         {question.type === QuestionType.MultipleChoice
           ? multipleChoiceAnswers.map((answer, answerIndex) => (
               <div

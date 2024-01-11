@@ -72,6 +72,7 @@ export default function Resources() {
         What is Scratch?
       </h4>
       <iframe
+        className='max-md:w-[320px] max-md:h-[180px]'
         width='640'
         height='360'
         src={`https://www.youtube.com/embed/jXUZaf5D12A?autoplay=0&origin=http://example.com&controls=0&rel=1`}
@@ -80,6 +81,7 @@ export default function Resources() {
         Making an account
       </h4>
       <iframe
+        className='max-md:w-[320px] max-md:h-[180px]'
         width='640'
         height='360'
         src={`https://www.youtube.com/embed/YSTRopT3Ois?autoplay=0&origin=http://example.com&controls=0&rel=1`}
@@ -91,6 +93,7 @@ export default function Resources() {
         Creating a project
       </h4>
       <iframe
+        className='max-md:w-[320px] max-md:h-[180px]'
         width='640'
         height='360'
         src={`https://www.youtube.com/embed/hf6BM9ssJl8?autoplay=0&origin=http://example.com&controls=0&rel=1`}
@@ -99,6 +102,7 @@ export default function Resources() {
         How to use sprites and backgrounds
       </h4>
       <iframe
+        className='max-md:w-[320px] max-md:h-[180px]'
         width='640'
         height='360'
         src={`https://www.youtube.com/embed/R-QuPKDAADE?autoplay=0&origin=http://example.com&controls=0&rel=1`}
@@ -107,6 +111,7 @@ export default function Resources() {
         How to add extensions
       </h4>
       <iframe
+        className='max-md:w-[320px] max-md:h-[180px]'
         width='640'
         height='360'
         src={`https://www.youtube.com/embed/eyTfQwSHWEw?autoplay=0&origin=http://example.com&controls=0&rel=1`}
@@ -118,6 +123,7 @@ export default function Resources() {
         What are variables?
       </h4>
       <iframe
+        className='max-md:w-[320px] max-md:h-[180px]'
         width='640'
         height='360'
         src={`https://www.youtube.com/embed/wS1QETPfgGE?autoplay=0&origin=http://example.com&controls=0&rel=1`}
@@ -126,6 +132,7 @@ export default function Resources() {
         What are functions?
       </h4>
       <iframe
+        className='max-md:w-[320px] max-md:h-[180px]'
         width='640'
         height='360'
         src={`https://www.youtube.com/embed/Q0JecvzwyIg?autoplay=0&origin=http://example.com&controls=0&rel=1`}
@@ -135,6 +142,7 @@ export default function Resources() {
       </h3>
       <h4 className='text-neutral-700 font-space-mono text-2xl'>Loops</h4>
       <iframe
+        className='max-md:w-[320px] max-md:h-[180px]'
         width='640'
         height='360'
         src={`https://www.youtube.com/embed/m57Gmc7wFIM?autoplay=0&origin=http://example.com&controls=0&rel=1`}

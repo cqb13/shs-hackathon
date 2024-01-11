@@ -51,7 +51,7 @@ export default function About() {
         <ImageGallery />
       </section>
       <section
-        className='px-64 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5'
+        className=' py-28 flex flex-col justify-center items-center gap-10 max-xxs:px-5'
         id='schedule'
       >
         <div className='w-full flex flex-col items-center'>
@@ -60,7 +60,7 @@ export default function About() {
           </h2>
           <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded' />
         </div>
-        <section className='flex gap-10 flex-wrap items-center justify-center w-1/2'>
+        <section className='flex gap-10 flex-wrap items-center justify-center'>
           <Schedule schedule={schedule} />
         </section>
       </section>

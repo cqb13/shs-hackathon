@@ -6,27 +6,27 @@ export type Event = {
 const schedule: Event[] = [
   {
     name: "Registration & Introduction",
-    time: "9:00 - 9:30"
+    time: "12:00pm - 12:30"
   },
   {
     name: "Work Period",
-    time: "9:30 - 12:00"
+    time: "12:30 - 12:00"
   },
   {
     name: "Check-in & Lunch",
-    time: "12:00 - 1:30"
+    time: "12:00 - 1:00"
   },
   {
     name: "Working Period & Submission",
-    time: "1:30 - 7:00"
+    time: "1:00 - 5:00"
   },
   {
     name: "Showcase & Judging & Dinner",
-    time: "7:00 - 8:30"
+    time: "5:00 - 6:30"
   },
   {
     name: "Closing Ceremony",
-    time: "8:30 - 9:00"
+    time: "6:30 - 7:00"
   }
 ];
 

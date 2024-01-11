@@ -39,7 +39,7 @@ export default function Home() {
         <hr className=' h-0.5 w-9/12 bg-onyx border-0 rounded' />
         <div className='flex items-center justify-center gap-10 max-lsm:flex-col max-lsm:gap-2'>
           <h2 className='font-unica-one text-5xl font-bold max-xxs:text-center'>
-            February 3rd, 2024
+            March 12th, 2024
           </h2>
           <h2 className='font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150'>
             Sign Up Now

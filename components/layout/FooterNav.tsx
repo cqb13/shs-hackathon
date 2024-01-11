@@ -79,28 +79,28 @@ export default function FooterNav() {
           Resources
         </li>
         <li
-          onClick={() => router.push("/resources")}
+          onClick={() => router.push("/resources#part-1")}
           className='cursor-pointer hover:text-fairy_tale transition-all duration-200'
         >
-          Resource 1
+          Part 1
         </li>
         <li
-          onClick={() => router.push("/resources")}
+          onClick={() => router.push("/resources#part-2")}
           className='cursor-pointer hover:text-fairy_tale transition-all duration-200'
         >
-          Resource 2
+          Part 2
         </li>
         <li
-          onClick={() => router.push("/resources")}
+          onClick={() => router.push("/resources#part-3")}
           className='cursor-pointer hover:text-fairy_tale transition-all duration-200'
         >
-          Resource 3
+          Part 3
         </li>
         <li
-          onClick={() => router.push("/resources")}
+          onClick={() => router.push("/resources#part-4")}
           className='cursor-pointer hover:text-fairy_tale transition-all duration-200'
         >
-          Resource 4
+          Part 4
         </li>
       </ul>
     </section>

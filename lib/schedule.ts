@@ -13,7 +13,7 @@ const schedule: Event[] = [
     time: "12:30 - 12:00"
   },
   {
-    name: "Check-in & Lunch",
+    name: "Check-in & Afternoon Snack",
     time: "12:00 - 1:00"
   },
   {

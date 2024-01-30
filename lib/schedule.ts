@@ -5,28 +5,24 @@ export type Event = {
 
 const schedule: Event[] = [
   {
-    name: "Registration & Introduction",
-    time: "12:00pm - 12:30"
+    name: "Registration",
+    time: "12:15pm - 12:30"
+  },
+  {
+    name: "Opening Ceremony",
+    time: "12:30 - 1:00"
   },
   {
     name: "Work Period",
-    time: "12:30 - 12:00"
+    time: "1:00 - 5:30"
   },
   {
-    name: "Check-in & Afternoon Snack",
-    time: "12:00 - 1:00"
-  },
-  {
-    name: "Working Period & Submission",
-    time: "1:00 - 5:00"
-  },
-  {
-    name: "Showcase & Judging & Dinner",
-    time: "5:00 - 6:30"
+    name: "Judging & Activity",
+    time: "5:30 - 6:00"
   },
   {
     name: "Closing Ceremony",
-    time: "6:30 - 7:00"
+    time: "6:00 - 7:00pm"
   }
 ];
 

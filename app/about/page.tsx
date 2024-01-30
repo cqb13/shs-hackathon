@@ -26,13 +26,13 @@ export default function About() {
             ABOUT US
           </h1>
           <article className='font-space-mono text-xl text-neutral-700'>
-            Welcome to the SHS Hackathon 2023, a day-long event
-            organized by the Girls Who Code and Web Development Club at Sharon
-            High School. Our goal is for students to immerse themselves in the
-            world of STEM, collaborating to find innovative solutions to
-            real-world problems. With meticulous planning and support from
-            sponsors {"{sponsors here}"}, our hackathon promises an inclusive
-            and exciting experience. We aim to inspire and empower students,
+            Welcome to the SHS Hackathon 2023, a day-long event organized by the
+            Girls Who Code and Web Development Club at Sharon High School. Our
+            goal is for students to immerse themselves in the world of STEM,
+            collaborating to find innovative solutions to real-world problems.
+            With meticulous planning and support from sponsors{" "}
+            {"{sponsors here}"}, our hackathon promises an inclusive and
+            exciting experience. We aim to inspire and empower students,
             fostering a passion for technology and innovation. Join us for a day
             of coding, creativity, and community building at Sharon High School
           </article>
@@ -44,7 +44,7 @@ export default function About() {
       >
         <div className='w-full flex flex-col items-center'>
           <h2 className='font-unica-one text-onyx-200 text-5xl font-bold p-4'>
-            Schedule {"(NOT FINAL)"}
+            Schedule
           </h2>
           <hr className='h-0.5 w-5/12 bg-onyx border-0 rounded' />
         </div>

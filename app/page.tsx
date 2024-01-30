@@ -77,7 +77,8 @@ export default function Home() {
           </div>
         </section>
       </section>
-      <section
+      {/**
+       *       <section
         className='px-64 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5'
         id='sponsors'
       >
@@ -98,6 +99,7 @@ export default function Home() {
           ))}
         </section>
       </section>
+       */}
       <section
         className='px-64 py-28 flex flex-col justify-center items-start gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5'
         id='contact'

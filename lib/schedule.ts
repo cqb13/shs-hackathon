@@ -6,7 +6,7 @@ export type Event = {
 const schedule: Event[] = [
   {
     name: "Registration",
-    time: "12:15pm - 12:30"
+    time: "12:00pm - 12:30"
   },
   {
     name: "Opening Ceremony",

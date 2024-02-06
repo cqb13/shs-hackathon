@@ -6,19 +6,20 @@ export type Sponsor = {
 
 const sponsors: Sponsor[] = [
   {
-    name: "Sponsor 1",
-    image: "https://via.placeholder.com/150",
-    link: "https://www.google.com"
+    name: "BJ's",
+    image:
+      "https://seeklogo.com/images/B/bj-s-logo-25AB362B50-seeklogo.com.png",
+    link: "https://www.bjs.com/"
   },
   {
-    name: "Sponsor 2",
-    image: "https://via.placeholder.com/150",
-    link: "https://www.google.com"
+    name: "Stop & Shop",
+    image: "https://assets.stickpng.com/images/609a5c64e23929000482a85a.png",
+    link: "https://stopandshop.com/"
   },
   {
-    name: "Sponsor 3",
-    image: "https://via.placeholder.com/150",
-    link: "https://www.google.com"
+    name: "Shaws",
+    image: "https://assets.stickpng.com/thumbs/62fe5219f31142d937b30c5e.png",
+    link: "https://www.shaws.com/"
   }
 ];
 

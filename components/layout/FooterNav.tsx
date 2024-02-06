@@ -26,14 +26,12 @@ export default function FooterNav() {
         >
           Key Features
         </li>
-        {/**
-       *         <li
+        <li
           onClick={() => router.push("/#sponsors")}
           className='cursor-pointer hover:text-fairy_tale transition-all duration-200'
         >
           Sponsors
         </li>
-       */}
         <li
           onClick={() => router.push("/#contact")}
           className='cursor-pointer hover:text-fairy_tale transition-all duration-200'

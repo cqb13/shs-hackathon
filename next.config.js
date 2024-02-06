@@ -6,7 +6,9 @@ const nextConfig = {
       "avatars.githubusercontent.com",
       "lh3.googleusercontent.com",
       "github.com",
-      "via.placeholder.com"
+      "via.placeholder.com",
+      "assets.stickpng.com",
+      "seeklogo.com"
     ]
   }
 };

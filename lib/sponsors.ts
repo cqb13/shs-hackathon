@@ -20,6 +20,12 @@ const sponsors: Sponsor[] = [
     name: "Shaws",
     image: "https://assets.stickpng.com/thumbs/62fe5219f31142d937b30c5e.png",
     link: "https://www.shaws.com/"
+  },
+  {
+    name: "Wegmans",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/WegmansLogo.svg/2560px-WegmansLogo.svg.png",
+    link: "https://www.wegmans.com/"
   }
 ];
 

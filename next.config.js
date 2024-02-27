@@ -8,7 +8,8 @@ const nextConfig = {
       "github.com",
       "via.placeholder.com",
       "assets.stickpng.com",
-      "seeklogo.com"
+      "seeklogo.com",
+      "upload.wikimedia.org"
     ]
   }
 };

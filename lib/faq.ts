@@ -16,7 +16,7 @@ const faqs: Faq[] = [
   },
   {
     question: "How can I register for the Hackathon?",
-    answer: "Registration details will be available soon."
+    answer: "A link to register can be found on our home page."
   },
   {
     question: "What are the prizes?",

@@ -19,7 +19,6 @@ export default function ImageGallery() {
     document.body.style.overflow = "unset";
   };
 
-  //TODO: fix image loading in modal
   return (
     <>
       {modal ? (
@@ -50,7 +49,7 @@ export default function ImageGallery() {
           </button>
 
           <Image
-            src={selectedImg}
+            src={`https://hackathon.shsdevs.com/${selectedImg}`}
             alt='Hackathon 2019'
             width={900}
             height={900}

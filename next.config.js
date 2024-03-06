@@ -9,7 +9,7 @@ const nextConfig = {
       "via.placeholder.com",
       "assets.stickpng.com",
       "seeklogo.com",
-      "upload.wikimedia.org"
+      "upload.wikimedia.org",
     ]
   }
 };

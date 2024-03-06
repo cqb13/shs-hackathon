@@ -12,7 +12,7 @@ const faqs: Faq[] = [
   {
     question: "When and where is the Hackathon?",
     answer:
-      "The Hackathon is scheduled for February 3rd, from 9:30 am to 3:30 pm. The event will take place at Sharon High School."
+      "The Hackathon is scheduled for March 12th, from 12:00pm to 7:00pm. The event will take place at Sharon High School."
   },
   {
     question: "How can I register for the Hackathon?",

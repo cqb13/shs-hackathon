@@ -26,6 +26,12 @@ const sponsors: Sponsor[] = [
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/WegmansLogo.svg/2560px-WegmansLogo.svg.png",
     link: "https://www.wegmans.com/"
+  },
+  {
+    name: "Big Y",
+    image:
+      "https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/Big_Y_logo.svg/800px-Big_Y_logo.svg.png",
+    link: "https://www.bigy.com/"
   }
 ];
 

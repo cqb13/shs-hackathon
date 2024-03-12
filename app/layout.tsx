@@ -1,5 +1,6 @@
 import { LayoutContextProvider } from "@/lib/context/LayoutContext";
 import FooterNav from "@/components/layout/FooterNav";
+import { AuthContextProvider } from "@lib/context/authContext";
 import Header from "@/components/layout/Header";
 import NavBar from "@components/layout/NavBar";
 import { Inter } from "next/font/google";
@@ -89,10 +90,12 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${inter.className} bg-white`}>
-        <LayoutContextProvider>
-          <NavBar />
-          <Header />
-        </LayoutContextProvider>
+        <AuthContextProvider>
+          <LayoutContextProvider>
+            <NavBar />
+            <Header />
+          </LayoutContextProvider>
+        </AuthContextProvider>
         {children}
         <footer className='border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10 bg-onyx'>
           <FooterNav />

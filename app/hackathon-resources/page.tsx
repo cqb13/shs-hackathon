@@ -38,6 +38,16 @@ export default function HackathonResources() {
         </button>
       </div>
       <button
+        onClick={() =>
+          window.open(
+            "https://docs.google.com/document/d/1wI1Qlt9P7y_m0V-uG2zqXayPIb2TMoB1QxW0N0Oozvs/edit?usp=sharing"
+          )
+        }
+        className='w-full rounded-md bg-onyx text-fairy_tale-400 font-space-mono p-4 hover:bg-onyx-400 transition-all duration-150'
+      >
+        Rubric
+      </button>
+      <button
         onClick={() => window.open("https://forms.gle/7UukzP6iR6a6SMdj9")}
         className='w-full rounded-md bg-onyx text-fairy_tale-400 font-space-mono p-4 hover:bg-onyx-400 transition-all duration-150'
       >

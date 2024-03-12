@@ -29,6 +29,13 @@ const routes: Route[] = [
     signedOut: true
   },
   {
+    name: "Hackathon Resources",
+    path: "/hackathon-resources",
+    signedIn: false,
+    admin: false,
+    signedOut: false
+  },
+  {
     name: "Admin",
     path: "/admin",
     signedIn: true,

@@ -89,6 +89,9 @@ export default function HackathonResources() {
 
     const updatedUserList = userList.map((u) => {
       if (u.uid === user.uid) {
+        if (u.isOwner) {
+          return u;
+        }
         return { ...u, isAdmin: !u.isAdmin };
       }
       return u;
@@ -342,7 +345,9 @@ export default function HackathonResources() {
                 key={user.uid}
                 className='w-full rounded-md bg-onyx text-fairy_tale-400 font-space-mono p-4'
               >
-                <h2 className='px-1'>{user.name}</h2>
+                <h2 className='px-1'>
+                  {user.name} {user.isOwner ? " (Owner!)" : ""}
+                </h2>
                 <p className='px-1'>{user.email}</p>
                 <p className='px-1'>{user.isAdmin ? "Admin" : "Not Admin"}</p>
                 <>

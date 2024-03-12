@@ -76,6 +76,10 @@ export default function NavBar() {
     }
   };
 
+  const toHackathonResources = () => {
+    router.push("/hackathon-resources");
+  };
+
   return (
     <nav
       className={`${
@@ -104,6 +108,16 @@ export default function NavBar() {
             ) : null}
           </>
         ))}
+        <button
+          type='button'
+          key={"Hackathon Resources"}
+          onClick={toHackathonResources}
+          className={`${
+            pathname === "/hackathon-resources" ? " text-fairy_tale-400" : ""
+          } rounded p-1 text-fairy_tale`}
+        >
+          Hackathon Resources
+        </button>
         <button
           onClick={accountStatusToggle}
           className='rounded p-1 text-fairy_tale'

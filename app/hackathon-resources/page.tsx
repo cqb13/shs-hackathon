@@ -53,6 +53,12 @@ export default function HackathonResources() {
       >
         Submit Final Project
       </button>
+      <button
+        onClick={() => window.open("https://forms.gle/mywogpSFRBDEZZzs5")}
+        className='w-full rounded-md bg-onyx text-fairy_tale-400 font-space-mono p-4 hover:bg-onyx-400 transition-all duration-150'
+      >
+        Feedback Form
+      </button>
       <div>
         <h3 className='text-onyx-200 font-unica-one text-4xl' id='part-2'>
           WiFi Information

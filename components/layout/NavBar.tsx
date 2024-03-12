@@ -111,10 +111,10 @@ export default function NavBar() {
         useScroll(40)
           ? "shadow-bar bg-onyx bg-opacity-90 backdrop-blur-xl sticky top-0 w-11/12 m-auto rounded-b-lg"
           : "bg-onyx w-full rounded-none"
-      }  flex items-center justify-between gap-2 max-xs:flex-col z-30 transition-all px-14 py-1`}
+      }  flex items-center justify-between gap-2 max-sm:flex-col z-30 transition-all px-14 py-1`}
     >
       <p className='p-1 text-fairy_tale font-space-mono'>SHS Hackathon</p>
-      <div className='flex items-center gap-2'>
+      <div className='flex items-center gap-2 max-sm:flex-wrap max-sm:justify-center'>
         {routes.map((route) => (
           <>
             {(user && route.signedIn && !route.admin) ||

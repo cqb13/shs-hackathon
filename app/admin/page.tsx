@@ -1,14 +1,12 @@
 "use client";
 
 import { collection, getDocs, setDoc, getDoc, doc } from "firebase/firestore";
-import deleteAccount from "@/utils/deleteAccount";
 import userIsAdmin from "@/utils/userIsAdmin";
 import { useAuthContext } from "@lib/context/authContext";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { auth, db } from "@/lib/firebase";
 import userIsOwner from "@/utils/userIsOwner";
-import Image from "next/image";
 
 interface User {
   photoURL: string;
@@ -19,6 +17,17 @@ interface User {
   uid: string;
 }
 
+type HackathonResourceConfig = {
+  visible: boolean;
+  hackathonName: string;
+  theme: string;
+  themeDescription: string;
+  exampleSubmissionLink: string;
+  finalSubmissionLink: string;
+  wifiName: string;
+  wifiPassword: string;
+};
+
 export default function HackathonResources() {
   const router = useRouter();
   const { user } = useAuthContext() as { user: any };
@@ -27,6 +36,8 @@ export default function HackathonResources() {
 
   const [isAdmin, setIsAdmin] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
+  const [hackathonResourceConfig, setHackathonResourceConfig] =
+    useState<HackathonResourceConfig>();
 
   useEffect(() => {
     if (user == null) {
@@ -62,6 +73,8 @@ export default function HackathonResources() {
           setIsAdmin(true);
         }
       });
+
+      getHackathonResourceConfig();
     }
   }, [user, router]);
 
@@ -107,6 +120,101 @@ export default function HackathonResources() {
     setFilteredUserList(filteredUsers);
   };
 
+  const getHackathonResourceConfig = async () => {
+    const configRef = doc(db, "config", "hackathon-resources");
+    const configSnap = await getDoc(configRef);
+    if (configSnap.exists()) {
+      setHackathonResourceConfig(configSnap.data() as HackathonResourceConfig);
+    } else {
+      console.log("No such document!");
+    }
+  };
+
+  const updateHackathonResourceConfig = async () => {
+    const configRef = doc(db, "config", "hackathon-resources");
+    await setDoc(configRef, hackathonResourceConfig);
+  };
+
+  const updateHackathonResourceConfigVisible = () => {
+    if (hackathonResourceConfig == null) {
+      return;
+    }
+    setHackathonResourceConfig({
+      ...hackathonResourceConfig,
+      visible: !hackathonResourceConfig.visible
+    });
+  };
+
+  const updateHackathonResourceConfigHackathonName = (event: any) => {
+    if (hackathonResourceConfig == null) {
+      return;
+    }
+    setHackathonResourceConfig({
+      ...hackathonResourceConfig,
+      hackathonName: event.target.value
+    });
+  };
+
+  const updateHackathonResourceConfigTheme = (event: any) => {
+    if (hackathonResourceConfig == null) {
+      return;
+    }
+    setHackathonResourceConfig({
+      ...hackathonResourceConfig,
+      theme: event.target.value
+    });
+  };
+
+  const updateHackathonResourceConfigThemeDescription = (event: any) => {
+    if (hackathonResourceConfig == null) {
+      return;
+    }
+    setHackathonResourceConfig({
+      ...hackathonResourceConfig,
+      themeDescription: event.target.value
+    });
+  };
+
+  const updateHackathonResourceConfigExampleSubmissionLink = (event: any) => {
+    if (hackathonResourceConfig == null) {
+      return;
+    }
+    setHackathonResourceConfig({
+      ...hackathonResourceConfig,
+      exampleSubmissionLink: event.target.value
+    });
+  };
+
+  const updateHackathonResourceConfigFinalSubmissionLink = (event: any) => {
+    if (hackathonResourceConfig == null) {
+      return;
+    }
+    setHackathonResourceConfig({
+      ...hackathonResourceConfig,
+      finalSubmissionLink: event.target.value
+    });
+  };
+
+  const updateHackathonResourceConfigWifiName = (event: any) => {
+    if (hackathonResourceConfig == null) {
+      return;
+    }
+    setHackathonResourceConfig({
+      ...hackathonResourceConfig,
+      wifiName: event.target.value
+    });
+  };
+
+  const updateHackathonResourceConfigWifiPassword = (event: any) => {
+    if (hackathonResourceConfig == null) {
+      return;
+    }
+    setHackathonResourceConfig({
+      ...hackathonResourceConfig,
+      wifiPassword: event.target.value
+    });
+  };
+
   return (
     <main className='bg-white'>
       {isAdmin ? (
@@ -114,67 +222,107 @@ export default function HackathonResources() {
           <h1 className='font-space-mono text-2xl text-black'>
             Hackathon Resource Management
           </h1>
-          <div>
-            <p className='font-space-mono text-xl text-black pl-2'>
-              Name this hackathon.
-            </p>
-            <input
-              type='text'
-              placeholder='Hackathon Name'
-              className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
-            />
-          </div>
-          <div>
-            <p className='font-space-mono text-xl text-black pl-2'>
-              What is the theme?
-            </p>
-            <input
-              type='text'
-              placeholder='Theme'
-              className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
-            />
-          </div>
-          <div>
-            <p className='font-space-mono text-xl text-black pl-2'>
-              A short description of the theme.
-            </p>
-            <textarea
-              className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
-              placeholder='Description of theme'
-              cols={30}
-              rows={10}
-            />
-          </div>
-          <div>
-            <p className='font-space-mono text-xl text-black pl-2'>
-              Example submission google slide link.
-            </p>
-            <input
-              type='text'
-              placeholder='Google Slide Link'
-              className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
-            />
-          </div>
-          <div>
-            <p className='font-space-mono text-xl text-black pl-2'>
-              Final submission google form link.
-            </p>
-            <input
-              type='text'
-              placeholder='Google Form Link'
-              className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
-            />
-          </div>
-          <div>
-            <p className='font-space-mono text-xl text-black pl-2'>
-              Wifi password
-            </p>
-            <input
-              type='text'
-              placeholder='Wifi Password'
-              className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
-            />
-          </div>
+          <section className='flex flex-col gap-2'>
+            <button
+              onClick={updateHackathonResourceConfigVisible}
+              className='w-full rounded-md bg-onyx text-fairy_tale-400 font-space-mono p-4 hover:bg-onyx-400 transition-all duration-150'
+            >
+              {hackathonResourceConfig?.visible
+                ? "Hide Hackathon Resource"
+                : "Show Hackathon Resource"}
+            </button>
+            <div>
+              <p className='font-space-mono text-xl text-black pl-2'>
+                Name this hackathon.
+              </p>
+              <input
+                type='text'
+                placeholder='Hackathon Name'
+                value={hackathonResourceConfig?.hackathonName}
+                onChange={updateHackathonResourceConfigHackathonName}
+                className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
+              />
+            </div>
+            <div>
+              <p className='font-space-mono text-xl text-black pl-2'>
+                What is the theme?
+              </p>
+              <input
+                type='text'
+                placeholder='Theme'
+                value={hackathonResourceConfig?.theme}
+                onChange={updateHackathonResourceConfigTheme}
+                className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
+              />
+            </div>
+            <div>
+              <p className='font-space-mono text-xl text-black pl-2'>
+                A short description of the theme.
+              </p>
+              <textarea
+                className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
+                placeholder='Description of theme'
+                value={hackathonResourceConfig?.themeDescription}
+                onChange={updateHackathonResourceConfigThemeDescription}
+                cols={30}
+                rows={10}
+              />
+            </div>
+            <div>
+              <p className='font-space-mono text-xl text-black pl-2'>
+                Example submission google slide link.
+              </p>
+              <input
+                type='text'
+                placeholder='Google Slide Link'
+                value={hackathonResourceConfig?.exampleSubmissionLink}
+                onChange={updateHackathonResourceConfigExampleSubmissionLink}
+                className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
+              />
+            </div>
+            <div>
+              <p className='font-space-mono text-xl text-black pl-2'>
+                Final submission google form link.
+              </p>
+              <input
+                type='text'
+                placeholder='Google Form Link'
+                value={hackathonResourceConfig?.finalSubmissionLink}
+                onChange={updateHackathonResourceConfigFinalSubmissionLink}
+                className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
+              />
+            </div>
+            <div>
+              <p className='font-space-mono text-xl text-black pl-2'>
+                Wifi name.
+              </p>
+              <input
+                type='text'
+                placeholder='Wifi Name'
+                value={hackathonResourceConfig?.wifiName}
+                onChange={updateHackathonResourceConfigWifiName}
+                className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
+              />
+            </div>
+            <div>
+              <p className='font-space-mono text-xl text-black pl-2'>
+                Wifi password.
+              </p>
+              <input
+                type='text'
+                placeholder='Wifi Password'
+                value={hackathonResourceConfig?.wifiPassword}
+                onChange={updateHackathonResourceConfigWifiPassword}
+                className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
+              />
+            </div>
+            <button
+              onClick={updateHackathonResourceConfig}
+              className='w-full rounded-md bg-onyx text-fairy_tale-400 font-space-mono p-4 hover:bg-onyx-400 transition-all duration-150'
+            >
+              Save
+            </button>
+          </section>
         </section>
       ) : null}
       {isAdmin ? (

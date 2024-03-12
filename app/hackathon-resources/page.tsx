@@ -1,12 +1,11 @@
 "use client";
 
-import { collection, getDocs, setDoc, getDoc, doc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import userIsAdmin from "@/utils/userIsAdmin";
 import { useAuthContext } from "@lib/context/authContext";
 import { useRouter } from "next/navigation";
-import { useState, useEffect, use } from "react";
-import { auth, db } from "@/lib/firebase";
-import { get } from "http";
+import { useState, useEffect } from "react";
+import { db } from "@/lib/firebase";
 
 type HackathonResourceConfig = {
   visible: boolean;

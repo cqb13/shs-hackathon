@@ -11,6 +11,18 @@ import { collection, getDoc, setDoc, doc } from "firebase/firestore";
 import userIsAdmin from "@/utils/userIsAdmin";
 import googleSignIn from "@/utils/googleSignIn";
 import googleSignOut from "@/utils/googleSignOut";
+import { get } from "http";
+
+type HackathonResourceConfig = {
+  visible: boolean;
+  hackathonName: string;
+  theme: string;
+  themeDescription: string;
+  exampleSubmissionLink: string;
+  finalSubmissionLink: string;
+  wifiName: string;
+  wifiPassword: string;
+};
 
 export default function NavBar() {
   const router = useRouter();
@@ -19,6 +31,8 @@ export default function NavBar() {
   const { updateTitle } = useLayoutContext() as {
     updateTitle: (title: string) => void;
   };
+  const [hackathonResourceConfig, setHackathonResourceConfig] =
+    useState<HackathonResourceConfig>();
   const { user } = useAuthContext() as { user: any };
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -34,6 +48,7 @@ export default function NavBar() {
         setIsAdmin(isAdmin);
       });
     }
+    getHackathonResourceConfig();
   }, [user]);
 
   const accountStatusToggle = () => {
@@ -76,6 +91,16 @@ export default function NavBar() {
     }
   };
 
+  const getHackathonResourceConfig = async () => {
+    const configRef = doc(db, "config", "hackathon-resources");
+    const configSnap = await getDoc(configRef);
+    if (configSnap.exists()) {
+      setHackathonResourceConfig(configSnap.data() as HackathonResourceConfig);
+    } else {
+      console.log("No such document!");
+    }
+  };
+
   const toHackathonResources = () => {
     router.push("/hackathon-resources");
   };
@@ -108,16 +133,18 @@ export default function NavBar() {
             ) : null}
           </>
         ))}
-        <button
-          type='button'
-          key={"Hackathon Resources"}
-          onClick={toHackathonResources}
-          className={`${
-            pathname === "/hackathon-resources" ? " text-fairy_tale-400" : ""
-          } rounded p-1 text-fairy_tale`}
-        >
-          Hackathon Resources
-        </button>
+        {hackathonResourceConfig?.visible || isAdmin ? (
+          <button
+            type='button'
+            key={"Hackathon Resources"}
+            onClick={toHackathonResources}
+            className={`${
+              pathname === "/hackathon-resources" ? " text-fairy_tale-400" : ""
+            } rounded p-1 text-fairy_tale`}
+          >
+            Hackathon Resources
+          </button>
+        ) : null}
         <button
           onClick={accountStatusToggle}
           className='rounded p-1 text-fairy_tale'

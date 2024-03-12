@@ -95,27 +95,27 @@ export default function RootLayout({
             <NavBar />
             <Header />
           </LayoutContextProvider>
+          {children}
+          <footer className='border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10 bg-onyx'>
+            <FooterNav />
+            <section className='flex w-full justify-between items-center'>
+              <a
+                className='font-space-mono text-white'
+                href='https://github.com/Website-Club/shs-hackathon/blob/main/LICENSE'
+                target='_blank'
+              >
+                Copyright © 2023 | MIT License
+              </a>
+              <a
+                href='https://github.com/cqb13'
+                className='font-space-mono text-white'
+                target='_blank'
+              >
+                Created by: Maksim Straus
+              </a>
+            </section>
+          </footer>
         </AuthContextProvider>
-        {children}
-        <footer className='border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10 bg-onyx'>
-          <FooterNav />
-          <section className='flex w-full justify-between items-center'>
-            <a
-              className='font-space-mono text-white'
-              href='https://github.com/Website-Club/shs-hackathon/blob/main/LICENSE'
-              target='_blank'
-            >
-              Copyright © 2023 | MIT License
-            </a>
-            <a
-              href='https://github.com/cqb13'
-              className='font-space-mono text-white'
-              target='_blank'
-            >
-              Created by: Maksim Straus
-            </a>
-          </section>
-        </footer>
       </body>
     </html>
   );

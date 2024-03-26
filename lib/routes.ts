@@ -12,29 +12,29 @@ const routes: Route[] = [
     path: "/",
     signedIn: true,
     admin: false,
-    signedOut: true,
+    signedOut: true
   },
   {
     name: "About",
     path: "/about",
     signedIn: true,
     admin: false,
-    signedOut: true,
+    signedOut: true
   },
   {
     name: "Resources",
     path: "/resources",
     signedIn: true,
     admin: false,
-    signedOut: true,
-  },
-  {
-    name: "Hackathon Resources",
-    path: "/hackathon-resources",
-    signedIn: true,
-    admin: true,
-    signedOut: true,
-  },
+    signedOut: true
+  }
+  //{
+  //  name: "Hackathon Resources",
+  //  path: "/hackathon-resources",
+  //  signedIn: true,
+  //  admin: true,
+  //  signedOut: true,
+  //},
 ];
 
 export default routes;

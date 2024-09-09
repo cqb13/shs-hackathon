@@ -1,4 +1,5 @@
 import { LayoutContextProvider } from "@/lib/context/LayoutContext";
+import { AuthContextProvider } from "@/lib/context/authContext";
 import FooterNav from "@/components/layout/FooterNav";
 import Header from "@/components/layout/Header";
 import NavBar from "@components/layout/NavBar";
@@ -30,10 +31,10 @@ export const metadata: Metadata = {
   generator: "Next.js",
   applicationName: "SHS Hackathon",
   referrer: "origin-when-cross-origin",
-  authors: [{ name: "cqb13", url: "https://cqb13.dev" }],
+  authors: [{ name: "Maksim Straus", url: "https://maksimstraus.dev" }],
   colorScheme: "dark",
-  creator: "cqb13",
-  publisher: "cqb13",
+  creator: "Maksim Straus",
+  publisher: "Maksim Straus",
   formatDetection: {
     email: false,
     address: false,
@@ -87,27 +88,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={`${inter.className} bg-white`}>
-        <LayoutContextProvider>
-          <NavBar />
-          <Header />
-        </LayoutContextProvider>
-        {children}
-        <footer className='border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10 bg-onyx'>
+        <AuthContextProvider>
+          <LayoutContextProvider>
+            <NavBar />
+            <Header />
+          </LayoutContextProvider>
+          {children}
+        </AuthContextProvider>
+        <footer className="border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10 bg-onyx">
           <FooterNav />
-          <section className='flex w-full justify-between items-center'>
+          <section className="flex w-full justify-between items-center">
             <a
-              className='font-space-mono text-white'
-              href='https://github.com/Website-Club/shs-hackathon/blob/main/LICENSE'
-              target='_blank'
+              className="font-space-mono text-white"
+              href="https://github.com/Website-Club/shs-hackathon/blob/main/LICENSE"
+              target="_blank"
             >
               Copyright © 2023 | MIT License
             </a>
             <a
-              href='https://github.com/cqb13'
-              className='font-space-mono text-white'
-              target='_blank'
+              href="https://github.com/cqb13"
+              className="font-space-mono text-white"
+              target="_blank"
             >
               Created by: Maksim Straus
             </a>

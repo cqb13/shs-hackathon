@@ -11,23 +11,30 @@ const routes: Route[] = [
     name: "Home",
     path: "/",
     signedIn: true,
-    admin: false,
-    signedOut: true
+    admin: true,
+    signedOut: true,
   },
   {
     name: "About",
     path: "/about",
     signedIn: true,
-    admin: false,
-    signedOut: true
+    admin: true,
+    signedOut: true,
   },
   {
     name: "Resources",
     path: "/resources",
     signedIn: true,
-    admin: false,
-    signedOut: true
-  }
+    admin: true,
+    signedOut: true,
+  },
+  {
+    name: "Account",
+    path: "/account",
+    signedIn: true,
+    admin: true,
+    signedOut: false,
+  },
   //{
   //  name: "Hackathon Resources",
   //  path: "/hackathon-resources",

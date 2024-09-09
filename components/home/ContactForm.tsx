@@ -1,9 +1,9 @@
 "use client";
 
-import Notification from "../general/Notification";
+import Notification from "../general/notification";
 import TextInput from "../general/TextInput";
-import TextArea from "../general/TextArea";
-import Button from "../general/Button";
+import TextArea from "../general/textArea";
+import Button from "../general/button";
 import emailjs from "emailjs-com";
 import { useState } from "react";
 
@@ -21,7 +21,6 @@ export default function ContactForm() {
   );
 
   const sendEmail = async () => {
-    console.log("here");
     if (!firstName || !lastName || !email || !message) {
       setNotification(true);
       setNotificationTitle("Error");

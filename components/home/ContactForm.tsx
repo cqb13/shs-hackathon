@@ -3,7 +3,7 @@
 import Notification from "../general/Notification";
 import TextInput from "../general/TextInput";
 import TextArea from "../general/TextArea";
-import Button from "../general/button";
+import Button from "../general/Button";
 import emailjs from "emailjs-com";
 import { useState } from "react";
 

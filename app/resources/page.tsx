@@ -2,7 +2,7 @@
 
 import questions, { QuestionType, Question } from "@/lib/testQuestions";
 import QuestionDisplay from "@/components/resources/questions";
-import Button from "@/components/general/button";
+import Button from "@/components/general/Button";
 import { useState, useEffect } from "react";
 import shuffle from "@/utils/shuffle";
 

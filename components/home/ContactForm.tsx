@@ -17,10 +17,11 @@ export default function ContactForm() {
   const [notificationTitle, setNotificationTitle] = useState("");
   const [notificationMessage, setNotificationMessage] = useState("");
   const [notificationType, setNotificationType] = useState<"success" | "error">(
-    "success"
+    "success",
   );
 
   const sendEmail = async () => {
+    console.log("here");
     if (!firstName || !lastName || !email || !message) {
       setNotification(true);
       setNotificationTitle("Error");
@@ -49,9 +50,9 @@ export default function ContactForm() {
           subject: "SHS Hackathon Contact Form",
           from_name: `${firstName} ${lastName}`,
           from_email: `${email}`,
-          message: `${message}`
+          message: `${message}`,
         },
-        userID
+        userID,
       );
 
       setNotification(true);
@@ -74,34 +75,34 @@ export default function ContactForm() {
   };
 
   return (
-    <section className='flex flex-col gap-5 w-full'>
-      <div className='flex gap-5 w-full'>
+    <section className="flex flex-col gap-5 w-full">
+      <div className="flex gap-5 w-full">
         <TextInput
           value={firstName}
-          placeholder='First Name'
+          placeholder="First Name"
           onChange={(e: any) => setFirstName(e.target.value)}
-          customClass='w-full bg-opacity-5'
+          customClass="w-full bg-opacity-5"
         />
         <TextInput
           value={lastName}
-          placeholder='Last Name'
+          placeholder="Last Name"
           onChange={(e: any) => setLastName(e.target.value)}
-          customClass='w-full bg-opacity-5'
+          customClass="w-full bg-opacity-5"
         />
       </div>
       <TextInput
         value={email}
-        placeholder='Email'
+        placeholder="Email"
         onChange={(e: any) => setEmail(e.target.value)}
-        customClass='w-full bg-opacity-5'
+        customClass="w-full bg-opacity-5"
       />
       <TextArea
         value={message}
-        placeholder='Message'
+        placeholder="Message"
         onChange={(e: any) => setMessage(e.target.value)}
-        customClass='w-full bg-opacity-5'
+        customClass="w-full bg-opacity-5"
       />
-      <Button onClick={sendEmail} text='Submit' customClass='w-full' />
+      <Button onClick={sendEmail} text="Submit" customClass="w-full" />
       {notification && (
         <Notification
           title={notificationTitle}

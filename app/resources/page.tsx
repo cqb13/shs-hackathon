@@ -164,11 +164,17 @@ export default function Resources() {
         {!submitted ? (
           <Button
             onClick={() => setSubmitted(true)}
-            text="Submit"
-            customClass="w-full"
+            title="Submit"
+            style="normal"
+            classModifier="w-full"
           />
         ) : (
-          <Button onClick={reset} text="Reset" customClass="w-full" />
+          <Button
+            onClick={reset}
+            title="Reset"
+            style="normal"
+            classModifier="w-full"
+          />
         )}
         {submitted ? (
           <section className="bg-onyx flex items-center justify-between rounded-md text-white font-belgrano px-6 py-3">

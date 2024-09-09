@@ -101,7 +101,12 @@ export default function ContactForm() {
         onChange={(e: any) => setMessage(e.target.value)}
         customClass="w-full bg-opacity-5"
       />
-      <Button onClick={sendEmail} text="Submit" customClass="w-full" />
+      <Button
+        onClick={sendEmail}
+        title="Submit"
+        style="normal"
+        classModifier="w-full"
+      />
       {notification && (
         <Notification
           title={notificationTitle}

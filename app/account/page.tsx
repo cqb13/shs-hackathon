@@ -1,7 +1,7 @@
 "use client";
 
 import { collection, getDocs, setDoc, doc } from "firebase/firestore";
-import Notification from "@/components/general/notification";
+import Notification from "@/components/general/Notification";
 import deleteAccount from "@/firebase/db/deleteUser";
 import { useAuthContext } from "@/lib/context/authContext";
 import { useRouter } from "next/navigation";
@@ -10,7 +10,7 @@ import { auth, db } from "@/firebase/config";
 import ConnectedButton from "@/components/general/connectedButton";
 import TextInput from "@/components/general/TextInput";
 import getRoles from "@/firebase/db/getUserRoles";
-import Button from "@/components/general/button";
+import Button from "@/components/general/Button";
 
 interface User {
   isImportant: boolean;

@@ -1,8 +1,8 @@
 "use client";
 
-import Notification from "../general/notification";
+import Notification from "../general/Notification";
 import TextInput from "../general/TextInput";
-import TextArea from "../general/textArea";
+import TextArea from "../general/TextArea";
 import Button from "../general/button";
 import emailjs from "emailjs-com";
 import { useState } from "react";

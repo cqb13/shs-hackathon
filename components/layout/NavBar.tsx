@@ -4,7 +4,7 @@ import { useLayoutContext } from "@/lib/context/LayoutContext";
 import { useAuthContext } from "@/lib/context/authContext";
 import { useRouter, usePathname } from "next/navigation";
 import googleSignIn from "@/firebase/auth/googleSignIn";
-import createUserDoc from "@/firebase/db/createUser";
+import createUserDoc from "@/firebase/db/users/createUser";
 import signOutUser from "@/firebase/auth/signOut";
 import useScroll from "@lib/hooks/useScroll";
 import { useEffect } from "react";

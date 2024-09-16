@@ -2,15 +2,17 @@
 
 import { collection, getDocs, setDoc, doc } from "firebase/firestore";
 import Notification from "@/components/general/Notification";
-import deleteAccount from "@/firebase/db/deleteUser";
+import deleteAccount from "@/firebase/db/users/deleteUser";
 import { useAuthContext } from "@/lib/context/authContext";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { auth, db } from "@/firebase/config";
 import ConnectedButton from "@/components/general/connectedButton";
 import TextInput from "@/components/general/TextInput";
-import getRoles from "@/firebase/db/getUserRoles";
+import getRoles from "@/firebase/db/users/getUserRoles";
 import Button from "@/components/general/Button";
+import getResourcePageVisibility from "@/firebase/db/resources/getResourcePageVisibility";
+import setResourcePageVisibility from "@/firebase/db/resources/updateResourcePageVisibility";
 
 interface User {
   isImportant: boolean;
@@ -32,6 +34,9 @@ export default function Account() {
   const [isImportant, setIsMaksim] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isHelper, setIsHelper] = useState(false);
+
+  const [hackathonResourcePageVisible, setHackathonResourcePageVisible] =
+    useState(false);
 
   const [notification, setNotification] = useState(false);
   const [notificationTitle, setNotificationTitle] = useState("");
@@ -57,6 +62,10 @@ export default function Account() {
     if (user == null) {
       router.push("/");
     } else {
+      getResourcePageVisibility().then((status: boolean) => {
+        setResourcePageVisibility(status);
+      });
+
       getRoles(auth.currentUser).then(
         (roles: {
           isImportant: boolean;
@@ -89,6 +98,17 @@ export default function Account() {
   useEffect(() => {
     setFilteredUserList(userList);
   }, [userList]);
+
+  const toggleResourcePageVisibility = () => {
+    setResourcePageVisibility(!hackathonResourcePageVisible).then(() => {
+      setHackathonResourcePageVisible(!hackathonResourcePageVisible);
+      triggerNotification(
+        "Updated visibility",
+        "success",
+        "You wont see any changes on your end.",
+      );
+    });
+  };
 
   const searchUsers = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
@@ -224,7 +244,6 @@ export default function Account() {
             placeholder="Search Users"
             customClass="w-full"
           />
-
           <section className="w-full h-[35rem] rounded-xl overflow-y-scroll">
             <div className="grid grid-cols-3 gap-2 mt-2 overflow-y-scroll w-full items-center max-lg:grid-cols-2 max-sm:grid-cols-1">
               {filteredUserList.map((user: any) => (
@@ -250,7 +269,7 @@ export default function Account() {
                         />
                       </div>
                     ) : null}
-                    {isImportant ? (
+                    {isAdmin ? (
                       <div className="w-full">
                         <p className="bg-fairy_tale text-onyx text-center p-1 rounded-tl-lg rounded-tr-lg">
                           {user.isAdmin ? "Admin" : "Not Admin"}
@@ -268,6 +287,22 @@ export default function Account() {
               ))}
             </div>
           </section>
+          <div className="text-neutral-700 font-space-mono">
+            <h2 className="text-xl text-onyx-200 font-bold">
+              Change Hackathon Resource Page Visibility
+            </h2>
+            <p className="font-space-mono text-neutral-700">
+              If checked, allows all users to view the hackathon theme and other
+              event details
+            </p>
+            <div className="flex gap-2 items-center mt-2">
+              <div
+                onClick={toggleResourcePageVisibility}
+                className={`rounded border border-fairy_tale hover:border-fairy_tale-300 w-9 h-9 ${hackathonResourcePageVisible ? "bg-fairy_tale" : ""} cursor-pointer transition-all duration-150 ease-in-out`}
+              ></div>
+              <p>Resource Page Visibility</p>
+            </div>
+          </div>
         </>
       ) : null}
       <Button

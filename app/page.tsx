@@ -39,15 +39,16 @@ export default function Home() {
         <hr className=" h-0.5 w-9/12 bg-onyx border-0 rounded" />
         <div className="flex items-center justify-center gap-10 max-lsm:flex-col max-lsm:gap-2">
           <h2 className="font-unica-one text-5xl font-bold max-xxs:text-center">
-            March 12th, 2024
+            Date: TBD
           </h2>
-
+          {/* 
           <a
             className="font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150"
             href="https://docs.google.com/forms/d/1VkHAdF7eaMKsglVRdF1nhJtwhSHoe48okImXVRWGW0Q/viewform?ts=65970a9f&edit_requested=true"
           >
             Sign Up Now
           </a>
+          */}
         </div>
         <hr className="h-0.5 w-9/12 bg-onyx border-0 rounded" />
       </section>

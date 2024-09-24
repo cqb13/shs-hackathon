@@ -3,17 +3,14 @@
 import setResourcePageVisibility from "@/firebase/db/resources/updateResourcePageVisibility";
 import getResourcePageVisibility from "@/firebase/db/resources/getResourcePageVisibility";
 import { collection, getDocs, setDoc, doc } from "firebase/firestore";
-import ConnectedButton from "@/components/general/connectedButton";
 import { useLayoutContext } from "@/lib/context/LayoutContext";
 import Notification from "@/components/general/Notification";
 import { useAuthContext } from "@/lib/context/authContext";
-import deleteAccount from "@/firebase/db/users/deleteUser";
-import getRoles from "@/firebase/db/users/getUserRoles";
 import TextInput from "@/components/general/TextInput";
 import Button from "@/components/general/Button";
 import { auth, db } from "@/firebase/config";
-import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 interface User {
   isImportant: boolean;
@@ -26,15 +23,15 @@ interface User {
 
 export default function Account() {
   const router = useRouter();
-  const { user } = useAuthContext() as { user: any };
+  const { user, isImportant, isAdmin } = useAuthContext() as {
+    user: any;
+    isImportant: boolean;
+    isAdmin: boolean;
+  };
   const [userList, setUserList] = useState<User[]>([]);
   const [filteredUserList, setFilteredUserList] = useState<User[]>(userList);
 
   const [searchTerm, setSearchTerm] = useState("");
-
-  const [isImportant, setIsMaksim] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isHelper, setIsHelper] = useState(false);
 
   const [hackathonResourcePageVisible, setHackathonResourcePageVisible] =
     useState(false);
@@ -45,8 +42,6 @@ export default function Account() {
     "success",
   );
   const [notificationMessage, setNotificationMessage] = useState("");
-
-  const [confirmDeletePopup, setConfirmDeletePopup] = useState(false);
 
   const { updateTitle } = useLayoutContext() as {
     updateTitle: (title: string) => void;
@@ -71,43 +66,38 @@ export default function Account() {
     if (user == null) {
       router.push("/");
     } else {
+      if (!isImportant && !isAdmin) {
+        router.push("/");
+        return;
+      }
+
+      const users = collection(db, "users");
+      getDocs(users)
+        .then((querySnapshot) => {
+          const data: any = [];
+          querySnapshot.forEach((doc) => {
+            data.push(doc.data());
+          });
+          setUserList(data);
+          setFilteredUserList(data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
       getResourcePageVisibility().then((status: boolean) => {
         setResourcePageVisibility(status);
       });
-
-      getRoles(auth.currentUser).then(
-        (roles: {
-          isImportant: boolean;
-          isAdmin: boolean;
-          isHelper: boolean;
-        }) => {
-          setIsMaksim(roles.isImportant);
-          setIsAdmin(roles.isAdmin);
-          setIsHelper(roles.isHelper);
-          if (roles.isImportant || roles.isAdmin) {
-            const users = collection(db, "users");
-            getDocs(users)
-              .then((querySnapshot) => {
-                const data: any = [];
-                querySnapshot.forEach((doc) => {
-                  data.push(doc.data());
-                });
-                setUserList(data);
-                setFilteredUserList(data);
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-              });
-          }
-        },
-      );
     }
-  }, [user, router]);
+  }, [user, isImportant, isAdmin, router]);
 
   useEffect(() => {
     setFilteredUserList(userList);
   }, [userList]);
 
+  //!!! this does not refer to the resource page with all the tutorials on it
+  //!!! as I was doing a bit of refactoring i realized calling the page the hackathon page instead of the hackathon resource page was a better idea
+  //!!! I could not be bothered to change the name of all the vars though
   const toggleResourcePageVisibility = () => {
     setResourcePageVisibility(!hackathonResourcePageVisible).then(() => {
       setHackathonResourcePageVisible(!hackathonResourcePageVisible);
@@ -215,30 +205,6 @@ export default function Account() {
     });
   };
 
-  const startDeleteWorkflow = () => {
-    setConfirmDeletePopup(true);
-  };
-
-  const stopDeleteWorkflow = () => {
-    setConfirmDeletePopup(false);
-  };
-
-  const deleteAccountHandler = () => {
-    deleteAccount(auth.currentUser)
-      .then(() => {
-        setConfirmDeletePopup(false);
-        router.push("/");
-      })
-      .catch((error) => {
-        console.log(error);
-        triggerNotification(
-          "Failed to delete account",
-          "error",
-          "Unknown error",
-        );
-      });
-  };
-
   return (
     <>
       {isAdmin ? (
@@ -264,7 +230,7 @@ export default function Account() {
                     <p className="px-1">{user.email}</p>
                   </div>
                   <section className="flex w-full gap-2 mt-2">
-                    {isAdmin ? (
+                    {isAdmin || isImportant ? (
                       <div className="w-full">
                         <p className="bg-fairy_tale text-onyx text-center p-1 rounded-t">
                           {user.isHelper ? "Helper" : "Not Helper"}
@@ -277,7 +243,7 @@ export default function Account() {
                         />
                       </div>
                     ) : null}
-                    {isAdmin ? (
+                    {isAdmin || isImportant ? (
                       <div className="w-full">
                         <p className="bg-fairy_tale text-onyx text-center p-1 rounded-tl-lg rounded-tr-lg">
                           {user.isAdmin ? "Admin" : "Not Admin"}
@@ -297,7 +263,7 @@ export default function Account() {
           </section>
           <div className="text-neutral-700 font-space-mono">
             <h2 className="text-xl text-onyx-200 font-bold">
-              Change Hackathon Resource Page Visibility
+              Change Hackathon Page Visibility
             </h2>
             <p className="font-space-mono text-neutral-700">
               If checked, allows all users to view the hackathon theme and other
@@ -308,7 +274,7 @@ export default function Account() {
                 onClick={toggleResourcePageVisibility}
                 className={`rounded border border-fairy_tale hover:border-fairy_tale-300 w-9 h-9 ${hackathonResourcePageVisible ? "bg-fairy_tale" : ""} cursor-pointer transition-all duration-150 ease-in-out`}
               ></div>
-              <p>Resource Page Visibility</p>
+              <p>Hackathon Page Visibility</p>
             </div>
           </div>
         </>

@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     "sharon",
     "sharon hackathon",
     "sharon high school hackathon",
-    "shs hackathon 2023",
-    "sharon high school hackathon 2023",
+    "shs hackathon 2024",
+    "sharon high school hackathon 2024",
     "Maksim Straus",
     "cqb13",
   ],
@@ -105,7 +105,7 @@ export default function RootLayout({
               href="https://github.com/Website-Club/shs-hackathon/blob/main/LICENSE"
               target="_blank"
             >
-              Copyright © 2023 | MIT License
+              Copyright © 2024 | MIT License
             </a>
             <a
               href="https://github.com/cqb13"

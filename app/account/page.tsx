@@ -1,18 +1,18 @@
 "use client";
 
+import setResourcePageVisibility from "@/firebase/db/resources/updateResourcePageVisibility";
+import getResourcePageVisibility from "@/firebase/db/resources/getResourcePageVisibility";
 import { collection, getDocs, setDoc, doc } from "firebase/firestore";
+import ConnectedButton from "@/components/general/connectedButton";
 import Notification from "@/components/general/Notification";
 import deleteAccount from "@/firebase/db/users/deleteUser";
 import { useAuthContext } from "@/lib/context/authContext";
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import { auth, db } from "@/firebase/config";
-import ConnectedButton from "@/components/general/connectedButton";
-import TextInput from "@/components/general/TextInput";
 import getRoles from "@/firebase/db/users/getUserRoles";
+import TextInput from "@/components/general/TextInput";
 import Button from "@/components/general/Button";
-import getResourcePageVisibility from "@/firebase/db/resources/getResourcePageVisibility";
-import setResourcePageVisibility from "@/firebase/db/resources/updateResourcePageVisibility";
+import { auth, db } from "@/firebase/config";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 interface User {
   isImportant: boolean;

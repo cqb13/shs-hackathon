@@ -94,8 +94,8 @@ export default function RootLayout({
           <LayoutContextProvider>
             <NavBar />
             <Header />
+            {children}
           </LayoutContextProvider>
-          {children}
         </AuthContextProvider>
         <footer className="border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10 bg-onyx">
           <FooterNav />

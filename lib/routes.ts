@@ -29,19 +29,19 @@ const routes: Route[] = [
     signedOut: true,
   },
   {
+    name: "Hackathon",
+    path: "/hackathon",
+    signedIn: true,
+    admin: true,
+    signedOut: true,
+  },
+  {
     name: "Account",
     path: "/account",
     signedIn: true,
     admin: true,
     signedOut: false,
   },
-  //{
-  //  name: "Hackathon Resources",
-  //  path: "/hackathon-resources",
-  //  signedIn: true,
-  //  admin: true,
-  //  signedOut: true,
-  //},
 ];
 
 export default routes;

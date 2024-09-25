@@ -1,5 +1,5 @@
 "use client";
-//TODO: make this editable and hideable by admins
+//TODO: save all options for this as one JSON object, fetch it 1 time and save it in a top level context to minimize refetch
 export default function HackathonResources() {
   return (
     <main className="flex flex-col gap-10 px-60 py-20 max-lg:px-14 max-sm:px-5">

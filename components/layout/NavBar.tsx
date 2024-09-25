@@ -38,7 +38,6 @@ export default function NavBar() {
     if (signedOut) return true;
     if (signedIn && !signedOut && user) return true;
     if (!signedIn && signedOut && !user) return true;
-    //TODO: add admin logic
     return false;
   };
 

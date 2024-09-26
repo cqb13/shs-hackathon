@@ -1,7 +1,6 @@
 "use client";
 
 import setResourcePageVisibility from "@/firebase/db/resources/updateResourcePageVisibility";
-import getResourcePageVisibility from "@/firebase/db/resources/getResourcePageVisibility";
 import { collection, getDocs, setDoc, doc } from "firebase/firestore";
 import { useLayoutContext } from "@/lib/context/LayoutContext";
 import Notification from "@/components/general/Notification";
@@ -33,9 +32,6 @@ export default function Account() {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const [hackathonResourcePageVisible, setHackathonResourcePageVisible] =
-    useState(false);
-
   const [notification, setNotification] = useState(false);
   const [notificationTitle, setNotificationTitle] = useState("");
   const [notificationType, setNotificationType] = useState<"success" | "error">(
@@ -43,9 +39,12 @@ export default function Account() {
   );
   const [notificationMessage, setNotificationMessage] = useState("");
 
-  const { updateTitle } = useLayoutContext() as {
-    updateTitle: (title: string) => void;
-  };
+  const { updateTitle, hackathonPageViewable, updateHackathonPageViewable } =
+    useLayoutContext() as {
+      updateTitle: (title: string) => void;
+      hackathonPageViewable: boolean;
+      updateHackathonPageViewable: (value: boolean) => void;
+    };
 
   useEffect(() => {
     updateTitle("Admin Dashboard");
@@ -84,10 +83,6 @@ export default function Account() {
         .catch((error) => {
           console.error("Error:", error);
         });
-
-      getResourcePageVisibility().then((status: boolean) => {
-        setResourcePageVisibility(status);
-      });
     }
   }, [user, isImportant, isAdmin, router]);
 
@@ -99,8 +94,8 @@ export default function Account() {
   //!!! as I was doing a bit of refactoring i realized calling the page the hackathon page instead of the hackathon resource page was a better idea
   //!!! I could not be bothered to change the name of all the vars though
   const toggleResourcePageVisibility = () => {
-    setResourcePageVisibility(!hackathonResourcePageVisible).then(() => {
-      setHackathonResourcePageVisible(!hackathonResourcePageVisible);
+    setResourcePageVisibility(!hackathonPageViewable).then(() => {
+      updateHackathonPageViewable(!hackathonPageViewable);
       triggerNotification(
         "Updated visibility",
         "success",
@@ -205,80 +200,88 @@ export default function Account() {
     });
   };
 
+  /**
+   * Things to edit:
+   * - Theme
+   * - Theme Description
+   * - Example Slide Show Link
+   *   - Generate link to copy slide show if possible, if not add seperate input for that link
+   * - Final submit link
+   * - Feedback link
+   * - Wifi name
+   * - Wifi password
+   * */
+
   return (
     <>
-      {isAdmin ? (
-        <>
-          <h1 className="text-xl font-bold font-heading text-onyx-200">
-            User Management
-          </h1>
-          <TextInput
-            value={searchTerm}
-            onChange={searchUsers}
-            placeholder="Search Users"
-            customClass="w-full"
-          />
-          <section className="w-full h-[35rem] rounded-xl overflow-y-scroll">
-            <div className="grid grid-cols-3 gap-2 mt-2 overflow-y-scroll w-full items-center max-lg:grid-cols-2 max-sm:grid-cols-1">
-              {filteredUserList.map((user: any) => (
-                <div
-                  key={user.uid}
-                  className="border-t-2 border-fairy_tale hover:border-t-4 rounded-t-lg rounded-b-lg bg-onyx p-2 rounded-none h-56 transition-all duration-200 ease-in-out flex flex-col justify-between"
-                >
-                  <div>
-                    <h2 className="px-1">{user.name}</h2>
-                    <p className="px-1">{user.email}</p>
+      <div className="text-neutral-700 font-space-mono">
+        <h2 className="text-xl text-onyx-200 font-bold">
+          Change Hackathon Page Visibility
+        </h2>
+        <p className="font-space-mono text-neutral-700">
+          If checked, allows all users to view the hackathon theme and other
+          event details
+        </p>
+        <div className="flex gap-2 items-center mt-2">
+          <div
+            onClick={toggleResourcePageVisibility}
+            className={`rounded border border-fairy_tale hover:border-fairy_tale-300 w-9 h-9 ${hackathonPageViewable ? "bg-fairy_tale" : ""} cursor-pointer transition-all duration-150 ease-in-out`}
+          ></div>
+          <p>Allow access to Hackathon page</p>
+        </div>
+      </div>
+      <h1 className="text-xl font-bold font-heading text-onyx-200">
+        User Management
+      </h1>
+      <TextInput
+        value={searchTerm}
+        onChange={searchUsers}
+        placeholder="Search Users"
+        customClass="w-full"
+      />
+      <section className="w-full h-[35rem] rounded-xl overflow-y-scroll">
+        <div className="grid grid-cols-3 gap-2 mt-2 overflow-y-scroll w-full items-center max-lg:grid-cols-2 max-sm:grid-cols-1">
+          {filteredUserList.map((user: any) => (
+            <div
+              key={user.uid}
+              className="border-t-2 border-fairy_tale hover:border-t-4 rounded-t-lg rounded-b-lg bg-onyx p-2 rounded-none h-56 transition-all duration-200 ease-in-out flex flex-col justify-between"
+            >
+              <div>
+                <h2 className="px-1">{user.name}</h2>
+                <p className="px-1">{user.email}</p>
+              </div>
+              <section className="flex w-full gap-2 mt-2">
+                {isAdmin || isImportant ? (
+                  <div className="w-full">
+                    <p className="bg-fairy_tale text-onyx text-center p-1 rounded-t">
+                      {user.isHelper ? "Helper" : "Not Helper"}
+                    </p>
+                    <Button
+                      onClick={() => updateUsersHelperStatus(user)}
+                      title={user.isHelper ? "Remove" : "Add"}
+                      style={user.isHelper ? "red" : "green"}
+                      classModifier="rounded-t-none rounded-b !p-1 w-full"
+                    />
                   </div>
-                  <section className="flex w-full gap-2 mt-2">
-                    {isAdmin || isImportant ? (
-                      <div className="w-full">
-                        <p className="bg-fairy_tale text-onyx text-center p-1 rounded-t">
-                          {user.isHelper ? "Helper" : "Not Helper"}
-                        </p>
-                        <Button
-                          onClick={() => updateUsersHelperStatus(user)}
-                          title={user.isHelper ? "Remove" : "Add"}
-                          style={user.isHelper ? "red" : "green"}
-                          classModifier="rounded-t-none rounded-b !p-1 w-full"
-                        />
-                      </div>
-                    ) : null}
-                    {isAdmin || isImportant ? (
-                      <div className="w-full">
-                        <p className="bg-fairy_tale text-onyx text-center p-1 rounded-tl-lg rounded-tr-lg">
-                          {user.isAdmin ? "Admin" : "Not Admin"}
-                        </p>
-                        <Button
-                          onClick={() => updateUsersAdminStatus(user)}
-                          title={user.isAdmin ? "Remove" : "Add"}
-                          style={user.isAdmin ? "red" : "green"}
-                          classModifier="rounded-t-none rounded-b !p-1 w-full"
-                        />
-                      </div>
-                    ) : null}
-                  </section>
-                </div>
-              ))}
+                ) : null}
+                {isAdmin || isImportant ? (
+                  <div className="w-full">
+                    <p className="bg-fairy_tale text-onyx text-center p-1 rounded-tl-lg rounded-tr-lg">
+                      {user.isAdmin ? "Admin" : "Not Admin"}
+                    </p>
+                    <Button
+                      onClick={() => updateUsersAdminStatus(user)}
+                      title={user.isAdmin ? "Remove" : "Add"}
+                      style={user.isAdmin ? "red" : "green"}
+                      classModifier="rounded-t-none rounded-b !p-1 w-full"
+                    />
+                  </div>
+                ) : null}
+              </section>
             </div>
-          </section>
-          <div className="text-neutral-700 font-space-mono">
-            <h2 className="text-xl text-onyx-200 font-bold">
-              Change Hackathon Page Visibility
-            </h2>
-            <p className="font-space-mono text-neutral-700">
-              If checked, allows all users to view the hackathon theme and other
-              event details
-            </p>
-            <div className="flex gap-2 items-center mt-2">
-              <div
-                onClick={toggleResourcePageVisibility}
-                className={`rounded border border-fairy_tale hover:border-fairy_tale-300 w-9 h-9 ${hackathonResourcePageVisible ? "bg-fairy_tale" : ""} cursor-pointer transition-all duration-150 ease-in-out`}
-              ></div>
-              <p>Hackathon Page Visibility</p>
-            </div>
-          </div>
-        </>
-      ) : null}
+          ))}
+        </div>
+      </section>
       {notification ? (
         <Notification
           title={notificationTitle}

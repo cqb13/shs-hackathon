@@ -13,10 +13,16 @@ import routes from "@lib/routes";
 export default function NavBar() {
   const router = useRouter();
   const pathname = usePathname();
-  const { user } = useAuthContext() as { user: any };
+  const { user, isImportant, isAdmin, isHelper } = useAuthContext() as {
+    user: any;
+    isImportant: boolean;
+    isAdmin: boolean;
+    isHelper: boolean;
+  };
 
-  const { updateTitle } = useLayoutContext() as {
+  const { updateTitle, hackathonPageViewable } = useLayoutContext() as {
     updateTitle: (title: string) => void;
+    hackathonPageViewable: boolean;
   };
 
   useEffect(() => {
@@ -33,11 +39,22 @@ export default function NavBar() {
   const findVisibility = (
     signedIn: boolean,
     signedOut: boolean,
-    admin: boolean,
+    name: string,
   ) => {
+    if (
+      name == "Hackathon" &&
+      !hackathonPageViewable &&
+      !isImportant &&
+      !isAdmin &&
+      !isHelper
+    ) {
+      return false;
+    }
+
     if (signedOut) return true;
     if (signedIn && !signedOut && user) return true;
     if (!signedIn && signedOut && !user) return true;
+
     return false;
   };
 
@@ -74,7 +91,7 @@ export default function NavBar() {
             onClick={() => router.push(route.path)}
             className={`${
               pathname === route.path ? " text-fairy_tale-400" : ""
-            } rounded p-1 text-fairy_tale ${findVisibility(route.signedIn, route.signedOut, route.admin) ? "" : "hidden"}`}
+            } rounded p-1 text-fairy_tale ${findVisibility(route.signedIn, route.signedOut, route.name) ? "" : "hidden"}`}
           >
             {route.name}
           </button>

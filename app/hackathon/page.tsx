@@ -1,10 +1,41 @@
 "use client";
+
+import { useLayoutContext } from "@/lib/context/LayoutContext";
+import { useAuthContext } from "@/lib/context/authContext";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+
 //TODO: save all options for this as one JSON object, fetch it 1 time and save it in a top level context to minimize refetch
 export default function HackathonResources() {
+  const router = useRouter();
+  const { hackathonPageViewable } = useLayoutContext() as {
+    hackathonPageViewable: boolean;
+  };
+  const { user, isImportant, isAdmin, isHelper } = useAuthContext() as {
+    user: any;
+    isImportant: boolean;
+    isAdmin: boolean;
+    isHelper: boolean;
+  };
+
+  useEffect(() => {
+    if (
+      hackathonPageViewable == false &&
+      isHelper == false &&
+      isAdmin == false &&
+      isImportant == false
+    ) {
+      router.push("/");
+      return;
+    }
+
+    //TODO: load details here
+  }, [hackathonPageViewable, user, isHelper, isAdmin, isImportant]);
+
   return (
     <main className="flex flex-col gap-10 px-60 py-20 max-lg:px-14 max-sm:px-5">
       <h2 className="text-onyx-200 font-unica-one text-5xl">
-        Welcome to the 6th Annual SHS Hackathon!
+        Welcome to the 7th Annual SHS Hackathon!
       </h2>
       <h3 className="text-onyx-200 font-unica-one text-4xl" id="part-1">
         Theme: AI for Social Good

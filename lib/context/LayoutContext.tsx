@@ -11,9 +11,10 @@ interface LayoutContextProviderProps {
 }
 
 export function LayoutContextProvider({
-  children
+  children,
 }: LayoutContextProviderProps): JSX.Element {
   const [title, setTitle] = useState("Home");
+  const [hackathonPageViewable, setHackathonPageViewable] = useState(false);
 
   return (
     <LayoutContext.Provider
@@ -21,7 +22,11 @@ export function LayoutContextProvider({
         title,
         updateTitle: (newTitle: string) => {
           setTitle(newTitle);
-        }
+        },
+        hackathonPageViewable,
+        updateHackathonPageViewable: (value: boolean) => {
+          setHackathonPageViewable(value);
+        },
       }}
     >
       {children}

@@ -6,10 +6,11 @@ import { useLayoutContext } from "@/lib/context/LayoutContext";
 import Notification from "@/components/general/Notification";
 import { useAuthContext } from "@/lib/context/authContext";
 import TextInput from "@/components/general/TextInput";
+import TextArea from "@/components/general/TextArea";
 import Button from "@/components/general/Button";
 import { auth, db } from "@/firebase/config";
-import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 interface User {
   isImportant: boolean;
@@ -38,6 +39,17 @@ export default function Account() {
     "success",
   );
   const [notificationMessage, setNotificationMessage] = useState("");
+  const [theme, setTheme] = useState("");
+  const [themeDescription, setThemeDescription] = useState("");
+  const [exampleSubmissionSlidesLink, setExampleSubmissionSlidesLink] =
+    useState("");
+  const [copyExampleSubmissionSlidesLink, setCopyExampleSubmissionSlidesLink] =
+    useState("");
+  const [rubricLink, setRubricLink] = useState("");
+  const [submissionLink, setSubmissionLink] = useState("");
+  const [feedbackFormLink, setFeedbackFormLink] = useState("");
+  const [wifiNetworkName, setWifiNetworkName] = useState("");
+  const [wifiPassword, setWifiPassword] = useState("");
 
   const { updateTitle, hackathonPageViewable, updateHackathonPageViewable } =
     useLayoutContext() as {
@@ -185,7 +197,6 @@ export default function Account() {
     });
 
     setUserList(updatedUserList);
-
     const userRef = doc(db, "users", user.uid);
     const newAdminStatus = !user.isAdmin;
     setDoc(
@@ -200,17 +211,9 @@ export default function Account() {
     });
   };
 
-  /**
-   * Things to edit:
-   * - Theme
-   * - Theme Description
-   * - Example Slide Show Link
-   *   - Generate link to copy slide show if possible, if not add seperate input for that link
-   * - Final submit link
-   * - Feedback link
-   * - Wifi name
-   * - Wifi password
-   * */
+  const updateHackathonPage = () => {
+    console.log("here");
+  };
 
   return (
     <>
@@ -230,6 +233,63 @@ export default function Account() {
           <p>Allow access to Hackathon page</p>
         </div>
       </div>
+      <section className="flex flex-col gap-2 w-full">
+        <TextInput
+          value={theme}
+          onChange={(e) => setTheme(e.target.value)}
+          placeholder="Hackahton Theme"
+          customClass="w-full"
+        />
+        <TextArea
+          value={themeDescription}
+          onChange={(e) => setThemeDescription(e.target.value)}
+          placeholder="Hackathon Theme Description"
+          customClass="w-full"
+        />
+        <TextInput
+          value={exampleSubmissionSlidesLink}
+          onChange={(e) => setExampleSubmissionSlidesLink(e.target.value)}
+          placeholder="Example Submission Slides Link"
+          customClass="w-full"
+        />
+        <TextInput
+          value={copyExampleSubmissionSlidesLink}
+          onChange={(e) => setCopyExampleSubmissionSlidesLink(e.target.value)}
+          placeholder="Example Submissioon Slides Link"
+          customClass="w-full"
+        />
+        <TextInput
+          value={rubricLink}
+          onChange={(e) => setRubricLink(e.target.value)}
+          placeholder="Rubric Link"
+          customClass="w-full"
+        />
+        <TextInput
+          value={feedbackFormLink}
+          onChange={(e) => setFeedbackFormLink(e.target.value)}
+          placeholder="Feedback Form Link"
+          customClass="w-full"
+        />
+        <div className="flex gap-2">
+          <TextInput
+            value={wifiNetworkName}
+            onChange={(e) => setWifiNetworkName(e.target.value)}
+            placeholder="Wifi Network Name"
+            customClass="w-full"
+          />
+          <TextInput
+            value={wifiPassword}
+            onChange={(e) => setWifiPassword(e.target.value)}
+            placeholder="Wifi Network Password"
+            customClass="w-full"
+          />
+        </div>
+        <Button
+          onClick={updateHackathonPage}
+          title="Update Hackathon Page"
+          style="normal"
+        />
+      </section>
       <h1 className="text-xl font-bold font-heading text-onyx-200">
         User Management
       </h1>

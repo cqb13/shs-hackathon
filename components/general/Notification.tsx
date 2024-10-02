@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 type Props = {
   title: string;
-  type: "success" | "error";
+  type: "success" | "error" | "warning";
   message: string;
   timeout: number;
   updateNotification: (value: boolean) => void;
@@ -25,11 +25,22 @@ export default function Notification({
     return () => clearTimeout(timer);
   });
 
+  const getBgColor = () => {
+    switch (type) {
+      case "success":
+        return "bg-green-500";
+      case "error":
+        return "bg-red-500";
+      case "warning":
+        return "bg-yellow-500";
+    }
+  };
+
   return (
     <section
-      className={`${opened ? "" : "fixed bottom-2 left-2"} p-4 w-80 ${
-        type == "error" ? "bg-red-500" : "bg-green-500"
-      } rounded-md`}
+      className={`${
+        opened ? "" : "fixed bottom-2 left-2"
+      } p-4 w-80 ${getBgColor()} rounded-md`}
     >
       <div className="flex items-center justify-between">
         <h1 className="text-white">{title}</h1>

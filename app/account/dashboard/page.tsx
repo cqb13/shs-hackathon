@@ -1,6 +1,7 @@
 "use client";
 
 import setResourcePageVisibility from "@/firebase/db/resources/updateResourcePageVisibility";
+import updateHackathonPageData from "@/firebase/db/resources/updateHackathonPage";
 import { collection, getDocs, setDoc, doc } from "firebase/firestore";
 import { useLayoutContext } from "@/lib/context/LayoutContext";
 import Notification from "@/components/general/Notification";
@@ -21,6 +22,17 @@ interface User {
   uid: string;
 }
 
+export type HackathonPageData = {
+  theme: string;
+  themeDescription: string;
+  exampleSubmissionSlidesLink: string;
+  copyExampleSubmissionSlidesLink: string;
+  rubricLink: string;
+  feedbackFormLink: string;
+  wifiNetworkName: string;
+  wifiPassword: string;
+};
+
 export default function Account() {
   const router = useRouter();
   const { user, isImportant, isAdmin } = useAuthContext() as {
@@ -35,15 +47,13 @@ export default function Account() {
 
   const [notification, setNotification] = useState(false);
   const [notificationTitle, setNotificationTitle] = useState("");
-  const [notificationType, setNotificationType] = useState<"success" | "error">(
-    "success",
-  );
+  const [notificationType, setNotificationType] = useState<
+    "success" | "warning" | "error"
+  >("success");
   const [notificationMessage, setNotificationMessage] = useState("");
   const [theme, setTheme] = useState("");
   const [themeDescription, setThemeDescription] = useState("");
   const [exampleSubmissionSlidesLink, setExampleSubmissionSlidesLink] =
-    useState("");
-  const [copyExampleSubmissionSlidesLink, setCopyExampleSubmissionSlidesLink] =
     useState("");
   const [rubricLink, setRubricLink] = useState("");
   const [submissionLink, setSubmissionLink] = useState("");
@@ -64,7 +74,7 @@ export default function Account() {
 
   const triggerNotification = (
     title: string,
-    type: "success" | "error",
+    type: "success" | "warning" | "error",
     message: string,
   ) => {
     setNotification(true);
@@ -212,83 +222,151 @@ export default function Account() {
   };
 
   const updateHackathonPage = () => {
-    console.log("here");
+    if (
+      theme == "" ||
+      themeDescription == "" ||
+      exampleSubmissionSlidesLink == "" ||
+      rubricLink == "" ||
+      submissionLink == "" ||
+      feedbackFormLink == "" ||
+      wifiNetworkName == "" ||
+      wifiPassword == ""
+    ) {
+      triggerNotification(
+        "Failed to update hackathon page",
+        "error",
+        "All fields must have content",
+      );
+      return;
+    }
+
+    // valid link example: https://docs.google.com/presentation/d/1nlsooeK3z3J6DPyLEgatEinUvGxJ2TDhnXSIJfM-kWQ/edit?usp=sharing
+    if (
+      !exampleSubmissionSlidesLink.startsWith(
+        "https://docs.google.com/presentation/d/",
+      )
+    ) {
+      triggerNotification(
+        "Invalid Example Slide Link",
+        "error",
+        "Example slide link must lead to a google slide",
+      );
+      return;
+    }
+
+    if (!exampleSubmissionSlidesLink.endsWith("/edit?usp=sharing")) {
+      triggerNotification(
+        "Invalid Example Slide Link",
+        "error",
+        "Example slide link must be /edit?usp=sharing",
+      );
+      return;
+    }
+
+    // converts the sharing link to a copy link
+    let linkParts = exampleSubmissionSlidesLink.split("/");
+    linkParts[linkParts.length - 1] = "copy";
+    let link = linkParts.join("/");
+
+    let data: HackathonPageData = {
+      theme: theme,
+      themeDescription: themeDescription,
+      exampleSubmissionSlidesLink: exampleSubmissionSlidesLink,
+      copyExampleSubmissionSlidesLink: link,
+      rubricLink: rubricLink,
+      feedbackFormLink: feedbackFormLink,
+      wifiNetworkName: wifiNetworkName,
+      wifiPassword: wifiPassword,
+    };
+
+    // if the data is the same as the data stored in the context throw warning that changes must be made to update
+
+    let stringData = JSON.stringify(data);
+
+    updateHackathonPageData(stringData).then(() => {
+      triggerNotification("Success", "success", "Hackathon page updated!");
+    });
   };
 
   return (
     <>
-      <div className="text-neutral-700 font-space-mono">
-        <h2 className="text-xl text-onyx-200 font-bold">
-          Change Hackathon Page Visibility
-        </h2>
-        <p className="font-space-mono text-neutral-700">
-          If checked, allows all users to view the hackathon theme and other
-          event details
-        </p>
-        <div className="flex gap-2 items-center mt-2">
-          <div
-            onClick={toggleResourcePageVisibility}
-            className={`rounded border border-fairy_tale hover:border-fairy_tale-300 w-9 h-9 ${hackathonPageViewable ? "bg-fairy_tale" : ""} cursor-pointer transition-all duration-150 ease-in-out`}
-          ></div>
-          <p>Allow access to Hackathon page</p>
+      <section className="w-full flex-col gap-2">
+        <h1 className="text-xl font-bold font-heading text-onyx-200 text-center">
+          Hackathon Page Management
+        </h1>
+        <div className="text-neutral-700 font-space-mono pb-2">
+          <h2 className="text-xl text-onyx-200 font-bold">
+            Change Hackathon Page Visibility
+          </h2>
+          <p className="font-space-mono text-neutral-700">
+            If checked, allows all users to view the hackathon theme and other
+            event details
+          </p>
+          <div className="flex gap-2 items-center mt-2">
+            <div
+              onClick={toggleResourcePageVisibility}
+              className={`rounded border border-fairy_tale hover:border-fairy_tale-300 w-9 h-9 ${hackathonPageViewable ? "bg-fairy_tale" : ""} cursor-pointer transition-all duration-150 ease-in-out`}
+            ></div>
+            <p>Allow access to Hackathon page</p>
+          </div>
         </div>
-      </div>
-      <section className="flex flex-col gap-2 w-full">
-        <TextInput
-          value={theme}
-          onChange={(e) => setTheme(e.target.value)}
-          placeholder="Hackahton Theme"
-          customClass="w-full"
-        />
-        <TextArea
-          value={themeDescription}
-          onChange={(e) => setThemeDescription(e.target.value)}
-          placeholder="Hackathon Theme Description"
-          customClass="w-full"
-        />
-        <TextInput
-          value={exampleSubmissionSlidesLink}
-          onChange={(e) => setExampleSubmissionSlidesLink(e.target.value)}
-          placeholder="Example Submission Slides Link"
-          customClass="w-full"
-        />
-        <TextInput
-          value={copyExampleSubmissionSlidesLink}
-          onChange={(e) => setCopyExampleSubmissionSlidesLink(e.target.value)}
-          placeholder="Example Submissioon Slides Link"
-          customClass="w-full"
-        />
-        <TextInput
-          value={rubricLink}
-          onChange={(e) => setRubricLink(e.target.value)}
-          placeholder="Rubric Link"
-          customClass="w-full"
-        />
-        <TextInput
-          value={feedbackFormLink}
-          onChange={(e) => setFeedbackFormLink(e.target.value)}
-          placeholder="Feedback Form Link"
-          customClass="w-full"
-        />
-        <div className="flex gap-2">
+        <section className="flex flex-col gap-2 w-full">
           <TextInput
-            value={wifiNetworkName}
-            onChange={(e) => setWifiNetworkName(e.target.value)}
-            placeholder="Wifi Network Name"
+            value={theme}
+            onChange={(e) => setTheme(e.target.value)}
+            placeholder="Hackahton Theme"
+            customClass="w-full"
+          />
+          <TextArea
+            value={themeDescription}
+            onChange={(e) => setThemeDescription(e.target.value)}
+            placeholder="Hackathon Theme Description"
             customClass="w-full"
           />
           <TextInput
-            value={wifiPassword}
-            onChange={(e) => setWifiPassword(e.target.value)}
-            placeholder="Wifi Network Password"
+            value={exampleSubmissionSlidesLink}
+            onChange={(e) => setExampleSubmissionSlidesLink(e.target.value)}
+            placeholder="Example Submission Slides Link"
             customClass="w-full"
           />
-        </div>
-        <Button
-          onClick={updateHackathonPage}
-          title="Update Hackathon Page"
-          style="normal"
-        />
+          <TextInput
+            value={rubricLink}
+            onChange={(e) => setRubricLink(e.target.value)}
+            placeholder="Rubric Link"
+            customClass="w-full"
+          />
+          <TextInput
+            value={submissionLink}
+            onChange={(e) => setSubmissionLink(e.target.value)}
+            placeholder="Submission Link"
+            customClass="w-full"
+          />
+          <TextInput
+            value={feedbackFormLink}
+            onChange={(e) => setFeedbackFormLink(e.target.value)}
+            placeholder="Feedback Form Link"
+            customClass="w-full"
+          />
+          <div className="flex gap-2">
+            <TextInput
+              value={wifiNetworkName}
+              onChange={(e) => setWifiNetworkName(e.target.value)}
+              placeholder="Wifi Network Name"
+              customClass="w-full"
+            />
+            <TextInput
+              value={wifiPassword}
+              onChange={(e) => setWifiPassword(e.target.value)}
+              placeholder="Wifi Network Password"
+              customClass="w-full"
+            />
+          </div>
+          <Button
+            onClick={updateHackathonPage}
+            title="Update Hackathon Page"
+            style="normal"
+          />
+        </section>
       </section>
       <h1 className="text-xl font-bold font-heading text-onyx-200">
         User Management

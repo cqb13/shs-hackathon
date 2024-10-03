@@ -28,6 +28,7 @@ export type HackathonPageData = {
   exampleSubmissionSlidesLink: string;
   copyExampleSubmissionSlidesLink: string;
   rubricLink: string;
+  submissionLink: string;
   feedbackFormLink: string;
   wifiNetworkName: string;
   wifiPassword: string;
@@ -61,16 +62,40 @@ export default function Account() {
   const [wifiNetworkName, setWifiNetworkName] = useState("");
   const [wifiPassword, setWifiPassword] = useState("");
 
-  const { updateTitle, hackathonPageViewable, updateHackathonPageViewable } =
-    useLayoutContext() as {
-      updateTitle: (title: string) => void;
-      hackathonPageViewable: boolean;
-      updateHackathonPageViewable: (value: boolean) => void;
-    };
+  const {
+    updateTitle,
+    hackathonPageViewable,
+    updateHackathonPageViewable,
+    hackathonPageData,
+    setHackathonPageData,
+  } = useLayoutContext() as {
+    updateTitle: (title: string) => void;
+    hackathonPageViewable: boolean;
+    updateHackathonPageViewable: (value: boolean) => void;
+    hackathonPageData: HackathonPageData;
+    setHackathonPageData: (value: HackathonPageData) => void;
+  };
 
   useEffect(() => {
     updateTitle("Admin Dashboard");
   }, []);
+
+  useEffect(() => {
+    if (hackathonPageData == undefined) {
+      return;
+    }
+
+    setTheme(hackathonPageData.theme);
+    setThemeDescription(hackathonPageData.themeDescription);
+    setExampleSubmissionSlidesLink(
+      hackathonPageData.exampleSubmissionSlidesLink,
+    );
+    setRubricLink(hackathonPageData.rubricLink);
+    setSubmissionLink(hackathonPageData.submissionLink);
+    setFeedbackFormLink(hackathonPageData.feedbackFormLink);
+    setWifiNetworkName(hackathonPageData.wifiNetworkName);
+    setWifiPassword(hackathonPageData.wifiPassword);
+  }, [hackathonPageData]);
 
   const triggerNotification = (
     title: string,
@@ -274,14 +299,23 @@ export default function Account() {
       exampleSubmissionSlidesLink: exampleSubmissionSlidesLink,
       copyExampleSubmissionSlidesLink: link,
       rubricLink: rubricLink,
+      submissionLink: submissionLink,
       feedbackFormLink: feedbackFormLink,
       wifiNetworkName: wifiNetworkName,
       wifiPassword: wifiPassword,
     };
 
-    // if the data is the same as the data stored in the context throw warning that changes must be made to update
+    setHackathonPageData(data);
 
     let stringData = JSON.stringify(data);
+    if (stringData == JSON.stringify(hackathonPageData)) {
+      triggerNotification(
+        "Update Cancelled",
+        "warning",
+        "New data is the same as current data",
+      );
+      return;
+    }
 
     updateHackathonPageData(stringData).then(() => {
       triggerNotification("Success", "success", "Hackathon page updated!");

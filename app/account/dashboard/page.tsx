@@ -52,6 +52,15 @@ export default function Account() {
     "success" | "warning" | "error"
   >("success");
   const [notificationMessage, setNotificationMessage] = useState("");
+
+  // event details
+  const [eventIsSet, setEventIsSet] = useState(false);
+  const [eventDay, setEventDay] = useState("");
+  const [signUpLink, setSignUpLink] = useState("");
+  // TODO: add event schedule here
+  // TODO: add sponsors here
+
+  // hackathon page details
   const [theme, setTheme] = useState("");
   const [themeDescription, setThemeDescription] = useState("");
   const [exampleSubmissionSlidesLink, setExampleSubmissionSlidesLink] =
@@ -322,8 +331,50 @@ export default function Account() {
     });
   };
 
+  const updateEventDay = () => {
+    console.log("here");
+  };
+
   return (
     <>
+      <section className="w-full flex-col gap-2">
+        <h1 className="text-xl font-bold font-heading text-onyx-200 text-center">
+          Event Details
+        </h1>
+        <div className="text-neutral-700 font-space-mono pb-2">
+          <h2 className="text-xl text-onyx-200 font-bold">
+            Event is Scheduled
+          </h2>
+          <div className="flex gap-2 items-center mt-2">
+            <div
+              onClick={() => setEventIsSet(!eventIsSet)}
+              className={`rounded border border-fairy_tale hover:border-fairy_tale-300 w-9 h-9 ${eventIsSet ? "bg-fairy_tale" : ""} cursor-pointer transition-all duration-150 ease-in-out`}
+            ></div>
+            <p>Event is Scheduled</p>
+          </div>
+        </div>
+        <section
+          className={`${eventIsSet ? "" : "hidden"} flex flex-col gap-2`}
+        >
+          <TextInput
+            value={eventDay}
+            onChange={(e) => setEventDay(e.target.value)}
+            placeholder="Event Day"
+            customClass="w-full"
+          />
+          <TextInput
+            value={signUpLink}
+            onChange={(e) => setSignUpLink(e.target.value)}
+            placeholder="Sign Up Link"
+            customClass="w-full"
+          />
+          <Button
+            onClick={updateEventDay}
+            title="Update Event Day"
+            style="normal"
+          />
+        </section>
+      </section>
       <section className="w-full flex-col gap-2">
         <h1 className="text-xl font-bold font-heading text-onyx-200 text-center">
           Hackathon Page Management

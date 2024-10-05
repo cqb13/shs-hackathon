@@ -5,13 +5,15 @@ import { HackathonPageData } from "../account/dashboard/page";
 import { useAuthContext } from "@/lib/context/authContext";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-//TODO: only fetch the page data when this page or loaded, or the admin dashboard, add a function to load to the layoutContext
+
 export default function HackathonResources() {
   const router = useRouter();
-  const { hackathonPageViewable, hackathonPageData } = useLayoutContext() as {
-    hackathonPageViewable: boolean;
-    hackathonPageData: HackathonPageData;
-  };
+  const { hackathonPageViewable, fetchHackathonPageData } =
+    useLayoutContext() as {
+      hackathonPageViewable: boolean;
+      hackathonPageData: HackathonPageData;
+      fetchHackathonPageData: () => Promise<HackathonPageData>;
+    };
   const { user, isImportant, isAdmin, isHelper } = useAuthContext() as {
     user: any;
     isImportant: boolean;
@@ -40,31 +42,22 @@ export default function HackathonResources() {
       return;
     }
 
-    if (hackathonPageData == undefined) {
-      return;
-    }
+    fetchHackathonPageData().then((data) => {
+      if (!data) {
+        return;
+      }
 
-    setTheme(hackathonPageData.theme);
-    setThemeDescription(hackathonPageData.themeDescription);
-    setExampleSubmissionSlidesLink(
-      hackathonPageData.exampleSubmissionSlidesLink,
-    );
-    setCopyExampleSubmissionSlidesLink(
-      hackathonPageData.copyExampleSubmissionSlidesLink,
-    );
-    setRubricLink(hackathonPageData.rubricLink);
-    setSubmissionLink(hackathonPageData.submissionLink);
-    setFeedbackFormLink(hackathonPageData.feedbackFormLink);
-    setWifiNetworkName(hackathonPageData.wifiNetworkName);
-    setWifiPassword(hackathonPageData.wifiPassword);
-  }, [
-    hackathonPageData,
-    hackathonPageViewable,
-    user,
-    isHelper,
-    isAdmin,
-    isImportant,
-  ]);
+      setTheme(data.theme);
+      setThemeDescription(data.themeDescription);
+      setExampleSubmissionSlidesLink(data.exampleSubmissionSlidesLink);
+      setCopyExampleSubmissionSlidesLink(data.copyExampleSubmissionSlidesLink);
+      setRubricLink(data.rubricLink);
+      setSubmissionLink(data.submissionLink);
+      setFeedbackFormLink(data.feedbackFormLink);
+      setWifiNetworkName(data.wifiNetworkName);
+      setWifiPassword(data.wifiPassword);
+    });
+  }, [hackathonPageViewable, user, isHelper, isAdmin, isImportant]);
 
   useEffect(() => {
     if (

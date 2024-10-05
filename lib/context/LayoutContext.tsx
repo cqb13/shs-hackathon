@@ -9,7 +9,11 @@ import {
 } from "react";
 import getResourcePageVisibility from "@/firebase/db/resources/getResourcePageVisibility";
 import getHackathonPageData from "@/firebase/db/resources/getHackathonPageData";
-import { HackathonPageData } from "@/app/account/dashboard/page";
+import getSchedule from "@/firebase/db/resources/getSchedule";
+import {
+  HackathonPageData,
+  EventScheduleItem,
+} from "@/app/account/dashboard/page";
 
 export const LayoutContext = createContext({});
 
@@ -26,19 +30,36 @@ export function LayoutContextProvider({
   const [hackathonPageViewable, setHackathonPageViewable] = useState(false);
   const [hackathonPageData, setHackathonPageData] = useState<
     HackathonPageData | undefined
-  >();
+  >(undefined);
+  const [schedule, setSchedule] = useState<EventScheduleItem[]>([]);
 
   useEffect(() => {
     getResourcePageVisibility().then((result: boolean) => {
       setHackathonPageViewable(result);
     });
-
-    getHackathonPageData().then((result: string) => {
-      let data: HackathonPageData = JSON.parse(result);
-
-      setHackathonPageData(data);
-    });
   }, []);
+
+  const fetchHackathonPageData = async () => {
+    if (hackathonPageData !== undefined) {
+      return hackathonPageData;
+    } else {
+      const result = await getHackathonPageData();
+      let data: HackathonPageData = JSON.parse(result);
+      setHackathonPageData(data);
+      return data;
+    }
+  };
+
+  const fetchSchedule = async () => {
+    if (schedule.length > 0) {
+      return schedule;
+    } else {
+      const fetchedSchedule = await getSchedule();
+      let real: EventScheduleItem[] = JSON.parse(fetchedSchedule);
+      setSchedule(real);
+      return real;
+    }
+  };
 
   return (
     <LayoutContext.Provider
@@ -55,6 +76,12 @@ export function LayoutContextProvider({
         setHackathonPageData: (value: HackathonPageData) => {
           setHackathonPageData(value);
         },
+        fetchHackathonPageData,
+        schedule,
+        updateHackathonSchedule: (value: EventScheduleItem[]) => {
+          setSchedule(value);
+        },
+        fetchSchedule,
       }}
     >
       {children}

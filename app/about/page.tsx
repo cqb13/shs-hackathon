@@ -1,7 +1,6 @@
 import ImageGallery from "@/components/about/ImageGallery";
 import Schedule from "@/components/about/Schedule";
 import FaqCard from "@/components/about/FaqCard";
-import schedule from "@/lib/schedule";
 import Image from "next/image";
 import faqs from "@/lib/faq";
 
@@ -49,7 +48,7 @@ export default function About() {
           <hr className="h-0.5 w-5/12 bg-onyx border-0 rounded" />
         </div>
         <section className="flex gap-10 flex-wrap items-center justify-center">
-          <Schedule schedule={schedule} />
+          <Schedule />
         </section>
       </section>
       <section

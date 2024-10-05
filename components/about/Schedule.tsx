@@ -1,10 +1,22 @@
-import { EventScheduleItem } from "@/app/account/dashboard/page";
+"use client";
 
-export default function Schedule({
-  schedule,
-}: {
-  schedule: EventScheduleItem[];
-}) {
+import { EventScheduleItem } from "@/app/account/dashboard/page";
+import { useLayoutContext } from "@/lib/context/LayoutContext";
+import { useState, useEffect } from "react";
+
+export default function Schedule() {
+  const [schedule, setSchedule] = useState<EventScheduleItem[]>([]);
+
+  const { fetchSchedule } = useLayoutContext() as {
+    fetchSchedule: () => Promise<EventScheduleItem[]>;
+  };
+
+  useEffect(() => {
+    fetchSchedule().then((data) => {
+      setSchedule(data);
+    });
+  }, []);
+
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full">

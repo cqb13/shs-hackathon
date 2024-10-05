@@ -97,34 +97,23 @@ export default function Account() {
     updateHackathonPageViewable,
     hackathonPageData,
     setHackathonPageData,
+    fetchHackathonPageData,
+    updateHackathonSchedule,
+    fetchSchedule,
   } = useLayoutContext() as {
     updateTitle: (title: string) => void;
     hackathonPageViewable: boolean;
     updateHackathonPageViewable: (value: boolean) => void;
     hackathonPageData: HackathonPageData;
     setHackathonPageData: (value: HackathonPageData) => void;
+    fetchHackathonPageData: () => Promise<HackathonPageData>;
+    updateHackathonSchedule: (value: EventScheduleItem[]) => void;
+    fetchSchedule: () => Promise<EventScheduleItem[]>;
   };
 
   useEffect(() => {
     updateTitle("Admin Dashboard");
   }, []);
-
-  useEffect(() => {
-    if (hackathonPageData == undefined) {
-      return;
-    }
-
-    setTheme(hackathonPageData.theme);
-    setThemeDescription(hackathonPageData.themeDescription);
-    setExampleSubmissionSlidesLink(
-      hackathonPageData.exampleSubmissionSlidesLink,
-    );
-    setRubricLink(hackathonPageData.rubricLink);
-    setSubmissionLink(hackathonPageData.submissionLink);
-    setFeedbackFormLink(hackathonPageData.feedbackFormLink);
-    setWifiNetworkName(hackathonPageData.wifiNetworkName);
-    setWifiPassword(hackathonPageData.wifiPassword);
-  }, [hackathonPageData]);
 
   const triggerNotification = (
     title: string,
@@ -161,6 +150,31 @@ export default function Account() {
         });
     }
   }, [user, isImportant, isAdmin, router]);
+
+  useEffect(() => {
+    if (
+      hackathonPageViewable == false &&
+      isAdmin == false &&
+      isImportant == false
+    ) {
+      return;
+    }
+
+    fetchHackathonPageData().then((data) => {
+      setTheme(data.theme);
+      setThemeDescription(data.themeDescription);
+      setExampleSubmissionSlidesLink(data.exampleSubmissionSlidesLink);
+      setRubricLink(data.rubricLink);
+      setSubmissionLink(data.submissionLink);
+      setFeedbackFormLink(data.feedbackFormLink);
+      setWifiNetworkName(data.wifiNetworkName);
+      setWifiPassword(data.wifiPassword);
+    });
+
+    fetchSchedule().then((data) => {
+      setEventSchedule(data);
+    });
+  }, [hackathonPageViewable, user, isAdmin, isImportant]);
 
   useEffect(() => {
     setFilteredUserList(userList);
@@ -457,17 +471,22 @@ export default function Account() {
     setEditingScheduleItem(false);
   };
 
-  const publishEventSchedule = () => {
+  const publishEventSchedule = async () => {
     setAbleToPublishEvents(false);
-    console.log("here");
+
+    if (eventSchedule.length === 0) {
+      triggerNotification(
+        "Failed to publish schedule",
+        "error",
+        "Schedule must have values",
+      );
+      return;
+    }
 
     let jsonData = JSON.stringify(eventSchedule);
 
-    //TODO: if the scheudle as json is the same as the schedule in the layout context dont publish
-    //TODO only fetch schedule in the layout context when the user goes to the about page
-
-    updateSchedule(jsonData);
-
+    await updateSchedule(jsonData);
+    updateHackathonSchedule(eventSchedule);
     triggerNotification("Success", "success", "Hackathon schedule updated!");
   };
 

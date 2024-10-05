@@ -22,6 +22,17 @@ interface User {
   uid: string;
 }
 
+export type EventScheduleItem = {
+  name: string;
+  time: string;
+};
+
+export type Sponsor = {
+  name: string;
+  websiteLink: string;
+  imageLink: string;
+};
+
 export type HackathonPageData = {
   theme: string;
   themeDescription: string;
@@ -53,12 +64,20 @@ export default function Account() {
   >("success");
   const [notificationMessage, setNotificationMessage] = useState("");
 
+  const [addingScheduleItem, setAddingScheduleItem] = useState(false);
+  const [edditingScheduleItem, setEditingScheduleItem] = useState(false);
+  const [editingId, setEditingId] = useState(0);
+  const [scheduleItemName, setScheduleItemName] = useState("");
+  const [scheduleItemTime, setScheduleItemTime] = useState("");
+  const [addingSponsor, setAddingSponsor] = useState(false);
+  const [ableToPublishEvents, setAbleToPublishEvents] = useState(false);
+
   // event details
   const [eventIsSet, setEventIsSet] = useState(false);
   const [eventDay, setEventDay] = useState("");
   const [signUpLink, setSignUpLink] = useState("");
-  // TODO: add event schedule here
-  // TODO: add sponsors here
+  const [eventSchedule, setEventSchedule] = useState<EventScheduleItem[]>([]);
+  const [eventSponsors, setEventSponsors] = useState<Sponsor[]>([]);
 
   // hackathon page details
   const [theme, setTheme] = useState("");
@@ -335,6 +354,115 @@ export default function Account() {
     console.log("here");
   };
 
+  const addEvent = () => {
+    setEditingScheduleItem(false);
+    if (scheduleItemName == "" || scheduleItemTime == "") {
+      triggerNotification(
+        "Failed to add event",
+        "error",
+        "An event must have a name and a time",
+      );
+      return;
+    }
+
+    let data = eventSchedule;
+
+    data.push({ name: scheduleItemName, time: scheduleItemTime });
+
+    setEventSchedule(data);
+
+    setScheduleItemTime("");
+    setScheduleItemName("");
+    setAddingScheduleItem(false);
+    setAbleToPublishEvents(true);
+  };
+
+  const cancelAddEvent = () => {
+    setAddingScheduleItem(false);
+    setScheduleItemName("");
+    setScheduleItemTime("");
+  };
+
+  const removeEvent = (id: number) => {
+    setAbleToPublishEvents(true);
+
+    let data = [...eventSchedule];
+    data.splice(id, 1);
+
+    setEventSchedule(data);
+  };
+
+  const moveEventUp = (id: number) => {
+    setAbleToPublishEvents(true);
+
+    const data = [...eventSchedule];
+    const current = data[id];
+
+    if (id === 0) {
+      data[id] = data[data.length - 1];
+      data[data.length - 1] = current;
+    } else {
+      data[id] = data[id - 1];
+      data[id - 1] = current;
+    }
+
+    setEventSchedule(data);
+  };
+
+  const moveEventDown = (id: number) => {
+    setAbleToPublishEvents(true);
+
+    const data = [...eventSchedule];
+    const current = data[id];
+
+    if (id === eventSchedule.length - 1) {
+      data[id] = data[0];
+      data[0] = current;
+    } else {
+      data[id] = data[id + 1];
+      data[id + 1] = current;
+    }
+
+    setEventSchedule(data);
+  };
+
+  const editEvent = (id: number) => {
+    setEditingScheduleItem(true);
+    setAddingScheduleItem(false);
+    setEditingId(id);
+    setAbleToPublishEvents(true);
+    setScheduleItemName(eventSchedule[id].name);
+    setScheduleItemTime(eventSchedule[id].time);
+  };
+
+  const saveEdits = (id: number) => {
+    if (scheduleItemName == "" || scheduleItemTime == "") {
+      triggerNotification(
+        "Failed to update event",
+        "error",
+        "An event must have a name and a time",
+      );
+      return;
+    }
+
+    let data = eventSchedule;
+
+    data[id].name = scheduleItemName;
+    data[id].time = scheduleItemTime;
+
+    setEventSchedule(data);
+    setScheduleItemTime("");
+    setScheduleItemName("");
+    setEditingScheduleItem(false);
+  };
+
+  const publishEventSchedule = () => {
+    setAbleToPublishEvents(true);
+
+    //TODO: if the scheudle as json is the same as the schedule in the layout context dont publish
+    //TODO only fetch schedule in the layout context when the user goes to the about page
+  };
+
   return (
     <>
       <section className="w-full flex-col gap-2">
@@ -373,6 +501,162 @@ export default function Account() {
             title="Update Event Day"
             style="normal"
           />
+        </section>
+        <section>
+          <h1 className="text-xl font-bold font-heading text-onyx-200 text-center">
+            Event Schedule
+          </h1>
+          <div className="flex gap-2 flex-col">
+            <div className="overflow-x-auto">
+              <table className="min-w-full">
+                <tbody>
+                  {eventSchedule.map((event: EventScheduleItem, i: number) => (
+                    <tr key={i} className="flex justify-between items-center">
+                      <td className="py-2 px-4 font-space-mono text-xl text-neutral-700 w-full">
+                        {edditingScheduleItem && editingId == i ? (
+                          <TextInput
+                            value={scheduleItemName}
+                            onChange={(e) =>
+                              setScheduleItemName(e.target.value)
+                            }
+                            placeholder="Event Name"
+                            customClass="w-full"
+                          />
+                        ) : (
+                          <p>{event.name}</p>
+                        )}
+                      </td>
+                      <td className="py-2 px-4 font-space-mono text-xl text-neutral-700 w-full">
+                        {edditingScheduleItem && editingId == i ? (
+                          <TextInput
+                            value={scheduleItemTime}
+                            onChange={(e) =>
+                              setScheduleItemTime(e.target.value)
+                            }
+                            placeholder="Event Time"
+                            customClass="w-full"
+                          />
+                        ) : (
+                          <p>{event.time}</p>
+                        )}
+                      </td>
+                      <td className="flex gap-2 items-center justify-center">
+                        <svg
+                          width="30"
+                          height="30"
+                          viewBox="0 0 512 512"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className={`cursor-pointer ${edditingScheduleItem ? "hidden" : ""}`}
+                          onClick={() => editEvent(i)}
+                        >
+                          <path d="m320 112 48-48 80 80-48 48zM128 304l160-160 80 80-160 160zm-32 32 80 80-112 32z" />
+                        </svg>
+                        <svg
+                          width="30"
+                          height="30"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className={`cursor-pointer ${!edditingScheduleItem || editingId != i ? "hidden" : ""}`}
+                          onClick={() => saveEdits(i)}
+                        >
+                          <path
+                            d="M4 2h14v2H4v16h2v-6h12v6h2V6h2v16H2V2zm4 18h8v-4H8zM20 6h-2V4h2zM6 6h9v4H6z"
+                            fill="#000"
+                          />
+                        </svg>
+                        <svg
+                          width="30"
+                          height="30"
+                          viewBox="-7 0 32 32"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className={`cursor-pointer ${!edditingScheduleItem || editingId != i ? "hidden" : ""}`}
+                          onClick={() => setEditingScheduleItem(false)}
+                        >
+                          <path d="m16.844 9.156-6.375 7.875 6.938 8.563h-2.906l-5.469-6.781-5.5 6.781H.626l6.969-8.563L1.22 9.156h2.906l4.906 6.063 4.875-6.063z" />
+                        </svg>
+                        <svg
+                          width="30"
+                          height="30"
+                          viewBox="0 -6 524 524"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className={`cursor-pointer ${edditingScheduleItem ? "hidden" : ""}`}
+                          onClick={() => moveEventUp(i)}
+                        >
+                          <path d="m460 321-34 34-164-163L98 355l-34-34 198-196z" />
+                        </svg>
+                        <svg
+                          width="30"
+                          height="30"
+                          viewBox="0 -6 524 524"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className={`cursor-pointer ${edditingScheduleItem ? "hidden" : ""}`}
+                          onClick={() => moveEventDown(i)}
+                        >
+                          <path d="m64 191 34-34 164 163 164-163 34 34-198 196z" />
+                        </svg>
+                        <svg
+                          width="30"
+                          height="30"
+                          viewBox="0 0 76 76"
+                          xmlns="http://www.w3.org/2000/svg"
+                          baseProfile="full"
+                          className={`cursor-pointer ${edditingScheduleItem ? "hidden" : ""}`}
+                          onClick={() => removeEvent(i)}
+                        >
+                          <path d="M19 38h38v6H19z" />
+                        </svg>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <Button
+              onClick={() => setAddingScheduleItem(true)}
+              title="Add Event"
+              style="normal"
+              classModifier={`${addingScheduleItem ? "hidden" : ""} w-full`}
+            />
+            <div
+              className={`flex flex-col w-full gap-2 ${addingScheduleItem ? "" : "hidden"}`}
+            >
+              <div className="flex gap-2">
+                <TextInput
+                  value={scheduleItemName}
+                  onChange={(e) => setScheduleItemName(e.target.value)}
+                  placeholder="Event Name"
+                  customClass="w-full"
+                />
+                <TextInput
+                  value={scheduleItemTime}
+                  onChange={(e) => setScheduleItemTime(e.target.value)}
+                  placeholder="Event Time"
+                  customClass="w-full"
+                />
+              </div>
+              <div className="w-full flex gap-2">
+                <Button
+                  onClick={cancelAddEvent}
+                  title="Cancel"
+                  style="red"
+                  classModifier="w-full"
+                />
+                <Button
+                  onClick={addEvent}
+                  title="Confirm"
+                  style="green"
+                  classModifier="w-full"
+                />
+              </div>
+            </div>
+            <Button
+              onClick={publishEventSchedule}
+              title="Publish Schedule"
+              style="normal"
+              classModifier={`${ableToPublishEvents ? "" : "hidden"}`}
+            />
+          </div>
         </section>
       </section>
       <section className="w-full flex-col gap-2">

@@ -5,7 +5,7 @@ import { HackathonPageData } from "../account/dashboard/page";
 import { useAuthContext } from "@/lib/context/authContext";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-
+//TODO: only fetch the page data when this page or loaded, or the admin dashboard, add a function to load to the layoutContext
 export default function HackathonResources() {
   const router = useRouter();
   const { hackathonPageViewable, hackathonPageData } = useLayoutContext() as {

@@ -3,6 +3,7 @@
 import setResourcePageVisibility from "@/firebase/db/resources/updateResourcePageVisibility";
 import updateHackathonPageData from "@/firebase/db/resources/updateHackathonPage";
 import { collection, getDocs, setDoc, doc } from "firebase/firestore";
+import updateSchedule from "@/firebase/db/resources/updateSchedule";
 import { useLayoutContext } from "@/lib/context/LayoutContext";
 import Notification from "@/components/general/Notification";
 import { useAuthContext } from "@/lib/context/authContext";
@@ -457,10 +458,17 @@ export default function Account() {
   };
 
   const publishEventSchedule = () => {
-    setAbleToPublishEvents(true);
+    setAbleToPublishEvents(false);
+    console.log("here");
+
+    let jsonData = JSON.stringify(eventSchedule);
 
     //TODO: if the scheudle as json is the same as the schedule in the layout context dont publish
     //TODO only fetch schedule in the layout context when the user goes to the about page
+
+    updateSchedule(jsonData);
+
+    triggerNotification("Success", "success", "Hackathon schedule updated!");
   };
 
   return (

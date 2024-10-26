@@ -2,7 +2,7 @@
 
 import { EventScheduleItem } from "@/app/account/dashboard/page";
 import { useLayoutContext } from "@/lib/context/LayoutContext";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Schedule() {
   const [schedule, setSchedule] = useState<EventScheduleItem[]>([]);
@@ -11,11 +11,9 @@ export default function Schedule() {
     fetchSchedule: () => Promise<EventScheduleItem[]>;
   };
 
-  useEffect(() => {
-    fetchSchedule().then((data) => {
-      setSchedule(data);
-    });
-  }, []);
+  fetchSchedule().then((data) => {
+    setSchedule(data);
+  });
 
   return (
     <div className="overflow-x-auto">

@@ -32,6 +32,8 @@ export function LayoutContextProvider({
     HackathonPageData | undefined
   >(undefined);
   const [schedule, setSchedule] = useState<EventScheduleItem[]>([]);
+  const [eventDay, setEventDay] = useState("");
+  const [eventSignUpLink, setEventSignUpLink] = useState("");
 
   useEffect(() => {
     getResourcePageVisibility().then((result: boolean) => {
@@ -82,6 +84,14 @@ export function LayoutContextProvider({
           setSchedule(value);
         },
         fetchSchedule,
+        eventDay,
+        updateEventDay: (value: string) => {
+          setEventDay(value);
+        },
+        eventSignUpLink,
+        updateEventSignUpLink: (value: string) => {
+          setEventSignUpLink(value);
+        },
       }}
     >
       {children}

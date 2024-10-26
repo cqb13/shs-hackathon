@@ -75,7 +75,7 @@ export default function Account() {
 
   // event details
   const [eventIsSet, setEventIsSet] = useState(false);
-  const [eventDay, setEventDay] = useState("");
+  const [day, setDay] = useState("");
   const [signUpLink, setSignUpLink] = useState("");
   const [eventSchedule, setEventSchedule] = useState<EventScheduleItem[]>([]);
   const [eventSponsors, setEventSponsors] = useState<Sponsor[]>([]);
@@ -100,6 +100,10 @@ export default function Account() {
     fetchHackathonPageData,
     updateHackathonSchedule,
     fetchSchedule,
+    eventDay,
+    updateEventDay,
+    eventSignUpLink,
+    updateEventSignUpLink,
   } = useLayoutContext() as {
     updateTitle: (title: string) => void;
     hackathonPageViewable: boolean;
@@ -109,6 +113,10 @@ export default function Account() {
     fetchHackathonPageData: () => Promise<HackathonPageData>;
     updateHackathonSchedule: (value: EventScheduleItem[]) => void;
     fetchSchedule: () => Promise<EventScheduleItem[]>;
+    eventDay: string;
+    updateEventDay: (value: string) => void;
+    eventSignUpLink: string;
+    updateEventSignUpLink: (value: string) => void;
   };
 
   useEffect(() => {
@@ -365,8 +373,29 @@ export default function Account() {
     });
   };
 
-  const updateEventDay = () => {
-    console.log("here");
+  const setEventDay = () => {
+    if (day != "" && signUpLink == "") {
+      triggerNotification(
+        "Failed to update event day",
+        "error",
+        "You must add a sign up link",
+      );
+      return;
+    }
+
+    if (day == "" && signUpLink != "") {
+      triggerNotification(
+        "Failed to update event day",
+        "error",
+        "You must add an event day",
+      );
+      return;
+    }
+
+    updateEventDay(day);
+    updateEventSignUpLink(signUpLink);
+
+    triggerNotification("Success", "success", "Updated event day!");
   };
 
   const addEvent = () => {
@@ -513,7 +542,7 @@ export default function Account() {
         >
           <TextInput
             value={eventDay}
-            onChange={(e) => setEventDay(e.target.value)}
+            onChange={(e) => setDay(e.target.value)}
             placeholder="Event Day"
             customClass="w-full"
           />
@@ -524,7 +553,7 @@ export default function Account() {
             customClass="w-full"
           />
           <Button
-            onClick={updateEventDay}
+            onClick={setEventDay}
             title="Update Event Day"
             style="normal"
           />

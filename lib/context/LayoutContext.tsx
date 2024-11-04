@@ -9,6 +9,8 @@ import {
 } from "react";
 import getResourcePageVisibility from "@/firebase/db/resources/getResourcePageVisibility";
 import getHackathonPageData from "@/firebase/db/resources/getHackathonPageData";
+import { EventDetials } from "@/firebase/db/resources/getEventDetails";
+import getEventDetails from "@/firebase/db/resources/getEventDetails";
 import getSchedule from "@/firebase/db/resources/getSchedule";
 import {
   HackathonPageData,
@@ -32,8 +34,10 @@ export function LayoutContextProvider({
     HackathonPageData | undefined
   >(undefined);
   const [schedule, setSchedule] = useState<EventScheduleItem[]>([]);
-  const [eventDay, setEventDay] = useState("");
-  const [eventSignUpLink, setEventSignUpLink] = useState("");
+  const [eventDay, setEventDay] = useState<string | undefined>(undefined);
+  const [eventSignUpLink, setEventSignUpLink] = useState<string | undefined>(
+    undefined,
+  );
 
   useEffect(() => {
     getResourcePageVisibility().then((result: boolean) => {
@@ -60,6 +64,17 @@ export function LayoutContextProvider({
       let real: EventScheduleItem[] = JSON.parse(fetchedSchedule);
       setSchedule(real);
       return real;
+    }
+  };
+
+  const fetchEventDetails = async () => {
+    if (eventDay == undefined) {
+      const result: EventDetials = await getEventDetails();
+
+      setEventDay(result.eventDay);
+      setEventSignUpLink(result.signUpLink);
+
+      return result;
     }
   };
 
@@ -92,6 +107,7 @@ export function LayoutContextProvider({
         updateEventSignUpLink: (value: string) => {
           setEventSignUpLink(value);
         },
+        fetchEventDetails,
       }}
     >
       {children}

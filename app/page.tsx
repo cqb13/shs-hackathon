@@ -1,3 +1,7 @@
+"use client";
+
+import { EventDetials } from "@/firebase/db/resources/getEventDetails";
+import { useLayoutContext } from "@/lib/context/LayoutContext";
 import KeyEventCard from "@/components/home/KeyEventCard";
 import ContactForm from "@/components/home/ContactForm";
 import SponsorCard from "@/components/home/SponsorCard";
@@ -5,6 +9,17 @@ import sponsors from "@/lib/sponsors";
 import Image from "next/image";
 
 export default function Home() {
+  const { eventDay, eventSignUpLink, fetchEventDetails } =
+    useLayoutContext() as {
+      eventDay: string;
+      eventSignUpLink: string;
+      fetchEventDetails: () => Promise<EventDetials>;
+    };
+
+  if (eventDay == undefined || eventSignUpLink == undefined) {
+    fetchEventDetails();
+  }
+
   return (
     <main className="bg-azure bg-opacity-5">
       <section
@@ -38,17 +53,22 @@ export default function Home() {
       <section className="flex flex-col items-center gap-20 py-10 backdrop-blur-sm text-onyx-200 max-lsm:py-0">
         <hr className=" h-0.5 w-9/12 bg-onyx border-0 rounded" />
         <div className="flex items-center justify-center gap-10 max-lsm:flex-col max-lsm:gap-2">
-          <h2 className="font-unica-one text-5xl font-bold max-xxs:text-center">
+          <h2
+            className={`font-unica-one text-5xl font-bold max-xxs:text-center ${eventDay == undefined ? "" : "hidden"}`}
+          >
             Date: TBD
           </h2>
-          {/* 
+          <h2
+            className={`font-unica-one text-5xl font-bold max-xxs:text-center ${eventDay == undefined ? "hidden" : ""}`}
+          >
+            {eventDay}
+          </h2>
           <a
-            className="font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150"
+            className={`font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150 ${eventDay == undefined ? "hidden" : ""}`}
             href="https://docs.google.com/forms/d/1VkHAdF7eaMKsglVRdF1nhJtwhSHoe48okImXVRWGW0Q/viewform?ts=65970a9f&edit_requested=true"
           >
             Sign Up Now
           </a>
-          */}
         </div>
         <hr className="h-0.5 w-9/12 bg-onyx border-0 rounded" />
       </section>

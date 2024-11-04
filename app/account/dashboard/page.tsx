@@ -2,6 +2,8 @@
 
 import setResourcePageVisibility from "@/firebase/db/resources/updateResourcePageVisibility";
 import updateHackathonPageData from "@/firebase/db/resources/updateHackathonPage";
+import updateEventDetails from "@/firebase/db/resources/updateEventDetails";
+import { EventDetials } from "@/firebase/db/resources/getEventDetails";
 import { collection, getDocs, setDoc, doc } from "firebase/firestore";
 import updateSchedule from "@/firebase/db/resources/updateSchedule";
 import { useLayoutContext } from "@/lib/context/LayoutContext";
@@ -70,7 +72,6 @@ export default function Account() {
   const [editingId, setEditingId] = useState(0);
   const [scheduleItemName, setScheduleItemName] = useState("");
   const [scheduleItemTime, setScheduleItemTime] = useState("");
-  const [addingSponsor, setAddingSponsor] = useState(false);
   const [ableToPublishEvents, setAbleToPublishEvents] = useState(false);
 
   // event details
@@ -78,7 +79,6 @@ export default function Account() {
   const [day, setDay] = useState("");
   const [signUpLink, setSignUpLink] = useState("");
   const [eventSchedule, setEventSchedule] = useState<EventScheduleItem[]>([]);
-  const [eventSponsors, setEventSponsors] = useState<Sponsor[]>([]);
 
   // hackathon page details
   const [theme, setTheme] = useState("");
@@ -100,10 +100,9 @@ export default function Account() {
     fetchHackathonPageData,
     updateHackathonSchedule,
     fetchSchedule,
-    eventDay,
     updateEventDay,
-    eventSignUpLink,
     updateEventSignUpLink,
+    fetchEventDetails,
   } = useLayoutContext() as {
     updateTitle: (title: string) => void;
     hackathonPageViewable: boolean;
@@ -117,6 +116,7 @@ export default function Account() {
     updateEventDay: (value: string) => void;
     eventSignUpLink: string;
     updateEventSignUpLink: (value: string) => void;
+    fetchEventDetails: () => Promise<EventDetials>;
   };
 
   useEffect(() => {
@@ -181,6 +181,16 @@ export default function Account() {
 
     fetchSchedule().then((data) => {
       setEventSchedule(data);
+    });
+
+    fetchEventDetails().then((data: EventDetials) => {
+      if (data.eventDay == "") {
+        setEventIsSet(false);
+      } else {
+        setEventIsSet(true);
+        setDay(data.eventDay);
+        setSignUpLink(data.signUpLink);
+      }
     });
   }, [hackathonPageViewable, user, isAdmin, isImportant]);
 
@@ -394,8 +404,9 @@ export default function Account() {
 
     updateEventDay(day);
     updateEventSignUpLink(signUpLink);
-
-    triggerNotification("Success", "success", "Updated event day!");
+    updateEventDetails(day, signUpLink).then(() => {
+      triggerNotification("Success", "success", "Updated event day!");
+    });
   };
 
   const addEvent = () => {
@@ -541,7 +552,7 @@ export default function Account() {
           className={`${eventIsSet ? "" : "hidden"} flex flex-col gap-2`}
         >
           <TextInput
-            value={eventDay}
+            value={day}
             onChange={(e) => setDay(e.target.value)}
             placeholder="Event Day"
             customClass="w-full"

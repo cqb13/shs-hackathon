@@ -75,6 +75,15 @@ export function LayoutContextProvider({
       setEventSignUpLink(result.signUpLink);
 
       return result;
+    } else {
+      let link = eventSignUpLink == undefined ? "" : eventSignUpLink;
+
+      const result: EventDetials = {
+        eventDay: eventDay,
+        signUpLink: link,
+      };
+
+      return result;
     }
   };
 

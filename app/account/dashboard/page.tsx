@@ -183,8 +183,8 @@ export default function Account() {
       setEventSchedule(data);
     });
 
-    fetchEventDetails().then((data: EventDetials) => {
-      if (data.eventDay == "") {
+    fetchEventDetails().then((data) => {
+      if (data.eventDay == undefined || data.eventDay == "") {
         setEventIsSet(false);
       } else {
         setEventIsSet(true);
@@ -384,15 +384,6 @@ export default function Account() {
   };
 
   const setEventDay = () => {
-    if (day != "" && signUpLink == "") {
-      triggerNotification(
-        "Failed to update event day",
-        "error",
-        "You must add a sign up link",
-      );
-      return;
-    }
-
     if (day == "" && signUpLink != "") {
       triggerNotification(
         "Failed to update event day",

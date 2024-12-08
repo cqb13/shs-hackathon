@@ -64,8 +64,8 @@ export default function Home() {
             {eventDay}
           </h2>
           <a
-            className={`font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150 ${eventDay == undefined ? "hidden" : ""}`}
-            href="https://docs.google.com/forms/d/1VkHAdF7eaMKsglVRdF1nhJtwhSHoe48okImXVRWGW0Q/viewform?ts=65970a9f&edit_requested=true"
+            className={`font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150 ${eventDay == undefined || eventSignUpLink == "" ? "hidden" : ""}`}
+            href={eventSignUpLink}
           >
             Sign Up Now
           </a>

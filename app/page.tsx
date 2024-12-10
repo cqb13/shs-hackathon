@@ -42,7 +42,7 @@ export default function Home() {
           <article className="font-space-mono text-xl text-neutral-700">
             A hackathon is a day-long event where students collaborate to solve
             problems using STEM skills. Participants will work individually or
-            in teams to brainstorm, design, and build a solutions to a problem
+            in teams to brainstorm, design, and build a solution to a problem
             within a set time frame. Whether you{"'"}re just starting out or are
             already coding, this event is a great chance to learn, create, and
             connect with others who share your interest in technology. {" "}

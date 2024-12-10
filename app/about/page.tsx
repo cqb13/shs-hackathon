@@ -25,15 +25,10 @@ export default function About() {
             ABOUT US
           </h1>
           <article className="font-space-mono text-xl text-neutral-700">
-            Welcome to the SHS Hackathon of 2024, a day-long event organized by
-            the Girls Who Code and Web Development Club at Sharon High School.
-            Our goal is for students to immerse themselves in the world of STEM,
-            collaborating to find innovative solutions to real-world problems.
-            With meticulous planning and support from sponsors, our hackathon
-            promises an inclusive and exciting experience. We aim to inspire and
-            empower students, fostering a passion for technology and innovation.
-            Join us for a day of coding, creativity, and community building at
-            Sharon High School
+            The SHS Hackathon of 2025 is a day-long event proudly hosted by the
+            Girls Who Code and Web Development Club at Sharon High School. Our
+            mission is to bring together students with a passion for technology,
+            innovation, and problem-solving.{" "}
           </article>
         </section>
       </section>

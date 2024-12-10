@@ -40,13 +40,12 @@ export default function Home() {
             DISCOVER
           </h2>
           <article className="font-space-mono text-xl text-neutral-700">
-            Unleash your creativity and unlock your full potential at our
-            premier STEM Hackathon Event, where the worlds of technology and
-            innovation collide! A hackathon is a day-long event where students
-            come together to tackle complex problems through the power of STEM.
-            Prepare for an electrifying experience as you embark on a thrilling
-            race against the clock to craft ingenious solutions to perplexing
-            problems.
+            A hackathon is a day-long event where students collaborate to solve
+            problems using STEM skills. Participants will work individually or
+            in teams to brainstorm, design, and build a solutions to a problem
+            within a set time frame. Whether you{"'"}re just starting out or are
+            already coding, this event is a great chance to learn, create, and
+            connect with others who share your interest in technology. {" "}
           </article>
         </section>
       </section>

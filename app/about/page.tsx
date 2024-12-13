@@ -21,10 +21,10 @@ export default function About() {
           />
         </section>
         <section className="flex flex-col w-1/2 max-md:w-full">
-          <h1 className="font-unica-one text-5xl text-onyx-200 font-bold">
+          <h1 className="font-header text-5xl text-onyx-200 font-bold">
             ABOUT US
           </h1>
-          <article className="font-space-mono text-xl text-neutral-700">
+          <article className="font-body text-xl text-neutral-700">
             The SHS Hackathon of 2025 is a day-long event proudly hosted by the
             Girls Who Code and Web Development Club at Sharon High School. Our
             mission is to bring together students with a passion for technology,
@@ -37,7 +37,7 @@ export default function About() {
         id="schedule"
       >
         <div className="w-full flex flex-col items-center">
-          <h2 className="font-unica-one text-onyx-200 text-5xl font-bold p-4">
+          <h2 className="font-header text-onyx-200 text-5xl font-bold p-4">
             Schedule
           </h2>
           <hr className="h-0.5 w-5/12 bg-onyx border-0 rounded" />
@@ -51,7 +51,7 @@ export default function About() {
         id="previous-years"
       >
         <div className="w-full">
-          <h2 className="font-unica-one text-onyx-200 text-5xl font-bold p-4">
+          <h2 className="font-header text-onyx-200 text-5xl font-bold p-4">
             Previous Years
           </h2>
           <hr className="h-0.5 w-5/12 bg-onyx border-0 rounded" />
@@ -63,11 +63,11 @@ export default function About() {
         id="faq"
       >
         <div className="w-full">
-          <h2 className="font-unica-one text-onyx-200 text-5xl font-bold p-4">
+          <h2 className="font-header text-onyx-200 text-5xl font-bold p-4">
             FAQ
           </h2>
           <hr className="h-0.5 w-5/12 bg-onyx border-0 rounded" />
-          <sub className="font-space-mono text-onyx text-lg">
+          <sub className="font-body text-onyx text-lg">
             Answers to some questions you might have.
           </sub>
         </div>

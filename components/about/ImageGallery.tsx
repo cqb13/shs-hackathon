@@ -9,7 +9,6 @@ export default function ImageGallery() {
 
   const handleClick = (event: any) => {
     document.body.style.overflow = "hidden";
-
     setSelectedImg(event.target.src);
     setModal(true);
   };
@@ -23,97 +22,97 @@ export default function ImageGallery() {
     <>
       {modal ? (
         <section
-          className='w-screen h-screen fixed top-0 left-0 bg-onyx bg-opacity-60 z-40 flex items-center justify-center'
+          className="w-screen h-screen fixed top-0 left-0 bg-onyx bg-opacity-60 z-40 flex items-center justify-center"
           onClick={closeModal}
         >
-          <button onClick={closeModal} className='absolute top-5 right-5'>
+          <button onClick={closeModal} className="absolute top-5 right-5">
             <svg
-              fill='#e7bed4'
-              version='1.1'
-              id='Layer_1'
-              xmlns='http://www.w3.org/2000/svg'
-              width='50px'
-              height='50px'
-              viewBox='0 0 100 100'
-              enable-background='new 0 0 100 100'
+              fill="#e7bed4"
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="50px"
+              height="50px"
+              viewBox="0 0 100 100"
+              enable-background="new 0 0 100 100"
             >
               <path
-                d='M84.707,68.752L65.951,49.998l18.75-18.752c0.777-0.777,0.777-2.036,0-2.813L71.566,15.295
+                d="M84.707,68.752L65.951,49.998l18.75-18.752c0.777-0.777,0.777-2.036,0-2.813L71.566,15.295
 	c-0.777-0.777-2.037-0.777-2.814,0L49.999,34.047l-18.75-18.752c-0.746-0.747-2.067-0.747-2.814,0L15.297,28.431
 	c-0.373,0.373-0.583,0.88-0.583,1.407c0,0.527,0.21,1.034,0.583,1.407L34.05,49.998L15.294,68.753
 	c-0.373,0.374-0.583,0.88-0.583,1.407c0,0.528,0.21,1.035,0.583,1.407l13.136,13.137c0.373,0.373,0.881,0.583,1.41,0.583
 	c0.525,0,1.031-0.21,1.404-0.583l18.755-18.755l18.756,18.754c0.389,0.388,0.896,0.583,1.407,0.583c0.511,0,1.019-0.195,1.408-0.583
-	l13.138-13.137C85.484,70.789,85.484,69.53,84.707,68.752z'
+	l13.138-13.137C85.484,70.789,85.484,69.53,84.707,68.752z"
               />
             </svg>
           </button>
 
           <Image
-            src={`https://hackathon.shsdevs.com/${selectedImg}`}
-            alt='Hackathon 2019'
+            src={`${selectedImg}`}
+            alt="Hackathon 2019"
             width={900}
             height={900}
             quality={100}
             priority={true}
-            className='rounded-2xl'
+            className="rounded-2xl"
           />
         </section>
       ) : null}
 
-      <section className='flex flex-wrap items-center justify-center gap-5 mt-10'>
+      <section className="flex flex-wrap items-center justify-center gap-5 mt-10">
         <Image
           onClick={handleClick}
-          src='/images/previous-years/img-1.jpg'
-          alt='Hackathon 2019'
-          className='rounded-2xl cursor-pointer'
+          src="/images/previous-years/img-1.jpg"
+          alt="Hackathon 2019"
+          className="rounded-2xl cursor-pointer"
           width={500}
           height={500}
         />
         <Image
           onClick={handleClick}
-          src='/images/previous-years/img-3.jpg'
-          alt='Hackathon 2019'
-          className='rounded-2xl cursor-pointer'
+          src="/images/previous-years/img-3.jpg"
+          alt="Hackathon 2019"
+          className="rounded-2xl cursor-pointer"
           width={500}
           height={500}
         />
         <Image
           onClick={handleClick}
-          src='/images/previous-years/img-4.jpg'
-          alt='Hackathon 2019'
-          className='rounded-2xl cursor-pointer'
+          src="/images/previous-years/img-4.jpg"
+          alt="Hackathon 2019"
+          className="rounded-2xl cursor-pointer"
           width={500}
           height={500}
         />
         <Image
           onClick={handleClick}
-          src='/images/previous-years/img-6.jpg'
-          alt='Hackathon 2019'
-          className='rounded-2xl cursor-pointer'
+          src="/images/previous-years/img-6.jpg"
+          alt="Hackathon 2019"
+          className="rounded-2xl cursor-pointer"
           width={500}
           height={500}
         />
         <Image
           onClick={handleClick}
-          src='/images/previous-years/img-7.jpg'
-          alt='Hackathon 2019'
-          className='rounded-2xl cursor-pointer'
+          src="/images/previous-years/img-7.jpg"
+          alt="Hackathon 2019"
+          className="rounded-2xl cursor-pointer"
           width={500}
           height={500}
         />
         <Image
           onClick={handleClick}
-          src='/images/previous-years/img-8.jpg'
-          alt='Hackathon 2019'
-          className='rounded-2xl cursor-pointer'
+          src="/images/previous-years/img-8.jpg"
+          alt="Hackathon 2019"
+          className="rounded-2xl cursor-pointer"
           width={500}
           height={500}
         />
         <Image
           onClick={handleClick}
-          src='/images/previous-years/img-9.jpg'
-          alt='Hackathon 2019'
-          className='rounded-2xl cursor-pointer'
+          src="/images/previous-years/img-9.jpg"
+          alt="Hackathon 2019"
+          className="rounded-2xl cursor-pointer"
           width={500}
           height={500}
         />

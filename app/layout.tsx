@@ -101,7 +101,7 @@ export default function RootLayout({
           <FooterNav />
           <section className="flex w-full justify-between items-center">
             <a
-              className="font-space-mono text-white"
+              className="font-body text-white"
               href="https://github.com/Website-Club/shs-hackathon/blob/main/LICENSE"
               target="_blank"
             >
@@ -109,7 +109,7 @@ export default function RootLayout({
             </a>
             <a
               href="https://github.com/cqb13"
-              className="font-space-mono text-white"
+              className="font-body text-white"
               target="_blank"
             >
               Created by: Maksim Straus

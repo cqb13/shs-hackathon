@@ -82,7 +82,7 @@ export default function NavBar() {
           : "bg-onyx w-full rounded-none"
       }  flex items-center justify-between gap-2 max-sm:flex-col z-30 transition-all px-14 py-1`}
     >
-      <p className="p-1 text-fairy_tale font-space-mono">SHS Hackathon</p>
+      <p className="p-1 text-fairy_tale font-body">SHS Hackathon</p>
       <div className="flex items-center gap-2 max-sm:flex-wrap max-sm:justify-center">
         {routes.map((route) => (
           <button

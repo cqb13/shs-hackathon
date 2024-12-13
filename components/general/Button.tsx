@@ -24,7 +24,7 @@ export default function Button({
 
   return (
     <button
-      className={`text-white text-xl font-space-mono px-6 py-3 rounded-md hover:bg-opacity-95 active:tracking-wider transition-all  ${getStyle(style)}  ${
+      className={`text-white text-xl font-body px-6 py-3 rounded-md hover:bg-opacity-95 active:tracking-wider transition-all  ${getStyle(style)}  ${
         classModifier ? classModifier : ""
       }`}
       onClick={onClick}

@@ -9,7 +9,7 @@ export default function QuestionDisplay({
   submitted,
   updateQuestionResults,
   attempts,
-  index
+  index,
 }: {
   question: Question;
   submitted: boolean;
@@ -19,7 +19,7 @@ export default function QuestionDisplay({
 }) {
   const [selectAnswerIndex, setSelectAnswerIndex] = useState<number>();
   const [multipleChoiceAnswers, setMultipleChoiceAnswers] = useState<string[]>(
-    []
+    [],
   );
   const [blankInputs, setBlankInputs] = useState<string[]>([]);
   const [selected, setSelected] = useState<number>();
@@ -108,7 +108,7 @@ export default function QuestionDisplay({
   const replaceBlankWord = (
     word: string,
     wordIndex: number,
-    submitted: boolean
+    submitted: boolean,
   ) => {
     if (question.type !== QuestionType.FillInTheBlank) return;
     let newWord = word;
@@ -136,19 +136,15 @@ export default function QuestionDisplay({
   };
 
   return (
-    <section className='flex flex-col gap-2'>
+    <section className="flex flex-col gap-2">
       {question.type === QuestionType.FillInTheBlank ? (
         <>
-          <div className='flex gap-2 flex-wrap'>
-            <h2 className='font-space-mono text-2xl text-black'>
-              {index + 1}.
-            </h2>
+          <div className="flex gap-2 flex-wrap">
+            <h2 className="font-body text-2xl text-black">{index + 1}.</h2>
             {question.question.map((word, wordIndex) => (
               <h2
                 key={index}
-                className={`${
-                  word === "" && !submitted ? "" : "font-space-mono"
-                } ${
+                className={`${word === "" && !submitted ? "" : "font-body"} ${
                   word === "" && submitted ? "text-green-700" : ""
                 } text-2xl text-black`}
               >
@@ -157,18 +153,18 @@ export default function QuestionDisplay({
             ))}
           </div>
 
-          <section className='flex gap-2 max-sm:flex-col'>
+          <section className="flex gap-2 max-sm:flex-col">
             {question.answers.map((answer, answerIndex) => (
-              <div key={answerIndex} className='w-1/2 relative max-sm:w-full'>
+              <div key={answerIndex} className="w-1/2 relative max-sm:w-full">
                 <input
-                  type='text'
+                  type="text"
                   value={blankInputs[answerIndex]}
                   onChange={(event) => handleBlankUpdate(event, answerIndex)}
-                  className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
-                  placeholder='Type your answer here...'
+                  className="w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-body p-4"
+                  placeholder="Type your answer here..."
                 />
                 {answer !== blankInputs[answerIndex] && submitted ? (
-                  <h2 className='absolute top-3 right-6 text-green-700 font-space-mono text-xl'>
+                  <h2 className="absolute top-3 right-6 text-green-700 font-body text-xl">
                     {answer}
                   </h2>
                 ) : null}
@@ -177,18 +173,18 @@ export default function QuestionDisplay({
           </section>
         </>
       ) : (
-        <h2 className='font-space-mono text-2xl text-black'>
+        <h2 className="font-body text-2xl text-black">
           {index + 1}. {question.question}
         </h2>
       )}
 
-      <section className='grid grid-cols-2 grid-rows-2 gap-2 max-sm:grid-cols-1'>
+      <section className="grid grid-cols-2 grid-rows-2 gap-2 max-sm:grid-cols-1">
         {question.type === QuestionType.MultipleChoice
           ? multipleChoiceAnswers.map((answer, answerIndex) => (
               <div
                 key={answerIndex}
                 onClick={() => handleSelect(answerIndex)}
-                className='bg-onyx p-10 rounded-md cursor-pointer hover:bg-opacity-95 transition-all'
+                className="bg-onyx p-10 rounded-md cursor-pointer hover:bg-opacity-95 transition-all"
               >
                 <h2
                   className={` ${
@@ -199,7 +195,7 @@ export default function QuestionDisplay({
                     selected !== answerIndex
                       ? "text-green-700"
                       : ""
-                  } font-space-mono text-xl`}
+                  } font-body text-xl`}
                 >
                   {answer}
                 </h2>
@@ -210,17 +206,17 @@ export default function QuestionDisplay({
 
       <section>
         {question.type === QuestionType.ShortAnswer ? (
-          <div className='w-full relative'>
+          <div className="w-full relative">
             <textarea
-              className='w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-space-mono p-4'
-              placeholder='Type your answer here...'
+              className="w-full rounded-md bg-onyx placeholder-gray text-fairy_tale-400 font-body p-4"
+              placeholder="Type your answer here..."
               cols={30}
               rows={10}
               onChange={handleResponse}
               value={response}
             />
             {submitted ? (
-              <h2 className='absolute bottom-6 left-6 text-green-700 font-space-mono text-xl'>
+              <h2 className="absolute bottom-6 left-6 text-green-700 font-body text-xl">
                 {question.answer}
               </h2>
             ) : null}
@@ -229,11 +225,11 @@ export default function QuestionDisplay({
       </section>
 
       {question.type === QuestionType.TrueFalse ? (
-        <section className='flex gap-2 w-full'>
+        <section className="flex gap-2 w-full">
           <div
             key={0}
             onClick={() => handleSelect(0)}
-            className='bg-onyx p-10 rounded-md cursor-pointer hover:bg-opacity-95 transition-all flex-1'
+            className="bg-onyx p-10 rounded-md cursor-pointer hover:bg-opacity-95 transition-all flex-1"
           >
             <h2
               className={`${
@@ -242,7 +238,7 @@ export default function QuestionDisplay({
                   : ""
               } ${
                 selected == 0 ? "text-fairy_tale-400" : ""
-              } font-space-mono text-xl`}
+              } font-body text-xl`}
             >
               True
             </h2>
@@ -250,16 +246,14 @@ export default function QuestionDisplay({
           <div
             key={1}
             onClick={() => handleSelect(1)}
-            className='bg-onyx p-10 rounded-md cursor-pointer hover:bg-opacity-95 transition-all flex-1'
+            className="bg-onyx p-10 rounded-md cursor-pointer hover:bg-opacity-95 transition-all flex-1"
           >
             <h2
               className={`${
                 1 == selectAnswerIndex && submitted && selected !== 1
                   ? "text-green-700"
                   : ""
-              }${
-                selected == 1 ? "text-fairy_tale-400" : ""
-              } font-space-mono text-xl`}
+              }${selected == 1 ? "text-fairy_tale-400" : ""} font-body text-xl`}
             >
               False
             </h2>

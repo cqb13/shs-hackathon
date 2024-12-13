@@ -527,7 +527,7 @@ export default function Account() {
         <h1 className="text-xl font-bold font-heading text-onyx-200 text-center">
           Event Details
         </h1>
-        <div className="text-neutral-700 font-space-mono pb-2">
+        <div className="text-neutral-700 font-body pb-2">
           <h2 className="text-xl text-onyx-200 font-bold">
             Event is Scheduled
           </h2>
@@ -570,7 +570,7 @@ export default function Account() {
                 <tbody>
                   {eventSchedule.map((event: EventScheduleItem, i: number) => (
                     <tr key={i} className="flex justify-between items-center">
-                      <td className="py-2 px-4 font-space-mono text-xl text-neutral-700 w-full">
+                      <td className="py-2 px-4 font-body text-xl text-neutral-700 w-full">
                         {edditingScheduleItem && editingId == i ? (
                           <TextInput
                             value={scheduleItemName}
@@ -584,7 +584,7 @@ export default function Account() {
                           <p>{event.name}</p>
                         )}
                       </td>
-                      <td className="py-2 px-4 font-space-mono text-xl text-neutral-700 w-full">
+                      <td className="py-2 px-4 font-body text-xl text-neutral-700 w-full">
                         {edditingScheduleItem && editingId == i ? (
                           <TextInput
                             value={scheduleItemTime}
@@ -721,11 +721,11 @@ export default function Account() {
         <h1 className="text-xl font-bold font-heading text-onyx-200 text-center">
           Hackathon Page Management
         </h1>
-        <div className="text-neutral-700 font-space-mono pb-2">
+        <div className="text-neutral-700 font-body pb-2">
           <h2 className="text-xl text-onyx-200 font-bold">
             Change Hackathon Page Visibility
           </h2>
-          <p className="font-space-mono text-neutral-700">
+          <p className="font-body text-neutral-700">
             If checked, allows all users to view the hackathon theme and other
             event details
           </p>

@@ -36,10 +36,10 @@ export default function Home() {
           />
         </section>
         <section className="flex flex-col w-1/2 max-md:w-full">
-          <h2 className="font-unica-one text-5xl text-onyx-200 font-bold">
+          <h2 className="font-header text-5xl text-onyx-200 font-bold">
             DISCOVER
           </h2>
-          <article className="font-space-mono text-xl text-neutral-700">
+          <article className="font-body text-xl text-neutral-700">
             A hackathon is a day-long event where students collaborate to solve
             problems using STEM skills. Participants will work individually or
             in teams to brainstorm, design, and build a solution to a problem
@@ -53,17 +53,17 @@ export default function Home() {
         <hr className=" h-0.5 w-9/12 bg-onyx border-0 rounded" />
         <div className="flex items-center justify-center gap-10 max-lsm:flex-col max-lsm:gap-2">
           <h2
-            className={`font-unica-one text-5xl font-bold max-xxs:text-center ${eventDay == undefined ? "" : "hidden"}`}
+            className={`font-header text-5xl font-bold max-xxs:text-center ${eventDay == undefined ? "" : "hidden"}`}
           >
             Date: TBD
           </h2>
           <h2
-            className={`font-unica-one text-5xl font-bold max-xxs:text-center ${eventDay == undefined ? "hidden" : ""}`}
+            className={`font-header text-5xl font-bold max-xxs:text-center ${eventDay == undefined ? "hidden" : ""}`}
           >
             {eventDay}
           </h2>
           <a
-            className={`font-unica-one text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150 ${eventDay == undefined || eventSignUpLink == "" ? "hidden" : ""}`}
+            className={`font-header text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150 ${eventDay == undefined || eventSignUpLink == "" ? "hidden" : ""}`}
             href={eventSignUpLink}
           >
             Sign Up Now
@@ -103,7 +103,7 @@ export default function Home() {
         id="sponsors"
       >
         <div className="w-full flex flex-col items-center">
-          <h2 className="font-unica-one text-onyx-200 text-center text-5xl font-bold p-4">
+          <h2 className="font-header text-onyx-200 text-center text-5xl font-bold p-4">
             Proud Sponsors
           </h2>
           <hr className="h-0.5 w-5/12 bg-onyx border-0 rounded max-md:w-7/12 max-sm:w-9/12 max-xxs:w-11/12" />
@@ -124,11 +124,11 @@ export default function Home() {
         id="contact"
       >
         <div className="w-full">
-          <h2 className="font-unica-one text-onyx-200 text-5xl font-bold p-4">
+          <h2 className="font-header text-onyx-200 text-5xl font-bold p-4">
             Get in Touch
           </h2>
           <hr className="h-0.5 w-5/12 bg-onyx border-0 rounded max-md:w-7/12 max-sm:w-9/12 max-xxs:w-11/12" />
-          <sub className="font-space-mono text-onyx text-lg">
+          <sub className="font-body text-onyx text-lg">
             shshackathon@gmail.com
           </sub>
         </div>

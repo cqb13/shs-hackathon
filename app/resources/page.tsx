@@ -62,34 +62,28 @@ export default function Resources() {
 
   return (
     <main className="flex flex-col gap-10 px-60 py-20 max-lg:px-14 max-sm:px-5">
-      <h2 className="text-onyx-200 font-unica-one text-5xl">
-        Intro To Scratch
-      </h2>
-      <h3 className="text-onyx-200 font-unica-one text-4xl" id="part-1">
+      <h2 className="text-onyx-200 font-header text-5xl">Intro To Scratch</h2>
+      <h3 className="text-onyx-200 font-header text-4xl" id="part-1">
         Part-1
       </h3>
-      <h4 className="text-neutral-700 font-space-mono text-2xl">
-        What is Scratch?
-      </h4>
+      <h4 className="text-neutral-700 font-body text-2xl">What is Scratch?</h4>
       <iframe
         className="max-md:w-[320px] max-md:h-[180px]"
         width="640"
         height="360"
         src={`https://www.youtube.com/embed/jXUZaf5D12A?autoplay=0&origin=http://example.com&controls=0&rel=1`}
       ></iframe>
-      <h4 className="text-neutral-700 font-space-mono text-2xl">
-        Making an account
-      </h4>
+      <h4 className="text-neutral-700 font-body text-2xl">Making an account</h4>
       <iframe
         className="max-md:w-[320px] max-md:h-[180px]"
         width="640"
         height="360"
         src={`https://www.youtube.com/embed/YSTRopT3Ois?autoplay=0&origin=http://example.com&controls=0&rel=1`}
       ></iframe>
-      <h3 className="text-onyx-200 font-unica-one text-4xl" id="part-2">
+      <h3 className="text-onyx-200 font-header text-4xl" id="part-2">
         Part-2
       </h3>
-      <h4 className="text-neutral-700 font-space-mono text-2xl">
+      <h4 className="text-neutral-700 font-body text-2xl">
         Creating a project
       </h4>
       <iframe
@@ -98,7 +92,7 @@ export default function Resources() {
         height="360"
         src={`https://www.youtube.com/embed/hf6BM9ssJl8?autoplay=0&origin=http://example.com&controls=0&rel=1`}
       ></iframe>
-      <h4 className="text-neutral-700 font-space-mono text-2xl">
+      <h4 className="text-neutral-700 font-body text-2xl">
         How to use sprites and backgrounds
       </h4>
       <iframe
@@ -107,7 +101,7 @@ export default function Resources() {
         height="360"
         src={`https://www.youtube.com/embed/R-QuPKDAADE?autoplay=0&origin=http://example.com&controls=0&rel=1`}
       ></iframe>
-      <h4 className="text-neutral-700 font-space-mono text-2xl">
+      <h4 className="text-neutral-700 font-body text-2xl">
         How to add extensions
       </h4>
       <iframe
@@ -116,10 +110,10 @@ export default function Resources() {
         height="360"
         src={`https://www.youtube.com/embed/eyTfQwSHWEw?autoplay=0&origin=http://example.com&controls=0&rel=1`}
       ></iframe>
-      <h3 className="text-onyx-200 font-unica-one text-4xl" id="part-3">
+      <h3 className="text-onyx-200 font-header text-4xl" id="part-3">
         Part-3
       </h3>
-      <h4 className="text-neutral-700 font-space-mono text-2xl">
+      <h4 className="text-neutral-700 font-body text-2xl">
         What are variables?
       </h4>
       <iframe
@@ -128,7 +122,7 @@ export default function Resources() {
         height="360"
         src={`https://www.youtube.com/embed/wS1QETPfgGE?autoplay=0&origin=http://example.com&controls=0&rel=1`}
       ></iframe>
-      <h4 className="text-neutral-700 font-space-mono text-2xl">
+      <h4 className="text-neutral-700 font-body text-2xl">
         What are functions?
       </h4>
       <iframe
@@ -137,17 +131,17 @@ export default function Resources() {
         height="360"
         src={`https://www.youtube.com/embed/Q0JecvzwyIg?autoplay=0&origin=http://example.com&controls=0&rel=1`}
       ></iframe>
-      <h3 className="text-onyx-200 font-unica-one text-4xl" id="part-4">
+      <h3 className="text-onyx-200 font-header text-4xl" id="part-4">
         Part-4
       </h3>
-      <h4 className="text-neutral-700 font-space-mono text-2xl">Loops</h4>
+      <h4 className="text-neutral-700 font-body text-2xl">Loops</h4>
       <iframe
         className="max-md:w-[320px] max-md:h-[180px]"
         width="640"
         height="360"
         src={`https://www.youtube.com/embed/m57Gmc7wFIM?autoplay=0&origin=http://example.com&controls=0&rel=1`}
       ></iframe>
-      <h2 className="text-onyx-200 font-unica-one text-5xl" id="tp">
+      <h2 className="text-onyx-200 font-header text-5xl" id="tp">
         Final Review
       </h2>
       {usedQuestions.map((question, index) => (

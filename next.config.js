@@ -10,8 +10,9 @@ const nextConfig = {
       "assets.stickpng.com",
       "seeklogo.com",
       "upload.wikimedia.org",
-    ]
-  }
+      "hackathon.shsdevs.com",
+    ],
+  },
 };
 
 module.exports = nextConfig;

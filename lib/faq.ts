@@ -20,9 +20,9 @@ const faqs: Faq[] = [
       "When registration opens a link to register can be found on our home page.",
   },
 //   {
-//     question: "What are the prizes?",
+//      question: "What are the prizes?",
 //     answer: "We have exciting prizes, including 15 small Arduino kits!",
-//   },
+//    },
   {
     question: "How can I contribute as a sponsor?",
     answer:

@@ -21,7 +21,7 @@ const faqs: Faq[] = [
   },
 //   {
 //      question: "What are the prizes?",
-//     answer: "We have exciting prizes, including 15 small Arduino kits!",
+//     answer: "We have prizes including 15 small Arduino kits!",
 //    },
   {
     question: "How can I contribute as a sponsor?",

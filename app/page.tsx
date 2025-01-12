@@ -65,6 +65,7 @@ export default function Home() {
           <a
             className={`font-header text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150 ${eventDay == undefined || eventSignUpLink == "" ? "hidden" : ""}`}
             href={eventSignUpLink}
+            target="_blank"
           >
             Sign Up Now
           </a>

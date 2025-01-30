@@ -89,12 +89,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-white`}>
+      <body className={`${inter.className} bg-onyx`}>
         <AuthContextProvider>
           <LayoutContextProvider>
             <NavBar />
             <Header />
-            {children}
+            <section className="bg-white">{children}</section>
           </LayoutContextProvider>
         </AuthContextProvider>
         <footer className="border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10 bg-onyx">

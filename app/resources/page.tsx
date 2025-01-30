@@ -61,7 +61,7 @@ export default function Resources() {
   };
 
   return (
-    <main className="flex flex-col gap-10 px-60 py-20 max-lg:px-14 max-sm:px-5">
+    <main className="flex flex-col gap-10 px-60 py-20 max-lg:px-14 max-sm:px-5 bg-white">
       <h2 className="text-onyx-200 font-header text-5xl">Intro To Scratch</h2>
       <h3 className="text-onyx-200 font-header text-4xl" id="part-1">
         Part-1

@@ -4,9 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+html,
+body {
   scroll-behavior: smooth;
   scroll-padding-top: 15rem;
+  background: #403f4b;
 }
 
 .black-and-white {

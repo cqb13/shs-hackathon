@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <main className="bg-azure bg-opacity-5">
       <section
-        className="flex items-center justify-center gap-10 w-full p-28 max-lg:px-10 max-md:flex-col max-xxs:px-5"
+        className="flex items-center justify-center gap-10 w-full p-28 max-lg:px-10 max-md:flex-col max-xxs:px-5 bg-white"
         id="discover"
       >
         <section className="w-1/2 max-md:w-full">
@@ -49,7 +49,7 @@ export default function Home() {
           </article>
         </section>
       </section>
-      <section className="flex flex-col items-center gap-20 py-10 backdrop-blur-sm text-onyx-200 max-lsm:py-0">
+      <section className="flex flex-col items-center gap-20 py-10 backdrop-blur-sm text-onyx-200 max-lsm:py-0 bg-white">
         <hr className=" h-0.5 w-9/12 bg-onyx border-0 rounded" />
         <div className="flex items-center justify-center gap-10 max-lsm:flex-col max-lsm:gap-2">
           <h2
@@ -73,7 +73,7 @@ export default function Home() {
         <hr className="h-0.5 w-9/12 bg-onyx border-0 rounded" />
       </section>
       <section
-        className="px-72 py-28 max-xl:px-64 max-lg:px-20 max-md:px-10 max-xxs:px-5"
+        className="px-72 py-28 max-xl:px-64 max-lg:px-20 max-md:px-10 max-xxs:px-5 bg-white"
         id="key-features"
       >
         <section className="flex p-4 mt-14 gap-5 max-sm:flex-col max-sm:gap-2">
@@ -100,7 +100,7 @@ export default function Home() {
         </section>
       </section>
       <section
-        className="px-64 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5"
+        className="px-64 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5 bg-white"
         id="sponsors"
       >
         <div className="w-full flex flex-col items-center">
@@ -121,7 +121,7 @@ export default function Home() {
         </section>
       </section>
       <section
-        className="px-64 py-28 flex flex-col justify-center items-start gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5"
+        className="px-64 py-28 flex flex-col justify-center items-start gap-10 max-lg:px-20 max-md:px-10 max-xxs:px-5 bg-white"
         id="contact"
       >
         <div className="w-full">

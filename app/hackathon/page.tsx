@@ -72,7 +72,7 @@ export default function HackathonResources() {
   }, [hackathonPageViewable, user, isHelper, isAdmin, isImportant]);
 
   return (
-    <main className="flex flex-col gap-10 px-60 py-20 max-lg:px-14 max-sm:px-5">
+    <main className="flex flex-col gap-10 px-60 py-20 max-lg:px-14 max-sm:px-5 bg-white">
       <h2 className="text-onyx-200 font-body text-5xl">
         Welcome to the 7th Annual SHS Hackathon!
       </h2>

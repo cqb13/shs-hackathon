@@ -10,9 +10,10 @@
     "deploy": "next build && vercel --prod"
   },
   "dependencies": {
+    "@next/third-parties": "^15.1.6",
     "emailjs-com": "^3.2.0",
     "firebase": "^10.8.1",
-    "next": "^13.5.5",
+    "next": "^15.1.6",
     "react": "^18",
     "react-dom": "^18"
   },

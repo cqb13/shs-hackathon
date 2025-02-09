@@ -1,13 +1,22 @@
 import { LayoutContextProvider } from "@/lib/context/LayoutContext";
 import { AuthContextProvider } from "@/lib/context/authContext";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import FooterNav from "@/components/layout/FooterNav";
 import Header from "@/components/layout/Header";
 import NavBar from "@components/layout/NavBar";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import type { Metadata } from "next";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#403f4b",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hackathon.shsdevs.com"),
@@ -32,7 +41,6 @@ export const metadata: Metadata = {
   applicationName: "SHS Hackathon",
   referrer: "origin-when-cross-origin",
   authors: [{ name: "Maksim Straus", url: "https://maksimstraus.dev" }],
-  colorScheme: "dark",
   creator: "Maksim Straus",
   publisher: "Maksim Straus",
   formatDetection: {
@@ -40,7 +48,6 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  themeColor: "#403f4b",
   manifest: "https://hackathon.shsdevs.com/manifest.json",
   openGraph: {
     title: "SHS Hackathon",
@@ -61,11 +68,6 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/icon.png",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
   },
   robots: {
     index: true,
@@ -117,6 +119,7 @@ export default function RootLayout({
           </section>
         </footer>
       </body>
+      <GoogleAnalytics gaId="G-5LVB9MQHRP" />
     </html>
   );
 }

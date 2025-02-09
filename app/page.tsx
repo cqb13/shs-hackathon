@@ -3,6 +3,7 @@
 import { EventDetials } from "@/firebase/db/resources/getEventDetails";
 import { useLayoutContext } from "@/lib/context/LayoutContext";
 import KeyEventCard from "@/components/home/KeyEventCard";
+import { sendGAEvent } from "@next/third-parties/google";
 import ContactForm from "@/components/home/ContactForm";
 import SponsorCard from "@/components/home/SponsorCard";
 import sponsors from "@/lib/sponsors";
@@ -65,6 +66,7 @@ export default function Home() {
           <a
             className={`font-header text-5xl font-bold text-shadow-lg shadow-azure hover:text-azure cursor-pointer transition-all duration-150 ${eventDay == undefined || eventSignUpLink == "" ? "hidden" : ""}`}
             href={eventSignUpLink}
+            onClick={() => sendGAEvent("event", "sign_up_press")}
             target="_blank"
           >
             Sign Up Now

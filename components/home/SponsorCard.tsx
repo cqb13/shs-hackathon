@@ -1,3 +1,6 @@
+"use client";
+
+import { sendGAEvent } from "@next/third-parties/google";
 import { Sponsor } from "@/lib/sponsors";
 import Image from "next/image";
 
@@ -15,6 +18,7 @@ export default function SponsorCard({ name, image, link }: Sponsor) {
       <a
         href={link}
         target="_blank"
+        onClick={() => sendGAEvent("event", "sponsor_visit", { value: name })}
         className="text-onyx-200 text-xl text-center font-body mt-10 transition-all hover:text-azure duration-150 cursor-pointer"
       >
         {name}

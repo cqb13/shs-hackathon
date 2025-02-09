@@ -2,6 +2,7 @@
 
 import questions, { QuestionType, Question } from "@/lib/testQuestions";
 import QuestionDisplay from "@/components/resources/questions";
+import { sendGAEvent } from "@next/third-parties/google";
 import Button from "@/components/general/Button";
 import { useState, useEffect } from "react";
 import shuffle from "@/utils/shuffle";
@@ -19,6 +20,7 @@ export default function Resources() {
 
   useEffect(() => {
     let tempUncertainResultsIndex: number[] = [];
+    sendGAEvent("event", "resource_page_load");
     for (let i = 0; i < questions.length; i++) {
       if (
         questions[i].type === QuestionType.MultipleChoice ||

@@ -6,7 +6,7 @@ export default function FooterNav() {
   const router = useRouter();
 
   return (
-    <section className="w-full flex justify-between font-body">
+    <section className="w-full flex justify-between font-body text-white">
       <ul>
         <li
           onClick={() => router.push("/")}

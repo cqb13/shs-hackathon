@@ -143,7 +143,7 @@ export default function QuestionDisplay({
             <h2 className="font-body text-2xl text-black">{index + 1}.</h2>
             {question.question.map((word, wordIndex) => (
               <h2
-                key={index}
+                key={wordIndex}
                 className={`${word === "" && !submitted ? "" : "font-body"} ${
                   word === "" && submitted ? "text-green-700" : ""
                 } text-2xl text-black`}
@@ -177,8 +177,7 @@ export default function QuestionDisplay({
           {index + 1}. {question.question}
         </h2>
       )}
-
-      <section className="grid grid-cols-2 grid-rows-2 gap-2 max-sm:grid-cols-1">
+      <section className="grid grid-cols-2 grid-rows-2 gap-2 max-sm:grid-cols-1 text-white">
         {question.type === QuestionType.MultipleChoice
           ? multipleChoiceAnswers.map((answer, answerIndex) => (
               <div
@@ -203,7 +202,6 @@ export default function QuestionDisplay({
             ))
           : null}
       </section>
-
       <section>
         {question.type === QuestionType.ShortAnswer ? (
           <div className="w-full relative">
@@ -223,11 +221,9 @@ export default function QuestionDisplay({
           </div>
         ) : null}
       </section>
-
       {question.type === QuestionType.TrueFalse ? (
-        <section className="flex gap-2 w-full">
+        <section className="flex gap-2 w-full text-white">
           <div
-            key={0}
             onClick={() => handleSelect(0)}
             className="bg-onyx p-10 rounded-md cursor-pointer hover:bg-opacity-95 transition-all flex-1"
           >
@@ -244,7 +240,6 @@ export default function QuestionDisplay({
             </h2>
           </div>
           <div
-            key={1}
             onClick={() => handleSelect(1)}
             className="bg-onyx p-10 rounded-md cursor-pointer hover:bg-opacity-95 transition-all flex-1"
           >

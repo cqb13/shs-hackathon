@@ -107,7 +107,7 @@ export default function RootLayout({
               href="https://github.com/Website-Club/shs-hackathon/blob/main/LICENSE"
               target="_blank"
             >
-              Copyright © 2024-2025 | MIT License
+              Copyright © 2025 | MIT License
             </a>
             <a
               href="https://github.com/cqb13"

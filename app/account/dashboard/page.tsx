@@ -812,8 +812,8 @@ export default function Account() {
               className="border-t-2 border-fairy_tale hover:border-t-4 rounded-t-lg rounded-b-lg bg-onyx p-2 rounded-none h-56 transition-all duration-200 ease-in-out flex flex-col justify-between"
             >
               <div>
-                <h2 className="px-1">{user.name}</h2>
-                <p className="px-1">{user.email}</p>
+                <h2 className="px-1 text-white">{user.name}</h2>
+                <p className="px-1 text-white">{user.email}</p>
               </div>
               <section className="flex w-full gap-2 mt-2">
                 {isAdmin || isImportant ? (

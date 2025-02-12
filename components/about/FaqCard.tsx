@@ -11,7 +11,7 @@ export default function FaqCard({ question, answer }: Faq) {
   };
 
   return (
-    <section className=" bg-onyx rounded-2xl p-2 flex flex-col justify-center w-full">
+    <section className="text-white bg-onyx rounded-2xl p-2 flex flex-col justify-center w-full">
       <div className="flex items-center justify-between gap-0.5">
         <h3 className="text-xl font-body font-medium">{question}</h3>
         <button onClick={handleClick}>
@@ -23,7 +23,7 @@ export default function FaqCard({ question, answer }: Faq) {
             width="50px"
             height="50px"
             viewBox="0 0 100 100"
-            enable-background="new 0 0 100 100"
+            enableBackground="new 0 0 100 100"
             className={`transform transition-all duration-150 ease-in-out ${
               isAnswerVisible ? "" : "rotate-45"
             }`}

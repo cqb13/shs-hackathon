@@ -64,129 +64,196 @@ export default function Resources() {
 
   return (
     <main className="flex flex-col gap-10 px-60 py-20 max-lg:px-14 max-sm:px-5 bg-white">
-      <h2 className="text-onyx-200 font-header text-5xl">Intro To Scratch</h2>
-      <h3 className="text-onyx-200 font-header text-4xl" id="part-1">
-        Part-1
-      </h3>
-      <h4 className="text-neutral-700 font-body text-2xl">What is Scratch?</h4>
-      <iframe
-        className="max-md:w-[320px] max-md:h-[180px]"
-        width="640"
-        height="360"
-        src={`https://www.youtube.com/embed/jXUZaf5D12A?autoplay=0&origin=http://example.com&controls=0&rel=1`}
-      ></iframe>
-      <h4 className="text-neutral-700 font-body text-2xl">Making an account</h4>
-      <iframe
-        className="max-md:w-[320px] max-md:h-[180px]"
-        width="640"
-        height="360"
-        src={`https://www.youtube.com/embed/YSTRopT3Ois?autoplay=0&origin=http://example.com&controls=0&rel=1`}
-      ></iframe>
-      <h3 className="text-onyx-200 font-header text-4xl" id="part-2">
-        Part-2
-      </h3>
-      <h4 className="text-neutral-700 font-body text-2xl">
-        Creating a project
-      </h4>
-      <iframe
-        className="max-md:w-[320px] max-md:h-[180px]"
-        width="640"
-        height="360"
-        src={`https://www.youtube.com/embed/hf6BM9ssJl8?autoplay=0&origin=http://example.com&controls=0&rel=1`}
-      ></iframe>
-      <h4 className="text-neutral-700 font-body text-2xl">
-        How to use sprites and backgrounds
-      </h4>
-      <iframe
-        className="max-md:w-[320px] max-md:h-[180px]"
-        width="640"
-        height="360"
-        src={`https://www.youtube.com/embed/R-QuPKDAADE?autoplay=0&origin=http://example.com&controls=0&rel=1`}
-      ></iframe>
-      <h4 className="text-neutral-700 font-body text-2xl">
-        How to add extensions
-      </h4>
-      <iframe
-        className="max-md:w-[320px] max-md:h-[180px]"
-        width="640"
-        height="360"
-        src={`https://www.youtube.com/embed/eyTfQwSHWEw?autoplay=0&origin=http://example.com&controls=0&rel=1`}
-      ></iframe>
-      <h3 className="text-onyx-200 font-header text-4xl" id="part-3">
-        Part-3
-      </h3>
-      <h4 className="text-neutral-700 font-body text-2xl">
-        What are variables?
-      </h4>
-      <iframe
-        className="max-md:w-[320px] max-md:h-[180px]"
-        width="640"
-        height="360"
-        src={`https://www.youtube.com/embed/wS1QETPfgGE?autoplay=0&origin=http://example.com&controls=0&rel=1`}
-      ></iframe>
-      <h4 className="text-neutral-700 font-body text-2xl">
-        What are functions?
-      </h4>
-      <iframe
-        className="max-md:w-[320px] max-md:h-[180px]"
-        width="640"
-        height="360"
-        src={`https://www.youtube.com/embed/Q0JecvzwyIg?autoplay=0&origin=http://example.com&controls=0&rel=1`}
-      ></iframe>
-      <h3 className="text-onyx-200 font-header text-4xl" id="part-4">
-        Part-4
-      </h3>
-      <h4 className="text-neutral-700 font-body text-2xl">Loops</h4>
-      <iframe
-        className="max-md:w-[320px] max-md:h-[180px]"
-        width="640"
-        height="360"
-        src={`https://www.youtube.com/embed/m57Gmc7wFIM?autoplay=0&origin=http://example.com&controls=0&rel=1`}
-      ></iframe>
-      <h2 className="text-onyx-200 font-header text-5xl" id="tp">
-        Final Review
-      </h2>
-      {usedQuestions.map((question, index) => (
-        <QuestionDisplay
-          question={question}
-          submitted={submitted}
-          updateQuestionResults={updateQuestionResults}
-          attempts={attempts}
-          index={index}
-          key={index}
-        />
-      ))}
-      <section className="w-full flex flex-col gap-2">
-        {!submitted ? (
-          <Button
-            onClick={() => setSubmitted(true)}
-            title="Submit"
-            style="normal"
-            classModifier="w-full"
-          />
-        ) : (
-          <Button
-            onClick={reset}
-            title="Reset"
-            style="normal"
-            classModifier="w-full"
-          />
-        )}
-        {submitted ? (
-          <section className="bg-onyx flex items-center justify-between rounded-md text-white font-belgrano px-6 py-3">
-            <div className="flex items-center gap-2">
-              <h2>{`${score}/${
-                questions.length - uncertainResultsIndex.length
-              }`}</h2>
-              <h2>or</h2>
-              <h2>{`${Number(
-                (score / (questions.length - uncertainResultsIndex.length)) *
-                  100,
-              ).toFixed(2)}%`}</h2>
+      <section>
+        <h2 className="text-onyx-200 font-header text-5xl">
+          Learning Resources
+        </h2>
+        <div className="flex flex-col font-body text-2xl pl-4">
+          <a
+            href="https://www.freecodecamp.org/"
+            target="_blank"
+            className="hover:underline transition-all duration-300 ease-in-out"
+          >
+            Free Code Camp
+          </a>
+          <a
+            href="https://code.org/students"
+            target="_blank"
+            className="hover:underline transition-all duration-300 ease-in-out"
+          >
+            Code.org
+          </a>
+          <section>
+            <h3>W3 Schools</h3>
+            <div className="flex flex-col pl-4">
+              <a
+                target="_blank"
+                href="https://www.w3schools.com/html/default.asp"
+                className="hover:underline transition-all duration-300 ease-in-out"
+              >
+                HTML
+              </a>
+              <a
+                target="_blank"
+                href="https://www.w3schools.com/css/default.asp"
+                className="hover:underline transition-all duration-300 ease-in-out"
+              >
+                CSS
+              </a>
+              <a
+                target="_blank"
+                href="https://www.w3schools.com/js/default.asp"
+                className="hover:underline transition-all duration-300 ease-in-out"
+              >
+                JavaScript
+              </a>
+              <a
+                target="_blank"
+                href="https://www.w3schools.com/java/default.asp"
+                className="hover:underline transition-all duration-300 ease-in-out"
+              >
+                Java
+              </a>
+              <a
+                target="_blank"
+                href="https://www.w3schools.com/python/default.asp"
+                className="hover:underline transition-all duration-300 ease-in-out"
+              >
+                Python
+              </a>
             </div>
-            <h2>{`${uncertainResultsIndex.length} incalculable questions`}</h2>
           </section>
-        ) : null}
+        </div>
+      </section>
+      <section>
+        <h2 className="text-onyx-200 font-header text-5xl">Intro To Scratch</h2>
+        <h3 className="text-onyx-200 font-header text-4xl" id="part-1">
+          Part-1
+        </h3>
+        <h4 className="text-neutral-700 font-body text-2xl">
+          What is Scratch?
+        </h4>
+        <iframe
+          className="max-md:w-[320px] max-md:h-[180px]"
+          width="640"
+          height="360"
+          src={`https://www.youtube.com/embed/jXUZaf5D12A?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+        ></iframe>
+        <h4 className="text-neutral-700 font-body text-2xl">
+          Making an account
+        </h4>
+        <iframe
+          className="max-md:w-[320px] max-md:h-[180px]"
+          width="640"
+          height="360"
+          src={`https://www.youtube.com/embed/YSTRopT3Ois?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+        ></iframe>
+        <h3 className="text-onyx-200 font-header text-4xl" id="part-2">
+          Part-2
+        </h3>
+        <h4 className="text-neutral-700 font-body text-2xl">
+          Creating a project
+        </h4>
+        <iframe
+          className="max-md:w-[320px] max-md:h-[180px]"
+          width="640"
+          height="360"
+          src={`https://www.youtube.com/embed/hf6BM9ssJl8?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+        ></iframe>
+        <h4 className="text-neutral-700 font-body text-2xl">
+          How to use sprites and backgrounds
+        </h4>
+        <iframe
+          className="max-md:w-[320px] max-md:h-[180px]"
+          width="640"
+          height="360"
+          src={`https://www.youtube.com/embed/R-QuPKDAADE?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+        ></iframe>
+        <h4 className="text-neutral-700 font-body text-2xl">
+          How to add extensions
+        </h4>
+        <iframe
+          className="max-md:w-[320px] max-md:h-[180px]"
+          width="640"
+          height="360"
+          src={`https://www.youtube.com/embed/eyTfQwSHWEw?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+        ></iframe>
+        <h3 className="text-onyx-200 font-header text-4xl" id="part-3">
+          Part-3
+        </h3>
+        <h4 className="text-neutral-700 font-body text-2xl">
+          What are variables?
+        </h4>
+        <iframe
+          className="max-md:w-[320px] max-md:h-[180px]"
+          width="640"
+          height="360"
+          src={`https://www.youtube.com/embed/wS1QETPfgGE?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+        ></iframe>
+        <h4 className="text-neutral-700 font-body text-2xl">
+          What are functions?
+        </h4>
+        <iframe
+          className="max-md:w-[320px] max-md:h-[180px]"
+          width="640"
+          height="360"
+          src={`https://www.youtube.com/embed/Q0JecvzwyIg?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+        ></iframe>
+        <h3 className="text-onyx-200 font-header text-4xl" id="part-4">
+          Part-4
+        </h3>
+        <h4 className="text-neutral-700 font-body text-2xl">Loops</h4>
+        <iframe
+          className="max-md:w-[320px] max-md:h-[180px]"
+          width="640"
+          height="360"
+          src={`https://www.youtube.com/embed/m57Gmc7wFIM?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+        ></iframe>
+        <h2 className="text-onyx-200 font-header text-5xl" id="tp">
+          Final Review
+        </h2>
+        {usedQuestions.map((question, index) => (
+          <QuestionDisplay
+            question={question}
+            submitted={submitted}
+            updateQuestionResults={updateQuestionResults}
+            attempts={attempts}
+            index={index}
+            key={index}
+          />
+        ))}
+        <section className="w-full flex flex-col gap-2">
+          {!submitted ? (
+            <Button
+              onClick={() => setSubmitted(true)}
+              title="Submit"
+              style="normal"
+              classModifier="w-full"
+            />
+          ) : (
+            <Button
+              onClick={reset}
+              title="Reset"
+              style="normal"
+              classModifier="w-full"
+            />
+          )}
+          {submitted ? (
+            <section className="bg-onyx flex items-center justify-between rounded-md text-white font-belgrano px-6 py-3">
+              <div className="flex items-center gap-2">
+                <h2>{`${score}/${
+                  questions.length - uncertainResultsIndex.length
+                }`}</h2>
+                <h2>or</h2>
+                <h2>{`${Number(
+                  (score / (questions.length - uncertainResultsIndex.length)) *
+                    100,
+                ).toFixed(2)}%`}</h2>
+              </div>
+              <h2>{`${uncertainResultsIndex.length} incalculable questions`}</h2>
+            </section>
+          ) : null}
+        </section>
       </section>
     </main>
   );

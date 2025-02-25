@@ -34,7 +34,7 @@ export default function ImageGallery() {
               width="50px"
               height="50px"
               viewBox="0 0 100 100"
-              enable-background="new 0 0 100 100"
+              enableBackground="new 0 0 100 100"
             >
               <path
                 d="M84.707,68.752L65.951,49.998l18.75-18.752c0.777-0.777,0.777-2.036,0-2.813L71.566,15.295

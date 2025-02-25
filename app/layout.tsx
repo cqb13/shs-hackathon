@@ -101,7 +101,7 @@ export default function RootLayout({
         </AuthContextProvider>
         <footer className="border-t border-azure-600 px-80 py-28 flex flex-col justify-center items-center gap-10 max-lg:px-28 max-md:px-10 bg-onyx">
           <FooterNav />
-          <section className="flex w-full justify-between items-center">
+          <section className="flex w-full justify-between items-center max-sm:flex-col">
             <a
               className="font-body text-white hover:underline"
               href="https://github.com/Website-Club/shs-hackathon/blob/main/LICENSE"

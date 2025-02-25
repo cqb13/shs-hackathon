@@ -78,12 +78,14 @@ export default function NavBar() {
     <nav
       className={`${
         useScroll(40)
-          ? "shadow-bar bg-onyx bg-opacity-90 backdrop-blur-xl sticky top-0 w-11/12 m-auto rounded-b-lg"
+          ? "shadow-bar bg-onyx bg-opacity-90 backdrop-blur-xl sticky top-0 w-11/12 max-sm:w-full m-auto rounded-b-lg"
           : "bg-onyx w-full rounded-none"
-      }  flex items-center justify-between gap-2 max-sm:flex-col z-30 transition-all px-14 py-1`}
+      }  flex items-center justify-between gap-2 max-sm:flex-col z-30 transition-all px-14 py-1 max-sm:px-5`}
     >
-      <p className="p-1 text-fairy_tale font-body">SHS Hackathon</p>
-      <div className="flex items-center gap-2 max-sm:flex-wrap max-sm:justify-center">
+      <p className="p-1 text-fairy_tale font-body max-sm:hidden">
+        SHS Hackathon
+      </p>
+      <div className="flex items-center gap-2 max-sm:flex-wrap max-sm:justify-center max-sm:gap-1">
         {routes.map((route) => (
           <button
             type="button"

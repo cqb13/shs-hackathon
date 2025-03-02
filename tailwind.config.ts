@@ -96,7 +96,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        header: ["Unica One", "sans-serif"],
+        header: ["Oswald", "sans-serif"],
         body: ["Inter", "sans-serif"],
       },
       screens: {

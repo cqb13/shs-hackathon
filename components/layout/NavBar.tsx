@@ -74,6 +74,10 @@ export default function NavBar() {
     }
   };
 
+  const openRegisterForm = () => {
+    window.open("https://forms.gle/QS5JDFf1Ff346uLHA", "_blank");
+  };
+
   return (
     <nav
       className={`${
@@ -104,6 +108,13 @@ export default function NavBar() {
           className="rounded p-1 text-fairy_tale"
         >
           Contact
+        </button>
+        <button
+          type="button"
+          onClick={openRegisterForm}
+          className="rounded p-1 text-fairy_tale"
+        >
+          Register
         </button>
         {user ? (
           <button

@@ -78,6 +78,13 @@ export default function NavBar() {
     window.open("https://forms.gle/QS5JDFf1Ff346uLHA", "_blank");
   };
 
+  const openPermissonForm = () => {
+    window.open(
+      "https://drive.google.com/file/d/1A3L644nj6m0-Y3sA2p6Un3BP12aFthHf/view?usp=sharing",
+      "_blank",
+    );
+  };
+
   return (
     <nav
       className={`${
@@ -116,6 +123,14 @@ export default function NavBar() {
         >
           Register
         </button>
+        <button
+          type="button"
+          onClick={openPermissonForm}
+          className="rounded p-1 text-fairy_tale"
+        >
+          Permission Form
+        </button>
+
         {user ? (
           <button
             type="button"

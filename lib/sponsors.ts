@@ -27,6 +27,12 @@ const sponsors: Sponsor[] = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Big_Y_logo.svg/300px-Big_Y_logo.svg.png",
     link: "https://www.bigy.com/",
   },
+  {
+    name: "CVS",
+    image:
+      "https://images.ctfassets.net/nu3qzhcv2o1c/1uWo4wzILxt7WqZAlfL2mO/2a029246adf2d8ed63db57e7f0ea3387/cvs-logo.svg",
+    link: "https://www.cvs.com/",
+  },
 ];
 
 export default sponsors;

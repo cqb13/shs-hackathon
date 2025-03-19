@@ -11,6 +11,7 @@ const nextConfig = {
       "upload.wikimedia.org",
       "hackathon.shsdevs.com",
       "www.wegmans.com",
+      "static.wikia.nocookie.net",
     ],
   },
 };

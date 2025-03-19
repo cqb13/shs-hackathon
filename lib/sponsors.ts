@@ -33,6 +33,12 @@ const sponsors: Sponsor[] = [
       "https://images.ctfassets.net/nu3qzhcv2o1c/1uWo4wzILxt7WqZAlfL2mO/2a029246adf2d8ed63db57e7f0ea3387/cvs-logo.svg",
     link: "https://www.cvs.com/",
   },
+  {
+    name: "Stop & Shop",
+    image:
+      "https://static.wikia.nocookie.net/logopedia/images/c/ca/Stop_and_Shop_2018.svg/revision/latest/scale-to-width-down/300?cb=20181010092516",
+    link: "https://stopandshop.com/",
+  },
 ];
 
 export default sponsors;

@@ -8,13 +8,7 @@ export default function SponsorCard({ name, image, link }: Sponsor) {
   return (
     <section className="flex flex-col items-center justify-between gap-0 h-64">
       <div></div>
-      <Image
-        src={image}
-        alt={name}
-        className="rounded-3xl"
-        width={150}
-        height={150}
-      />
+      <Image src={image} alt={name} width={150} height={150} />
       <a
         href={link}
         target="_blank"

@@ -39,6 +39,11 @@ const sponsors: Sponsor[] = [
       "https://static.wikia.nocookie.net/logopedia/images/c/ca/Stop_and_Shop_2018.svg/revision/latest/scale-to-width-down/300?cb=20181010092516",
     link: "https://stopandshop.com/",
   },
+  {
+    name: "Target",
+    image: "https://www.target.com/icons/light/BullseyeRed.svg",
+    link: "https://www.target.com",
+  },
 ];
 
 export default sponsors;

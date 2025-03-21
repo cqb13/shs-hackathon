@@ -12,6 +12,7 @@ const nextConfig = {
       "hackathon.shsdevs.com",
       "www.wegmans.com",
       "static.wikia.nocookie.net",
+      "www.target.com",
     ],
   },
 };

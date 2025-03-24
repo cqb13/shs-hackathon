@@ -1,8 +1,8 @@
 export default function Examples() {
   return (
     <main className="flex flex-col gap-10 px-60 py-20 max-lg:px-14 max-sm:px-5 bg-white">
-      <section className="grid grid-cols-3 gap-2">
-        <div className="flex flex-col justify-between h-60 rounded-lg bg-onyx p-2 text-white">
+      <section className="flex gap-2 max-sm:flex-col">
+        <div className="flex flex-col justify-between h-60 w-1/3 max-sm:w-full rounded-lg bg-onyx p-2 text-white">
           <div>
             <h2 className="text-xl font-body">Urban Climate Resiliency</h2>
             <p>By: Apurva Varigonda</p>

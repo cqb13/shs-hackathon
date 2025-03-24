@@ -22,13 +22,6 @@ export default function HackathonResources() {
   };
   const [theme, setTheme] = useState("");
   const [themeDescription, setThemeDescription] = useState("");
-  const [exampleSubmissionSlidesLink, setExampleSubmissionSlidesLink] =
-    useState("");
-  const [copyExampleSubmissionSlidesLink, setCopyExampleSubmissionSlidesLink] =
-    useState("");
-  const [rubricLink, setRubricLink] = useState("");
-  const [submissionLink, setSubmissionLink] = useState("");
-  const [feedbackFormLink, setFeedbackFormLink] = useState("");
   const [wifiNetworkName, setWifiNetworkName] = useState("");
   const [wifiPassword, setWifiPassword] = useState("");
 
@@ -49,11 +42,6 @@ export default function HackathonResources() {
 
       setTheme(data.theme);
       setThemeDescription(data.themeDescription);
-      setExampleSubmissionSlidesLink(data.exampleSubmissionSlidesLink);
-      setCopyExampleSubmissionSlidesLink(data.copyExampleSubmissionSlidesLink);
-      setRubricLink(data.rubricLink);
-      setSubmissionLink(data.submissionLink);
-      setFeedbackFormLink(data.feedbackFormLink);
       setWifiNetworkName(data.wifiNetworkName);
       setWifiPassword(data.wifiPassword);
     });
@@ -82,38 +70,58 @@ export default function HackathonResources() {
       <article className="font-body text-xl text-neutral-700">
         {themeDescription}
       </article>
-      <div className="flex gap-2">
-        <button
-          onClick={() => window.open(exampleSubmissionSlidesLink)}
-          className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150"
-        >
-          View Example Submission Slideshow
-        </button>
-        <button
-          onClick={() => window.open(copyExampleSubmissionSlidesLink)}
-          className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150"
-        >
-          Copy Example Submission Slideshow
-        </button>
-      </div>
-      <button
-        onClick={() => window.open(rubricLink)}
-        className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150"
+      <a
+        href="https://docs.google.com/presentation/d/1lw-YwWdnXn6OIPivObvSxvSkGQQgyI-db2YtD9nYIKY/edit?usp=sharing"
+        target="_bank"
+        className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
+      >
+        Opening Slides
+      </a>
+      <a
+        href="https://docs.google.com/document/d/1C92olw1qNmS3n713BiYVqq0hIlvRcl0l45uLmaJWQHs/edit?usp=sharing"
+        target="_bank"
+        className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
+      >
+        Done Early?
+      </a>
+      <a
+        href="https://docs.google.com/document/d/12afB3Qw7lEzojcw3uPRCmsFLvIazlqc6b3YyGocejwI/edit?usp=sharing"
+        target="_bank"
+        className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
       >
         Rubric
-      </button>
-      <button
-        onClick={() => window.open(submissionLink)}
-        className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150"
+      </a>
+      <div className="flex gap-2">
+        <a
+          href="https://docs.google.com/presentation/d/1nlsooeK3z3J6DPyLEgatEinUvGxJ2TDhnXSIJfM-kWQ/edit?usp=sharing"
+          target="_bank"
+          className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
+        >
+          View Example Submission Slideshow
+        </a>
+        <a
+          href="https://docs.google.com/presentation/d/1nlsooeK3z3J6DPyLEgatEinUvGxJ2TDhnXSIJfM-kWQ/copy"
+          target="_bank"
+          className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
+        >
+          Copy Example Submission Slideshow
+        </a>
+      </div>
+      <a
+        href=""
+        target="_bank"
+        className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
       >
-        Submit Final Project
-      </button>
-      <button
-        onClick={() => window.open(feedbackFormLink)}
-        className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150"
+        Submit Project
+      </a>
+      <a
+        href="https://forms.gle/EjRuikpk6RxynDdc7"
+        target="_bank"
+        className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
       >
         Feedback Form
-      </button>
+      </a>
+
       <div>
         <h3 className="text-onyx-200 font-body text-4xl" id="part-2">
           WiFi Information

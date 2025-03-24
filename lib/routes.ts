@@ -4,6 +4,7 @@ type Route = {
   signedIn: boolean;
   admin: boolean;
   signedOut: boolean;
+  inNav: boolean;
 };
 
 const routes: Route[] = [
@@ -13,6 +14,7 @@ const routes: Route[] = [
     signedIn: true,
     admin: true,
     signedOut: true,
+    inNav: true,
   },
   {
     name: "About",
@@ -20,6 +22,7 @@ const routes: Route[] = [
     signedIn: true,
     admin: true,
     signedOut: true,
+    inNav: true,
   },
   {
     name: "Resources",
@@ -27,6 +30,7 @@ const routes: Route[] = [
     signedIn: true,
     admin: true,
     signedOut: true,
+    inNav: true,
   },
   {
     name: "Hackathon",
@@ -34,6 +38,7 @@ const routes: Route[] = [
     signedIn: true,
     admin: true,
     signedOut: true,
+    inNav: true,
   },
   {
     name: "Account",
@@ -41,6 +46,7 @@ const routes: Route[] = [
     signedIn: true,
     admin: true,
     signedOut: false,
+    inNav: true,
   },
 ];
 

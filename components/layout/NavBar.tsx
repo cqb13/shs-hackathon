@@ -104,7 +104,7 @@ export default function NavBar() {
             onClick={() => router.push(route.path)}
             className={`${
               pathname === route.path ? " text-fairy_tale-400" : ""
-            } rounded p-1 text-fairy_tale ${findVisibility(route.signedIn, route.signedOut, route.name) ? "" : "hidden"}`}
+            } rounded p-1 text-fairy_tale ${findVisibility(route.signedIn, route.signedOut, route.name) ? "" : "hidden"} ${route.inNav == false ? "hidden" : ""}`}
           >
             {route.name}
           </button>

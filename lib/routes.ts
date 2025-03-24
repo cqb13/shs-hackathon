@@ -41,6 +41,14 @@ const routes: Route[] = [
     inNav: true,
   },
   {
+    name: "Example Projects",
+    path: "/hackathon/examples",
+    signedIn: true,
+    admin: true,
+    signedOut: true,
+    inNav: false,
+  },
+  {
     name: "Account",
     path: "/account",
     signedIn: true,

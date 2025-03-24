@@ -71,14 +71,20 @@ export default function HackathonResources() {
         {themeDescription}
       </article>
       <a
-        href="https://docs.google.com/presentation/d/1lw-YwWdnXn6OIPivObvSxvSkGQQgyI-db2YtD9nYIKY/edit?usp=sharing"
+        href="https://docs.google.com/presentation/d/11Tqa2bk9oJfrFPfz_28DYP7E7fiLAkFgSC_Vm-_uTZM/edit?usp=sharing"
         target="_bank"
         className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
       >
         Opening Slides
       </a>
+      <button
+        onClick={() => router.push("/hackathon/examples")}
+        className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150"
+      >
+        Example Projects
+      </button>
       <a
-        href="https://docs.google.com/document/d/1C92olw1qNmS3n713BiYVqq0hIlvRcl0l45uLmaJWQHs/edit?usp=sharing"
+        href="https://docs.google.com/document/d/1NPmzoyoBm2CM8a9TIZI739GXTnNDBgrCLKxOG0fDu24/edit?usp=sharing"
         target="_bank"
         className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
       >
@@ -108,7 +114,7 @@ export default function HackathonResources() {
         </a>
       </div>
       <a
-        href=""
+        href="https://forms.gle/tVmNVwtnEcQNL4wSA"
         target="_bank"
         className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
       >
@@ -121,7 +127,6 @@ export default function HackathonResources() {
       >
         Feedback Form
       </a>
-
       <div>
         <h3 className="text-onyx-200 font-body text-4xl" id="part-2">
           WiFi Information

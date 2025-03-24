@@ -103,14 +103,14 @@ export default function HackathonResources() {
           target="_bank"
           className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
         >
-          View Example Submission Slideshow
+          View Submission Template Slideshow
         </a>
         <a
           href="https://docs.google.com/presentation/d/1nlsooeK3z3J6DPyLEgatEinUvGxJ2TDhnXSIJfM-kWQ/copy"
           target="_bank"
           className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
         >
-          Copy Example Submission Slideshow
+          Copy Submission Template Slideshow
         </a>
       </div>
       <a

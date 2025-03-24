@@ -26,7 +26,7 @@ export default function About() {
           </h1>
           <article className="font-body text-xl text-neutral-700">
             The SHS Hackathon of 2025 is a day-long event proudly hosted by the
-            Girls Who Code and Web Development Club at Sharon High School. Our
+            Girls Who Code and Web Development Clubs at Sharon High School. Our
             mission is to bring together students with a passion for technology,
             innovation, and problem-solving.{" "}
           </article>

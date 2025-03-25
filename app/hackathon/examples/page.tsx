@@ -31,6 +31,35 @@ export default function Examples() {
             </a>
           </div>
         </div>
+        <div className="flex flex-col justify-between h-60 w-1/3 max-sm:w-full rounded-lg bg-onyx p-2 text-white">
+          <div>
+            <h2 className="text-xl font-body">Kind Words to Kids</h2>
+            <p>By: Maya Zaretsky and Hailey Sand</p>
+          </div>
+          <div className="flex gap-2 justify-between">
+            <a
+              href="https://replit.com/@mzaretsky2027/Letter-Generator#main.py"
+              target="_blank"
+              className="text-fairy_tale hover:text-fairy_tale-400 transition-all"
+            >
+              View Code
+            </a>
+            <a
+              href="https://docs.google.com/presentation/d/1m9hXb-vcj2JrBoJV0J26IsOtRhQKU3NGs0OOCacLKuM/edit?usp=sharing"
+              target="_blank"
+              className="text-fairy_tale hover:text-fairy_tale-400 transition-all"
+            >
+              Final Slideshow
+            </a>
+            <a
+              href="https://replit.com/@mzaretsky2027/Hackathon24#index.html"
+              target="_blank"
+              className="text-fairy_tale hover:text-fairy_tale-400 transition-all"
+            >
+              Website Code
+            </a>
+          </div>
+        </div>
       </section>
     </main>
   );

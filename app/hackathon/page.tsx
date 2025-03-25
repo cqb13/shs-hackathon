@@ -127,6 +127,13 @@ export default function HackathonResources() {
       >
         Feedback Form
       </a>
+      <a
+        href="https://problems.shsdevs.com"
+        target="_bank"
+        className="w-full rounded-md bg-onyx text-fairy_tale-400 font-body p-4 hover:bg-onyx-400 transition-all duration-150 text-center"
+      >
+        Coding Challenges
+      </a>
       <div>
         <h3 className="text-onyx-200 font-body text-4xl" id="part-2">
           WiFi Information
